@@ -46,21 +46,16 @@ extension Tester {
      Pig Latin:
      1) Move the first letter to the end and add "ay"
      pig -> igpay
-     latin -> atinay
+     latin -> atinlay
      2) IF word starts with a vowel, add "yay" to the word
      one -> oneyay
      */
     func printPigLatin(word: String) {
         var latin = word
-        if (
-            word.first == "a"
-            || word.first == "e"
-            || word.first == "i"
-            || word.first == "o"
-            || word.first == "u"
-        ) {
+        switch latin.first {
+        case "a", "e", "i", "o", "u":
             latin += "yay"
-        } else {
+        default:
             let first = latin.removeFirst()
             latin.append(first)
             latin += "ay"
