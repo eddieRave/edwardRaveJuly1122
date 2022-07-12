@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         let sample = tester.isPalindrome(word: "tacocat")
         print(sample)
-        
+        // testing undo with checkout commit
     }
 
 
