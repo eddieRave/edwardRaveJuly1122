@@ -174,14 +174,5 @@ class Tester {
             placeValueArray.append(sortedSet.firstIndex(of: num)! + 1)
         }
         return placeValueArray
-        
-//        let set = Set(array)
-//         let sortedSet = set.sorted()
-//
-//         let newArray = array.map{
-//             sortedSet.firstIndex(of: $0)! + 1
-//         }
-//
-//         return newArray
     }
 }
