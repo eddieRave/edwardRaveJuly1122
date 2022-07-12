@@ -12,17 +12,30 @@ class Tester {
     
     /// 1. Write a function that takes an array of numbers and returns an array with each of the numbers multiplied by 2
     func multiplyByTwo(numbers original: [Int]) -> [Int]{
-        return []
+        var newArray: [Int] = []
+        for element in original {
+            let newElement = element * 2
+            newArray.append(newElement)
+        }
+        return newArray
     }
 
     /// 2. Write a function to return the last half of the array, not including the median
     func lastHalf(array: [Int]) -> [Int] {
-        return []
+        let slicedArray = array
+        let midpoint = (array.count / 2) + 1
+        return Array(slicedArray.suffix(from: midpoint))
     }
 
     /// 3. Write a function that can creates an array populated with integers going from start (input) to end (input)
     func createArray(from start: Int, to end: Int) -> [Int] {
-        return []
+        var slicedArray = [start]
+        var counter = start
+        while counter < end {
+            slicedArray.append(counter + 1)
+            counter += 1
+        }
+        return slicedArray
     }
 
     /**
@@ -33,18 +46,44 @@ class Tester {
         [7,8,9]]
      */
     func create2DArray(n: Int) -> [[Int]] {
-        return []
+        var matrixArray: [[Int]] = []
+        var counter = 0
+        for row in 0..<n {
+            var tempArray: [Int] = []
+            for column in 0..<n {
+                counter += 1
+                tempArray.append(counter)
+            }
+            matrixArray.append(tempArray)
+        }
+        return matrixArray
     }
 
     /// 5. Write a function that returns the number of pairs of elements that SUMS up to 0
     /// Input [1,2,3,-1,-2,-4] -> Output 2
     func findPairs(nums: [Int]) -> Int {
-        return -1
+        var pairs = 0
+        for indexOfFirst in 0..<nums.count {
+            for indexOfSecond in 0..<nums.count {
+                if (nums[indexOfFirst] + nums[indexOfSecond] == 0) {
+                    pairs += 1
+                }
+            }
+        }
+        // divide pair results in half since I didn't remove pairs when found
+        pairs /= 2
+        return pairs
     }
     
     /// 6. Returns an array of indexes where the char occurs in input word
     func positionsOf(character: Character, in word: String) -> [Int] {
-        return []
+        var arrayOfCharOccurences: [Int] = []
+        for (index, letter) in word.enumerated() {
+            if character == letter {
+                arrayOfCharOccurences.append(index)
+            }
+        }
+        return arrayOfCharOccurences
     }
     
     /**
