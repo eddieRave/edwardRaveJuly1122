@@ -157,19 +157,6 @@ class Tester {
         [20, 15] -> [2, 1]
      */
     func reduceDistanceKeepPriority(array: [Int]) -> [Int] {
-        let lowest = array.max() ?? 1
-        var scores: [Int] = []
-        var ranks: [Int] = []
-        
-        for num in 1...lowest {
-            if array.contains(num) {
-                scores.append(num)
-            }
-        }
-        
-        ranks = array.map {
-            scores.firstIndex(of: $0)! + 1
-        }
-        return ranks
+        array.map { Set(array).sorted().firstIndex(of: $0)! + 1 }
     }
 }
