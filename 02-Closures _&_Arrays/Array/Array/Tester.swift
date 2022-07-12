@@ -97,17 +97,45 @@ class Tester {
             [ I, I, O, I, I, O, O, O] = 3
      */
     func minimumChairs(array: [Character]) -> Int {
-        return -1
+        var maxChairsNeeded = 0
+        var collectionOfNeededChairs: [Int] = []
+        for event in array {
+            if event == "I" {
+                maxChairsNeeded += 1
+            } else {
+                maxChairsNeeded -= 1
+            }
+            collectionOfNeededChairs.append(maxChairsNeeded)
+        }
+        return collectionOfNeededChairs.max()!
     }
     
     /// 8. Pig latin but with words separated by spaces
     func pigLatinSentence(sentence: String) -> String {
-        return ""
-    
+        let arrayOfPlainWords = sentence.split(separator: " ")
+        var stringOfPigLatinWords = ""
+        for word in arrayOfPlainWords {
+            let pigLatinTranslation = returnPigLatin(word: String(word))
+            if stringOfPigLatinWords == "" {
+                stringOfPigLatinWords.append(pigLatinTranslation)
+            } else {
+                stringOfPigLatinWords.append(" ")
+                stringOfPigLatinWords.append(pigLatinTranslation)
+            }
+        }
+        return stringOfPigLatinWords
     }
     
     func returnPigLatin(word: String) -> String {
-        return ""
+        var copyOfWord = word
+        let vowels = "aeiou"
+        if (vowels.contains(copyOfWord[copyOfWord.startIndex])) {
+            copyOfWord.append("yay")
+        } else {
+            let firstLetter = copyOfWord.remove(at: copyOfWord.startIndex)
+            copyOfWord.append(String(firstLetter) + "ay")
+        }
+        return copyOfWord
     }
     
     /**
@@ -115,16 +143,45 @@ class Tester {
         var prices = [7,1,5,3,6,4] -> returns 5  (buy at 1 and sell at 6)
      */
     func maxProfit(array: [Int]) -> Int {
-        return -1
+        var maxProfit = 0
+        var splitArray: [Int] = []
+        for (index, num) in array.enumerated() {
+            splitArray = Array(array.suffix(from: index))
+            let buyPrice = num
+            let sellPrice = splitArray.max()
+            let profit = sellPrice! - buyPrice
+            if profit > maxProfit {
+                maxProfit = profit
+            }
+        }
+        return maxProfit
     }
     
     /**
         10. Input: array of integers: [1, 4, 8, 4] with 1 having the highest priority.
-        Output: reduce the distance bettwen priorities but keep the same priority ordering
+        Output: reduce the distance between priorities but keep the same priority ordering
         [1, 4, 8, 4] -> [1, 2, 3, 2]
         [20, 15] -> [2, 1]
      */
     func reduceDistanceKeepPriority(array: [Int]) -> [Int] {
-        return []
+        // sort the array and convert to a Set to remove duplicates
+        let set = Set(array)
+        let sortedSet = set.sorted()
+        // create an empty array to return
+        var placeValueArray: [Int] = []
+        // loop through original array and assign each the index
+        for num in array {
+            placeValueArray.append(sortedSet.firstIndex(of: num)! + 1)
+        }
+        return placeValueArray
+        
+//        let set = Set(array)
+//         let sortedSet = set.sorted()
+//
+//         let newArray = array.map{
+//             sortedSet.firstIndex(of: $0)! + 1
+//         }
+//
+//         return newArray
     }
 }
