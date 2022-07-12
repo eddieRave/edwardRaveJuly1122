@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         let sample = tester.isPalindrome(word: "tacocat")
         print(sample)
         
+        tester.isPalindrome(word: "racecar")
     }
 
 
