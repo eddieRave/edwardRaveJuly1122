@@ -12,17 +12,23 @@ class Tester {
     
     /// 1. Write a function that takes an array of numbers and returns an array with each of the numbers multiplied by 2
     func multiplyByTwo(numbers original: [Int]) -> [Int]{
-        return []
+        return original.map({ $0 * 2 })
     }
 
     /// 2. Write a function to return the last half of the array, not including the median
     func lastHalf(array: [Int]) -> [Int] {
-        return []
+        return array.suffix(array.count / 2)
     }
 
     /// 3. Write a function that can creates an array populated with integers going from start (input) to end (input)
     func createArray(from start: Int, to end: Int) -> [Int] {
-        return []
+        var array: [Int] = []
+        
+        for num in start...end {
+            array.append(num)
+        }
+        
+        return array
     }
 
     /**
@@ -33,18 +39,37 @@ class Tester {
         [7,8,9]]
      */
     func create2DArray(n: Int) -> [[Int]] {
-        return []
+        var matrix: [[Int]] = [[]]
+        
+        for row in 0..<n {
+            for element in 0..<n {
+                matrix[row].append(row * n + element + 1)
+            }
+            matrix.append([])
+        }
+        matrix.removeLast()
+        return matrix
     }
 
     /// 5. Write a function that returns the number of pairs of elements that SUMS up to 0
     /// Input [1,2,3,-1,-2,-4] -> Output 2
     func findPairs(nums: [Int]) -> Int {
-        return -1
+        var count = 0
+        for num in nums {
+            if nums.contains(where: { $0 + num == 0 }) { count += 1 }
+        }
+        
+        return count / 2
     }
     
     /// 6. Returns an array of indexes where the char occurs in input word
     func positionsOf(character: Character, in word: String) -> [Int] {
-        return []
+        var indices: [Int] = []
+        
+        for (index, letter) in word.enumerated() {
+            if letter == character { indices.append(index) }
+        }
+        return indices
     }
     
     /**
@@ -58,17 +83,54 @@ class Tester {
             [ I, I, O, I, I, O, O, O] = 3
      */
     func minimumChairs(array: [Character]) -> Int {
-        return -1
+        var max = 0
+        var current = 0
+        
+        for char in array {
+            if char == "I" {
+                current += 1
+            } else {
+                current -= 1
+            }
+            
+            max = current > max ? current : max
+        }
+        
+        return max
     }
     
     /// 8. Pig latin but with words separated by spaces
     func pigLatinSentence(sentence: String) -> String {
-        return ""
+        var latinSentence = ""
+        
+        let words = sentence.split(separator: " ")
+        
+        let latinWords = words.map({ returnPigLatin(word: String($0))})
+        
+        for word in latinWords {
+            latinSentence.append(word + " ")
+        }
+        
+        latinSentence.removeLast()
+        
+        return latinSentence
     
     }
     
     func returnPigLatin(word: String) -> String {
-        return ""
+        var latin = word
+        
+        switch latin.first {
+        case "a", "e", "i", "o", "u":
+            latin.append("yay")
+        default:
+            let first = latin.removeFirst()
+            latin.append(first)
+            latin.append("ay")
+        }
+        
+        
+        return latin
     }
     
     /**
@@ -76,7 +138,16 @@ class Tester {
         var prices = [7,1,5,3,6,4] -> returns 5  (buy at 1 and sell at 6)
      */
     func maxProfit(array: [Int]) -> Int {
-        return -1
+        var bestProfit = 0
+        
+        for (index, buyPrice) in array.enumerated() {
+            let possibleSales = array.suffix(array.count - 1 - index)
+            
+            let profit = (possibleSales.max() ?? 0) - buyPrice
+            
+            bestProfit = profit > bestProfit ? profit : bestProfit
+        }
+        return bestProfit
     }
     
     /**
@@ -86,6 +157,19 @@ class Tester {
         [20, 15] -> [2, 1]
      */
     func reduceDistanceKeepPriority(array: [Int]) -> [Int] {
-        return []
+        let lowest = array.max() ?? 1
+        var scores: [Int] = []
+        var ranks: [Int] = []
+        
+        for num in 1...lowest {
+            if array.contains(num) {
+                scores.append(num)
+            }
+        }
+        
+        ranks = array.map {
+            scores.firstIndex(of: $0)! + 1
+        }
+        return ranks
     }
 }
