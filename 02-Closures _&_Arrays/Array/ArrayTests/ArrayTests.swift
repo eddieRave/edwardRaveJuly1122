@@ -115,7 +115,7 @@ class ArrayTests: XCTestCase {
     }
     
     func testMaxProfit6() {
-        let prices = [2, 3, 8, 1, 4, 6]
+        let prices = [2, 3, 8, 1, 4, 6] //[1,2,3,4,6,8]
         let expected = 6
         
         let result = tester.maxProfit(array: prices)
