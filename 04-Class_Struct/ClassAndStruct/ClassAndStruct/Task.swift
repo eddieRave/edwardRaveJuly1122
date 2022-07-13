@@ -40,5 +40,12 @@ struct Task {
     
     mutating func setTimeReq(timeLeft: Int) {
         timeReq = timeLeft
+        if(timeReq == 0) {
+            setIsComplete(status: true)
+        } else {
+            if(isComplete) {
+                setIsComplete(status: false)
+            }
+        }
     }
 }

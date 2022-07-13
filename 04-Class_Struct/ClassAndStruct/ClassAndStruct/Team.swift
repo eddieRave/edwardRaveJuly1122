@@ -70,7 +70,7 @@ class Team {
     
     func allTasksCompleted() -> Bool {
         for task in taskList {
-            if(task.timeReq != 0) {
+            if(!task.isComplete) {
                 return false
             }
         }

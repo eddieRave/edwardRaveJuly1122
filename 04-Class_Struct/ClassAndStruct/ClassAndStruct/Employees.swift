@@ -46,9 +46,9 @@ class Employee {
             addToHoursWorked(hours: task.timeReq)
             
             if(task.timeReq > workableHours) {
-                task.timeReq -= workableHours
+                task.setTimeReq(timeLeft: task.timeReq - workableHours)
             } else {
-                task.timeReq = 0
+                task.setTimeReq(timeLeft: 0)
             }
         }
     }
