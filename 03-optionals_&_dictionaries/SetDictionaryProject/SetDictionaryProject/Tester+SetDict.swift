@@ -70,22 +70,34 @@ struct Tester {
     /// "1122" and a sentence "fire water fire water" (returns false)
     /// "11221" and a sentence "fire fire water water fire" (returns true)
     func translateNums(sequence: String, sentence: String) -> Bool {
-        // create an empty dictionary
         var dictOfWords: [String : Int] = [:]
-        // strip sentence of whitespace and add each item to array
         let arrayOfWords = sentence.components(separatedBy: " ")
-        // transform sentence array into a Set to remove duplicates
         let setOfWords = Set(arrayOfWords)
-        // loop through sentence set and add each word to the dictionary with a sequence number
         for (index, word) in setOfWords.enumerated() {
             dictOfWords[word] = index + 1
         }
-        // loop through sentence array
+        let arrayOfSequence: [Character] = Array(sequence)
+        var arrayOfNumberSequence: [Int] = []
+        for char in arrayOfSequence {
+            guard let num = char.wholeNumberValue else {
+                return false
+            }
+            arrayOfNumberSequence.append(num)
+        }
         for (index, word) in arrayOfWords.enumerated() {
-            // compare if each word sequence matches sequence number
-//            if word != dictOfWords[word] {
-//                return false
-//            }
+            // compare number in sequence to value at word in dictionary
+            switch word {
+            case "fire":
+                if arrayOfNumberSequence[index] != dictOfWords[word] {
+                    return false
+                }
+            case "water":
+                if arrayOfNumberSequence[index] != dictOfWords[word] {
+                    return false
+                }
+            default:
+                print("Error, word not found.")
+            }
         }
         return true
     }
@@ -93,7 +105,6 @@ struct Tester {
     /// Find number of pairs that SUMS up to 0
     /// O(n) time: don't use nested for loops
     func findPairsOfOpposites(nums: [Int]) -> Int {
-        
         return 0
     }
     
@@ -104,7 +115,6 @@ struct Tester {
      [1, 4, 8, 1] -> [1, 2, 3, 1]
      */
     func reduceDistanceKeepPriority(array: [Int]) -> [Int] {
-        
         return []
     }
     
