@@ -85,6 +85,7 @@ extension Tester {
         return Int(string) ?? 0
     }
     
+    ///
     /// Cast an array of string into an array of Int, remove any nil values
     /// ["1", "5", "apple", "2"] --> [1, 5, 2]
     func castArray(from strArr: [String]) -> [Int] {
