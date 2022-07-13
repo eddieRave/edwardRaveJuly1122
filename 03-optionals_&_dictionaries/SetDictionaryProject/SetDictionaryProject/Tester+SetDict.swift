@@ -73,9 +73,9 @@ struct Tester {
         // create an empty dictionary
         var dictOfWords: [String : Int] = [:]
         // strip sentence of whitespace and add each item to array
-        var arrayOfWords = sentence.components(separatedBy: " ")
+        let arrayOfWords = sentence.components(separatedBy: " ")
         // transform sentence array into a Set to remove duplicates
-        var setOfWords = Set(arrayOfWords)
+        let setOfWords = Set(arrayOfWords)
         // loop through sentence set and add each word to the dictionary with a sequence number
         for (index, word) in setOfWords.enumerated() {
             dictOfWords[word] = index + 1
@@ -83,9 +83,9 @@ struct Tester {
         // loop through sentence array
         for (index, word) in arrayOfWords.enumerated() {
             // compare if each word sequence matches sequence number
-            if word != dictOfWords[word] {
-                return false
-            }
+//            if word != dictOfWords[word] {
+//                return false
+//            }
         }
         return true
     }
