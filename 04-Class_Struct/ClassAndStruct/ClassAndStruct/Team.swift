@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 /**
  3) Team: Manages employees and tasks
@@ -41,29 +42,85 @@ class Team {
     var taskList: [Task] = []
     
     func add(employee: Employee) {
+        employees.append(employee)
     }
     
     func add(task: Task) {
+        taskList.append(task)
     }
     
     func startWeek() {
+        for i in 0 ..< taskList.count {
+            validate(taskNum: i)
+        }
     }
     
     func validate(taskNum: Int) {
+        for employee in employees {
+            if employee.role == taskList[taskNum].roleReq {
+                taskList[taskNum].isValid = true
+                assign(taskNum: taskNum, to: employee)
+            }
+        }
     }
     
     func assign(taskNum: Int, to employee: Employee) {
+        employee.attempt(task: &taskList[taskNum])
     }
     
     func allTasksCompleted() -> Bool {
-        return false
+        for task in taskList {
+            if(task.timeReq != 0) {
+                return false
+            }
+        }
+        
+        return true
     }
     
     func weeksTillComplete() -> Int {
-        return 0
+        var employeesByRole: [Role: Int] = [:]
+        var hoursByRole: [Role: Int] = [:]
+        
+        for employee in employees {
+            if let num = employeesByRole[employee.role] {
+                employeesByRole[employee.role] = num + 1
+            } else {
+                employeesByRole[employee.role] = 1
+            }
+        }
+        
+        for task in taskList {
+            if let num = hoursByRole[task.roleReq] {
+                hoursByRole[task.roleReq] = num + task.timeReq
+            } else {
+                hoursByRole[task.roleReq] = task.timeReq
+            }
+        }
+        
+        var largestWeeks = 0
+        
+        for (role, hours) in hoursByRole {
+            let employeesInRole = employeesByRole[role] ?? 0
+            var weeks = hours / (employeesInRole * 40)
+            if(hours % (employeesInRole * 40) != 0) {
+                weeks += 1
+            }
+            
+            if(weeks > largestWeeks) {
+                largestWeeks = weeks
+            }
+        }
+        
+        return largestWeeks
     }
 
     func printMoney() {
+        if(allTasksCompleted()) {
+            print("BRRRRRRRRRRRRRRRRRRRRRRRRRRRRR")
+        } else {
+            print("Tasks not completed")
+        }
     }
     
 }

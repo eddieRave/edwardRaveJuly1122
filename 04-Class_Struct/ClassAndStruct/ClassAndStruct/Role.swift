@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Role {
+enum Role : CaseIterable{
     case iOSDeveloper
     case AndroidDeveloper
     case QA
