@@ -105,7 +105,16 @@ struct Tester {
     /// Find number of pairs that SUMS up to 0
     /// O(n) time: don't use nested for loops
     func findPairsOfOpposites(nums: [Int]) -> Int {
-        return 0
+        var pairs = 0
+        for num in nums {
+            if nums.contains(-num) {
+                pairs += 1
+            }
+        }
+        if pairs > 0 {
+            pairs /= 2
+        }
+        return pairs
     }
     
     /**
@@ -115,7 +124,13 @@ struct Tester {
      [1, 4, 8, 1] -> [1, 2, 3, 1]
      */
     func reduceDistanceKeepPriority(array: [Int]) -> [Int] {
-        return []
+        let set = Set(array)
+        let sortedSet = set.sorted()
+        var placeValueArray: [Int] = []
+        for num in array {
+            placeValueArray.append(sortedSet.firstIndex(of: num)! + 1)
+        }
+        return placeValueArray
     }
     
     
@@ -135,7 +150,53 @@ struct Tester {
      */
     
     func romanToInt(roman: String) -> Int {
-        return 0
+        var dictionaryOfNumerals: [Character:Int] = [:]
+        for char in roman {
+            var value = 0
+            switch char {
+            case "I":
+                value = 1
+            case "V":
+                value = 5
+            case "X":
+                value = 10
+            case "L":
+                value = 50
+            case "C":
+                value = 100
+            case "D":
+                value = 500
+            case "M":
+                value = 1000
+            default:
+                print("Letter \(char) was not found. ")
+            }
+            dictionaryOfNumerals[char] = value
+        }
+        var total = 0
+        var previous: Character = roman.first ?? "I"
+        let reversedString = roman.reversed()
+        for (i, char) in reversedString.enumerated() {
+            guard let previousValueInDictionary = dictionaryOfNumerals[previous] else {
+                return 0
+            }
+            guard let charValueInDictionary = dictionaryOfNumerals[char] else {
+                return 0
+            }
+            if i == 0 {
+                total += charValueInDictionary
+                previous = char
+            } else if (charValueInDictionary >= previousValueInDictionary) {
+                total += charValueInDictionary
+                previous = char
+            } else if (charValueInDictionary < previousValueInDictionary) {
+                total -= charValueInDictionary
+                previous = char
+            } else {
+                print("5th condition: total = \(total)")
+            }
+        }
+        return total
     }
     
 }
