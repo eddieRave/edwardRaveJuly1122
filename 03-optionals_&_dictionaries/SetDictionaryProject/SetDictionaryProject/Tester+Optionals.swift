@@ -43,20 +43,53 @@ extension Tester {
     /// Input array of [Int?], unwrap each Int? and return the an array of Int
     /// Input [Int?] = [1, nil, nil, 2] -> [1, 2]
     func unwrapElementsInArray(array: [Int?]) -> [Int] {
-        return []
+        var unwrappedArray: [Int] = []
+        for num in array {
+            let unwrappedNum = num ?? 0
+            unwrappedArray.append(unwrappedNum)
+        }
+        return unwrappedArray
     }
     
     /// Unwrap using nil coalescing
     /// takes optional dictionary, return value at key?
     func unwrap(optional: [Int: Int]?, key: Int?) -> Int {
-        return 0
+        let unwrappedKey = key ?? 0
+        let dictOfIntegers: [Int: Int] = optional ?? [0:0]
+        return dictOfIntegers[unwrappedKey] ?? 0
     }
     
     /// Unwrap using optional chaining and optional binding
     /// takes nested optional array, return first value?
     func unwrap(optional: [[Int]?]?) -> Int {
-        return 0
+        let nestedArray: [[Int]?]? = optional
+        return nestedArray?[0]?[0] ?? 0
     }
+//    //1. optioning binding
+//    //if let
+//    if let firstNum = array.first{
+//        firstNum + 1
+//    }
+//    //guard let
+//    func add(){
+//        guard let firstNum = array.first else
+//        {
+//            return
+//        }
+//        firstNum + 1
+//    }
+//    // nil coalescing
+//    (array.first ?? 0) + 1
+//
+//    // optional chaining
+//    var optArray: [Int]? = nil
+//    //cant set non optional values to nil
+//    //let arr: [Int] = nil
+//    optArray?.count
+//    optArray = [1,2,3]
+//    optArray?.count
+//    var nestArray: [[Int]?]? = nil
+//    nestArray?[0]?[0]
     
     /// Unwrap using implicitly unwrap
     func implicitUnwrap(optional: Int?) -> Int {
