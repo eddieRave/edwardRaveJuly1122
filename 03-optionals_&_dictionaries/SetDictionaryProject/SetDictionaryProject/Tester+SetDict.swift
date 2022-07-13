@@ -10,40 +10,84 @@ import Foundation
 struct Tester {
     /// Remove an array with the duplicated values removed
     func removeDups(nums: [Int]) -> [Int] {
-        
-        return []
+        return Array(Set(nums))
     }
     
     /// Find the nums that exist in both arrays
     func findCommonNums(from firstNums: [Int], and secondNums: [Int]) -> [Int] {
-        
-        return []
+        var arrayOfCopies: [Int] = []
+        for num in firstNums {
+            if secondNums.contains(num) {
+                arrayOfCopies.append(num)
+            }
+        }
+        return arrayOfCopies
     }
     
     /// first: "hello", second: "bye" -> ["e"]
     func findMatchingLetters(firstWord: String, secondWord: String) -> [Character] {
-        return []
+        var arrayOfMatches: [Character] = []
+        for letter in firstWord {
+            if secondWord.contains(letter) {
+                arrayOfMatches.append(letter)
+            }
+        }
+        return arrayOfMatches
     }
-    
     
     /// Create a dictionary of the counts of the letters, ignoring spaces
     func createCounter(string: String) -> [Character: Int] {
-        return [:]
+        var dictOfLetterCounts: [Character : Int] = [:]
+        let stringWithoutSpaces = string.filter {!$0.isWhitespace}
+        for letter in stringWithoutSpaces {
+            var occurrences = 0
+            for char in string {
+                if letter == char {
+                    occurrences += 1
+                }
+                dictOfLetterCounts[letter] = occurrences
+            }
+        }
+        return dictOfLetterCounts
     }
-    
+                                                                                 
     /// Find most frequent letter in string: "hello there" -> "e"
     func mostFrequentLetter(string: String) -> Character {
-        return "."
+        let dictOfLetterCounts = createCounter(string: string)
+        let maxValue = dictOfLetterCounts.values.max()
+        var maxKey: Character?
+        for (key, value) in dictOfLetterCounts {
+            if value == maxValue {
+                maxKey = key
+            }
+        }
+        return maxKey ?? "."
     }
-    
+
     /// Given a string of numbers: "121" and a sentence "fire water fire"
     /// Determine if the sequence can be translated to the sentence exactly, if each number represents only one word
     /// "121" and a sentence "fire water fire" (returns true)
     /// "1122" and a sentence "fire water fire water" (returns false)
     /// "11221" and a sentence "fire fire water water fire" (returns true)
     func translateNums(sequence: String, sentence: String) -> Bool {
-
-        return false
+        // create an empty dictionary
+        var dictOfWords: [String : Int] = [:]
+        // strip sentence of whitespace and add each item to array
+        var arrayOfWords = sentence.components(separatedBy: " ")
+        // transform sentence array into a Set to remove duplicates
+        var setOfWords = Set(arrayOfWords)
+        // loop through sentence set and add each word to the dictionary with a sequence number
+        for (index, word) in setOfWords.enumerated() {
+            dictOfWords[word] = index + 1
+        }
+        // loop through sentence array
+        for (index, word) in arrayOfWords.enumerated() {
+            // compare if each word sequence matches sequence number
+            if word != dictOfWords[word] {
+                return false
+            }
+        }
+        return true
     }
     
     /// Find number of pairs that SUMS up to 0
