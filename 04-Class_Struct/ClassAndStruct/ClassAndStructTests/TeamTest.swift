@@ -124,6 +124,59 @@ class TeamTest: XCTestCase {
         XCTAssertEqual(team.weeksTillComplete(), 2)
     }
     
+    func testWeeksTillCompleteBonus1() {
+        let task1 = Task(timeReq: 30, roleReq: .iOSDeveloper)
+        let task2 = Task(timeReq: 100, roleReq: .iOSDeveloper)
+        let task3 = Task(timeReq: 50, roleReq: .AndroidDeveloper)
+        let task4 = Task(timeReq: 40, roleReq: .AndroidDeveloper)
+        
+        let employee1 = Employee(role: .iOSDeveloper, payRate: .high)
+        let employee2 = Employee(role: .iOSDeveloper, payRate: .high)
+        let employee3 = Employee(role: .AndroidDeveloper, payRate: .high)
+        
+        team.add(employee: employee1)
+        team.add(employee: employee2)
+        team.add(employee: employee3)
+        
+        team.add(task: task1)
+        team.add(task: task2)
+        team.add(task: task3)
+        team.add(task: task4)
+
+        XCTAssertEqual(team.weeksTillComplete(), 3)
+    
+        team.startWeek()
+        
+        XCTAssertEqual(team.weeksTillComplete(), 2)
+    }
+    
+    func testWeeksTillCompleteBonus2() {
+        let task1 = Task(timeReq: 30, roleReq: .iOSDeveloper)
+        let task2 = Task(timeReq: 50, roleReq: .AndroidDeveloper)
+        
+        let employee1 = Employee(role: .iOSDeveloper, payRate: .high)
+        let employee2 = Employee(role: .iOSDeveloper, payRate: .high)
+        let employee3 = Employee(role: .iOSDeveloper, payRate: .high)
+        let employee4 = Employee(role: .AndroidDeveloper, payRate: .high)
+        
+        team.add(employee: employee1)
+        team.add(employee: employee2)
+        team.add(employee: employee3)
+        team.add(employee: employee4)
+        
+        team.add(task: task1)
+        team.add(task: task1)
+        team.add(task: task1)
+        team.add(task: task1)
+        team.add(task: task2)
+
+        XCTAssertEqual(team.weeksTillComplete(), 2)
+    
+        team.startWeek()
+        
+        XCTAssertEqual(team.weeksTillComplete(), 1)
+    }
+    
     func testPrintMoney() {
         team.printMoney()
         let result = Tester.shared.printedString

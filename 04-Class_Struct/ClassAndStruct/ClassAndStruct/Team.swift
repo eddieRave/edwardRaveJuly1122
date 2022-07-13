@@ -61,7 +61,6 @@ class Team {
                 taskList[taskNum].setIsValid(status: true)
                 assign(taskNum: taskNum, to: employee)
             }
-            break
         }
     }
     
@@ -74,14 +73,22 @@ class Team {
     }
 
     func weeksTillComplete() -> Int {
-        var hoursRemaining: Int = 0
-        let hoursInAWeek = 40 * employees.count
+        var hoursRemaining: [Role: Int] = [:]
+        var hoursInAWeek: [Role: Int] = [:]
+        var weeksNeeded: [Int] = []
         
-        for task in taskList {
-            hoursRemaining += task.timeReq
+        taskList.forEach {
+            hoursRemaining.updateValue($0.timeReq + hoursRemaining[$0.roleReq, default: 0], forKey: $0.roleReq)
         }
-
-        return hoursRemaining / hoursInAWeek + (hoursRemaining % hoursInAWeek > 0 ? 1 : 0)
+        employees.forEach {
+            hoursInAWeek.updateValue(40 + hoursInAWeek[$0.role, default: 0], forKey: $0.role)
+        }
+        hoursRemaining.forEach {
+            if let hoursInAWeek = hoursInAWeek[$0.key] {
+                weeksNeeded.append($0.value / (hoursInAWeek) + ($0.value % hoursInAWeek > 0 ? 1 : 0))
+            }
+        }
+        return weeksNeeded.max()!
     }
 
     func printMoney() {
