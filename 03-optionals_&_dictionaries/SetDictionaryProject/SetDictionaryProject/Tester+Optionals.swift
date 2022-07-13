@@ -12,20 +12,30 @@ extension Tester {
     /// Unwrap using optional binding: if let
     /// else return 0
     func unwrap(optional: Int?) -> Int {
+        
+        if let result = optional {
+            return result
+        }
+        
         return 0
     }
     
     /// Unwrap using optional binding: guard let
     /// else return ""
     func unwrap(optional: String?) -> String {
-        return ""
+        
+        guard let result = optional else {
+            
+            return ""
+        }
+        return result
     }
     
     /// Unwrap using nil coalescing
     /// takes optional array, return first value?
     func unwrap(optional: [Int]?) -> Int {
         
-        return 0
+        return optional?.first ?? 0
     }
     
     /// Create a url from a string address, avoid force unwrapping
@@ -33,7 +43,7 @@ extension Tester {
     func createURL(from address: String?) -> URL {
         
         
-        return Bundle.main.bundleURL
+        return URL(string: address ?? "Bundle.main.bundleURL") ?? Bundle.main.bundleURL
     }
     
     
@@ -41,40 +51,58 @@ extension Tester {
     /// Input [Int?] = [1, nil, nil, 2] -> [1, 2]
     func unwrapElementsInArray(array: [Int?]) -> [Int] {
         
+        var result: [Int] = []
         
-        return []
+        for element in array {
+            if let element = element {
+                result.append(element)
+            }
+            
+        }
+        return result
     }
     
-    /// Unwrap using nil coalescing
-    /// takes optional dictionary, return value at key?
-    func unwrap(optional: [Int: Int]?, key: Int?) -> Int {
-        
-        return 0
-    }
+
+/// Unwrap using nil coalescing
+/// takes optional dictionary, return value at key?
+func unwrap(optional: [Int: Int]?, key: Int?) -> Int {
     
-    /// Unwrap using optional chaining and optional binding
-    /// takes nested optional array, return first value?
-    func unwrap(optional: [[Int]?]?) -> Int {
-        
-        return 0
-    }
+    return optional?[key ?? 0] ?? 0
+}
+
+/// Unwrap using optional chaining and optional binding
+/// takes nested optional array, return first value?
+func unwrap(optional: [[Int]?]?) -> Int {
     
-    /// Unwrap using implicitly unwrap
-    func implicitUnwrap(optional: Int?) -> Int {
-        
-        return 0
-    }
+    return optional?.first??.first ?? 0
+}
+
+/// Unwrap using implicitly unwrap
+func implicitUnwrap(optional: Int?) -> Int {
     
-    /// Cast string into non-optional Int
-    func castStringIntoInt(string: String) -> Int {
-        
-        return 0
-    }
+    var num: Int!
+    num = optional
     
-    /// Cast an array of string into an array of Int, remove any nil values
-    /// ["1", "5", "apple", "2"] --> [1, 5, 2]
-    func castArray(from strArr: [String]) -> [Int] {
+    return num
+}
+
+/// Cast string into non-optional Int
+func castStringIntoInt(string: String) -> Int {
     
-        return []
+    return Int(string) ?? 0
+}
+
+/// Cast an array of string into an array of Int, remove any nil values
+/// ["1", "5", "apple", "2"] --> [1, 5, 2]
+func castArray(from strArr: [String]) -> [Int] {
+    
+    var result: [Int] = []
+    
+    for element in strArr {
+        if let int = Int(element) {
+            result.append(int)
+        }
     }
+    return result
+}
 }
