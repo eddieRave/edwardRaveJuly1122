@@ -89,7 +89,7 @@ class Team {
             }
             weeksNeeded.append($0.value / (hoursInAWeek) + ($0.value % hoursInAWeek > 0 ? 1 : 0))
         }
-        return weeksNeeded.max()!
+        return weeksNeeded.max() ?? 0
     }
 
     func printMoney() {
