@@ -49,14 +49,15 @@ class Team {
     }
     
     func startWeek() {
-        // TODO: simulates a 40 hour work week
-        // TODO: go thru team's taskList and call validate(taskNum:)
+        for index in 0..<taskList.count {
+            validate(taskNum: index)
+        }
     }
     
     func validate(taskNum: Int) {
-        // TODO: still not passing test
         for member in employees {
             if (member.role == taskList[taskNum].roleReq) {
+//                taskList[taskNum].setIsComplete(status: true)
                 taskList[taskNum].isValid = true
                 assign(taskNum: taskNum, to: member)
             }
@@ -69,6 +70,7 @@ class Team {
     
     func allTasksCompleted() -> Bool {
         // TODO: still not passing test
+        //
         for task in taskList {
             if (task.isComplete == true) {
                 continue
@@ -83,7 +85,37 @@ class Team {
         // TODO: returns number of weeks required for the current team to complete all tasks
         // TODO: should consider number of valid employee and their current hours worked
         // TODO: can be called before startWeek and after startWeek
-        return 0
+        //
+        // add validated employees to an array
+        var arrayOfValidatedEmployees: [Employee] = []
+        for (index, employee) in employees.enumerated() {
+            if (employee.role == taskList[index].roleReq) {
+                arrayOfValidatedEmployees.append(employee)
+            }
+        }
+        // loop through array of validated employees to figure out total hours worked by team
+        var hoursWorkedByTeam = 0
+        for employee in employees {
+            hoursWorkedByTeam += employee.hoursWorked
+        }
+        // sum up all task hours for that role
+        var arrayOfValidatedTasks: [Task] = []
+        for (index, task) in taskList.enumerated() {
+            for (i, employee) in employees.enumerated() {
+                if (task.roleReq == employees[i].role) {
+                    arrayOfValidatedTasks.append(task)
+                }
+            }
+        }
+        var totalValidatedTaskHours = 0
+        for task in arrayOfValidatedTasks {
+            totalValidatedTaskHours += task.timeReq
+        }
+        // subtract hours worked by team from validated task hours
+        let hoursThatNeedToBeWorked = totalValidatedTaskHours - hoursWorkedByTeam
+        // divide above by 40
+        let weeksToCompleteWork = hoursThatNeedToBeWorked / 40
+        return weeksToCompleteWork
     }
 
     func printMoney() {
