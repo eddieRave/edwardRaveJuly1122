@@ -40,30 +40,58 @@ class Team {
     var employees: [Employee] = []
     var taskList: [Task] = []
     
+    // TODO: init
+    
     func add(employee: Employee) {
+        employees.append(employee)
     }
     
     func add(task: Task) {
+        taskList.append(task)
     }
     
     func startWeek() {
+        // TODO: simulates a 40 hour work week
+        // TODO: go thru team's taskList and call validate(taskNum:)
     }
     
     func validate(taskNum: Int) {
+        for member in employees {
+            if member.role == taskList[taskNum].roleReq {
+                taskList[taskNum].isValid = true
+                // TODO: call assign(task:to) for the first appropriate employee on the team
+            }
+        }
     }
     
     func assign(taskNum: Int, to employee: Employee) {
+        // TODO: calls employee attempt(task:)
     }
     
     func allTasksCompleted() -> Bool {
-        return false
+        for task in taskList {
+            if task.isComplete == true {
+                continue
+            } else {
+                return false
+            }
+        }
+        return true
     }
     
     func weeksTillComplete() -> Int {
+        // TODO: returns number of weeks required for the current team to complete all tasks
+        // TODO: should consider number of valid employee and their current hours worked
+        // TODO: can be called before startWeek and after startWeek
         return 0
     }
 
     func printMoney() {
+        if allTasksCompleted() == true {
+            print("BRRRRRRRRRRRRRRRRRRRRRRRRRRRRR")
+        } else {
+            print("Tasks not completed")
+        }
     }
     
 }
