@@ -41,29 +41,82 @@ class Team {
     var taskList: [Task] = []
     
     func add(employee: Employee) {
+        employees.append(employee)
     }
     
     func add(task: Task) {
+        taskList.append(task)
     }
     
     func startWeek() {
+        for task in taskList.indices {
+            validate(taskNum: task)
+        }
     }
     
     func validate(taskNum: Int) {
+        for employee in employees {
+            if employee.role == taskList[taskNum].roleReq {
+                taskList[taskNum].setIsValid(status: true)
+                assign(taskNum: taskNum, to: employee)
+            }
+        }
     }
     
     func assign(taskNum: Int, to employee: Employee) {
+        //documentation says & should let it work as an inout
+        employee.attempt(task: &taskList[taskNum])
     }
     
     func allTasksCompleted() -> Bool {
-        return false
+        for task in taskList {
+            //if(task.isComplete == false
+            //if(task.isComplete != true {
+            if(!task.isComplete) {
+                return false
+            }
+        }
+        return true
     }
     
     func weeksTillComplete() -> Int {
-        return 0
+        var numOfRole: [Role : Int] = [:]
+        
+        for employee in employees {
+            if let num = numOfRole[employee.role] {
+                numOfRole[employee.role] = num + 1
+            } else {
+                numOfRole[employee.role] = 1
+            }
+        }
+        
+        var roleHours: [Role : Int] = [:]
+        
+        for task in taskList {
+            if let num = roleHours[task.roleReq] {
+                roleHours[task.roleReq] = num + task.timeReq
+            } else {
+                roleHours[task.roleReq] = task.timeReq
+            }
+        }
+        
+        var numOfWeeks: [Int] = []
+        
+        for (role, hoursReq) in roleHours {
+            if let numEmployee = numOfRole[role] {
+                numOfWeeks.append(hoursReq / (numEmployee * 40) + ((hoursReq % (numEmployee * 40) != 0) ? 1 : 0))
+            }
+        }
+        
+        return numOfWeeks.max() ?? 0
     }
 
     func printMoney() {
+        //can write these statements as one line each if prefferable.
+        if allTasksCompleted() {
+            print("BRRRRRRRRRRRRRRRRRRRRRRRRRRRRR")
+        }else{ print("Tasks not completed")
+        }
     }
     
 }

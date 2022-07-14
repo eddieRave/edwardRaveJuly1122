@@ -33,8 +33,29 @@ class Employee {
     }
     
     func addToHoursWorked(hours: Int) {
+        hoursWorked += hours
     }
     
     func attempt(task: inout Task) {
+        /*if role == task.roleReq {
+            if task.timeReq <= 40 && hoursWorked <= 40 - task.timeReq {
+                addToHoursWorked(hours: task.timeReq)
+                task.setTimeReq(timeLeft: 0)
+            }else if task.timeReq > 40 && hoursWorked < 40 {
+                let x = 40 - hoursWorked
+                addToHoursWorked(hours: x)
+                task.setTimeReq(timeLeft: task.timeReq - x)
+            }*/
+        
+        //My first attempt is above and passed all but the two times test
+        
+        if task.roleReq == role && task.timeReq > (40 - hoursWorked) {
+            task.setTimeReq(timeLeft: task.timeReq - (40 - hoursWorked))
+            addToHoursWorked(hours: (40 - hoursWorked))
+        }else{
+            addToHoursWorked(hours: task.timeReq)
+            task.setTimeReq(timeLeft: 0)
+        }
     }
 }
+
