@@ -82,10 +82,11 @@ class Team {
     }
     
     func weeksTillComplete() -> Int {
-        // TODO: returns number of weeks required for the current team to complete all tasks
-        // TODO: should consider number of valid employee and their current hours worked
-        // TODO: can be called before startWeek and after startWeek
-        //
+        /*
+         returns number of weeks required for the current team to complete all tasks
+         should consider number of valid employee and their current hours worked
+         can be called before startWeek and after startWeek
+         */
         // add validated employees to an array
         var arrayOfValidatedEmployees: [Employee] = []
         for (index, employee) in employees.enumerated() {
