@@ -41,29 +41,102 @@ class Team {
     var taskList: [Task] = []
     
     func add(employee: Employee) {
+        
+        employees.append(employee)
     }
     
     func add(task: Task) {
+        
+        taskList.append(task)
     }
     
     func startWeek() {
+        
+        for (index, _) in taskList.enumerated() {
+            validate(taskNum: index)
+        }
     }
     
     func validate(taskNum: Int) {
+        
+        for employee in employees {
+            if employee.role == taskList[taskNum].roleReq {
+                taskList[taskNum].isValid = true
+                assign(taskNum: taskNum, to: employee)
+            }
+        }
+        
     }
     
     func assign(taskNum: Int, to employee: Employee) {
+        employee.attempt(task: &taskList[taskNum])
     }
     
     func allTasksCompleted() -> Bool {
-        return false
+        
+        for task in taskList {
+            if task.timeReq != 0 {
+                return false
+            }
+        }
+        
+        return true
     }
     
     func weeksTillComplete() -> Int {
-        return 0
+        
+        
+        var dict1: [Role: Int] = [:]
+        var dict2: [Role: Int] = [:]
+        
+        // role: number of employees to that role
+        
+        for employee in employees {
+            
+            if let role = dict1[employee.role] {
+                dict1[employee.role] = role + 1
+            } else {
+                dict1[employee.role] = 1
+            }
+        }
+        
+        // role.req: timeReq
+        
+        for task in taskList {
+            
+                if let hours = dict2[task.roleReq] {
+                    dict2[task.roleReq] = hours + task.timeReq
+                } else {
+                    dict2[task.roleReq] = task.timeReq
+                }
+            }
+        
+//        let values = dict2.values
+//        let sorted = values.sorted()
+        var array: [Int] = []
+        
+        for (key, value) in dict2 {
+            if let numEmployee = dict1[key] {
+                if value * numEmployee % 40 > 0 {
+                    array.append(((value * numEmployee) / 40) + 1)
+                } else {
+                    array.append((value * numEmployee) / 40)
+                }
+            }
+        }
+//        print("here>>>>>", array)
+//        let sorted = array.sorted()
+        
+        return array.max() ?? 0
     }
 
     func printMoney() {
+        
+        if !allTasksCompleted() {
+            print("Tasks not completed")
+        } else {
+            print("BRRRRRRRRRRRRRRRRRRRRRRRRRRRRR")
+        }
     }
     
 }
