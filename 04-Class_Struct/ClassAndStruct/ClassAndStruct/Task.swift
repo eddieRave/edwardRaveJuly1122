@@ -31,11 +31,11 @@ struct Task {
     var isComplete: Bool = false
     
     mutating func setIsComplete(status: Bool) {
-        isValid = status
+        isComplete = status
     }
     
     mutating func setIsValid(status: Bool) {
-        isComplete = status
+        isValid = status
     }
     
     mutating func setTimeReq(timeLeft: Int) {

@@ -40,8 +40,6 @@ class Team {
     var employees: [Employee] = []
     var taskList: [Task] = []
     
-    // TODO: init
-    
     func add(employee: Employee) {
         employees.append(employee)
     }
@@ -56,21 +54,23 @@ class Team {
     }
     
     func validate(taskNum: Int) {
+        // TODO: still not passing test
         for member in employees {
-            if member.role == taskList[taskNum].roleReq {
+            if (member.role == taskList[taskNum].roleReq) {
                 taskList[taskNum].isValid = true
-                // TODO: call assign(task:to) for the first appropriate employee on the team
+                assign(taskNum: taskNum, to: member)
             }
         }
     }
     
     func assign(taskNum: Int, to employee: Employee) {
-        // TODO: calls employee attempt(task:)
+        employee.attempt(task: &taskList[taskNum])
     }
     
     func allTasksCompleted() -> Bool {
+        // TODO: still not passing test
         for task in taskList {
-            if task.isComplete == true {
+            if (task.isComplete == true) {
                 continue
             } else {
                 return false
@@ -87,7 +87,7 @@ class Team {
     }
 
     func printMoney() {
-        if allTasksCompleted() == true {
+        if (allTasksCompleted() == true) {
             print("BRRRRRRRRRRRRRRRRRRRRRRRRRRRRR")
         } else {
             print("Tasks not completed")
