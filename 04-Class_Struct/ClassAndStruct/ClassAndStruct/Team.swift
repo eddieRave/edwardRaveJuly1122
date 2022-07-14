@@ -84,9 +84,10 @@ class Team {
             hoursInAWeek.updateValue(40 + hoursInAWeek[$0.role, default: 0], forKey: $0.role)
         }
         hoursRemaining.forEach {
-            if let hoursInAWeek = hoursInAWeek[$0.key] {
-                weeksNeeded.append($0.value / (hoursInAWeek) + ($0.value % hoursInAWeek > 0 ? 1 : 0))
+            guard let hoursInAWeek = hoursInAWeek[$0.key] else {
+                return
             }
+            weeksNeeded.append($0.value / (hoursInAWeek) + ($0.value % hoursInAWeek > 0 ? 1 : 0))
         }
         return weeksNeeded.max()!
     }

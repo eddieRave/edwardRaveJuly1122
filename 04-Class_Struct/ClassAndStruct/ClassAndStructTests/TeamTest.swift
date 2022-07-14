@@ -177,6 +177,73 @@ class TeamTest: XCTestCase {
         XCTAssertEqual(team.weeksTillComplete(), 1)
     }
     
+    func testWeeksTillCompleteBonus3() {
+
+        let androidEmployee = Employee(role: .AndroidDeveloper, payRate: .high)
+        let architectEmployee = Employee(role: .Architech, payRate: .high)
+
+        // 1 iOs Developer
+        team.add(employee: employee)
+
+        // 2 Android Developers
+        team.add(employee: androidEmployee)
+        team.add(employee: androidEmployee)
+
+        // 2 Architects
+        team.add(employee: architectEmployee)
+        team.add(employee: architectEmployee)
+
+        let longTask = Task(timeReq: 70, roleReq: .iOSDeveloper)
+        let medTask1 = Task(timeReq: 50, roleReq: .AndroidDeveloper)
+        let largeTask1 = Task(timeReq: 70, roleReq: .Architech)
+
+        //iOS Developer has 90 hours of work
+        team.add(task: task)
+        team.add(task: task)
+        team.add(task: longTask)
+           
+        //Android Developer has 200 hours of work
+        team.add(task: medTask1)
+        team.add(task: medTask1)
+        team.add(task: medTask1)
+        team.add(task: medTask1)
+
+        //Architect has 350 hours of work
+        team.add(task: largeTask1)
+        team.add(task: largeTask1)
+        team.add(task: largeTask1)
+        team.add(task: largeTask1)
+        team.add(task: largeTask1)
+
+        //iOs : 90 / (1 * 40) = 2.25 = 3 weeks
+        //Android : 200 / (2 * 40) = 2.5 = 3 weeks
+        //Architect : 350 / (2 * 40) = 4.375 = 5 weeks
+        
+        XCTAssertEqual(team.weeksTillComplete(), 5)
+
+        team.startWeek()
+
+        XCTAssertEqual(team.weeksTillComplete(), 4)
+    }
+    
+//    func testWeeksTillCompleteBonus4() {
+//        let task1 = Task(timeReq: 30, roleReq: .iOSDeveloper)
+//        let task2 = Task(timeReq: 40, roleReq: .AndroidDeveloper)
+//        
+//        let employee1 = Employee(role: .iOSDeveloper, payRate: .high)
+//        
+//        team.add(employee: employee1)
+//        
+//        team.add(task: task1)
+//        team.add(task: task2)
+//
+//        XCTAssertEqual(team.weeksTillComplete(), 1)
+//    
+//        team.startWeek()
+//        
+//        XCTAssertEqual(team.weeksTillComplete(), 1)
+//    }
+    
     func testPrintMoney() {
         team.printMoney()
         let result = Tester.shared.printedString
