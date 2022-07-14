@@ -86,7 +86,7 @@ class Team {
          returns number of weeks required for the current team to complete all tasks
          should consider number of valid employee and their current hours worked
          can be called before startWeek and after startWeek
-         */
+        */
         // add validated employees to an array
         var arrayOfValidatedEmployees: [Employee] = []
         for (index, employee) in employees.enumerated() {
@@ -96,7 +96,7 @@ class Team {
         }
         // loop through array of validated employees to figure out total hours worked by team
         var hoursWorkedByTeam = 0
-        for employee in employees {
+        for employee in arrayOfValidatedEmployees {
             hoursWorkedByTeam += employee.hoursWorked
         }
         // sum up all task hours for that role
