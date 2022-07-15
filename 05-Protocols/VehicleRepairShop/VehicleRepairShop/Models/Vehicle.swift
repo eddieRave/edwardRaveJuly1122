@@ -11,7 +11,6 @@ struct Vehicle {
     var id: Int    // ALTERNATE var id = UUID().uuidString
     var make: String
     var model: String
-    var customer: Customer
     var accelerationNeedsToBeInspected: Bool = false
     var accelerationNeedsRepairs: Bool? = false
     var brakingNeedsToBeInspected: Bool = false

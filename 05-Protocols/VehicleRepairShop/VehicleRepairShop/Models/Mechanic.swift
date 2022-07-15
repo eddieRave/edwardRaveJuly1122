@@ -13,27 +13,71 @@ struct Mechanic: Identity {
     var lastName: String
     
     
-//    // 1. The mechanic should be able to view both the inspection list and repairs list, including the following information:
-//       // a. ID of the vehicle tested
-//       // b. Make and model of the vehicle
-//    var listOfVehiclesToWorkOnNext: [Vehicle]   // TODO: I somehow need to reference the list in the controller
-//
-//    // 2. The mechanic will always service the both the inspections list and repairs list on a first-come, first serve basis.
-//    func findNextVehicleToWorkOn(listOfVehicles: [Vehicle]) -> Vehicle {
-//        return listOfVehicles[0]
-//    }
-//
-//    // 3. The mechanic needs a way to run the automated inspection(s) requested by the customer on the next vehicle in the inspections list.
-//       // a. When the inspection(s) are complete, the vehicle information and test results should be shown, and the vehicle automatically either removed from the shop or moved to the repairs list.
-//    func checkInspection() {
-//        // TODO: runInspections function in the Controller?
-//    }
-//
-//    // 4. The mechanic needs a way to mark a vehicle as repaired from the repairs list.
-//       // a. When the repair(s) are marked complete, the vehicle should be moved to the inspection list.
-//    func markVehicleAsRepaired(vehicle: inout Vehicle) {
-//        vehicle.brakingNeedsRepairs = false
-//        vehicle.accelerationNeedsRepairs = false
-//    }
+    
+    // 3. The mechanic will add the vehicle to the inspection queue.
+    func addVehicleToInspectionList(vehicle: Vehicle, inspectionList: inout [Vehicle], workList: inout [Vehicle]) {
+        inspectionList.append(vehicle)
+        addVehicleToWorkList(vehicle: vehicle, workList: &workList)
+        print("Vehicle with id \(vehicle.id) added to the inspection list")
+    }
+    // add vehicle to repair list
+    func addVehicleToRepairList(vehicle: Vehicle, repairList: inout [Vehicle], workList: inout [Vehicle]) {
+        repairList.append(vehicle)
+        addVehicleToWorkList(vehicle: vehicle, workList: &workList)
+        print("Vehicle with id \(vehicle.id) added to the repair list")
+    }
+    // add vehicle to work list
+    func addVehicleToWorkList(vehicle: Vehicle, workList: inout [Vehicle]) {
+        workList.append(vehicle)
+    }
+    
+    // 4. The mechanic will run the specified inspections on the vehicle.
+       // a. If all inspections pass, the vehicle is returned to the customer and removed from the shop.
+       // b. If any of the inspections fail, the vehicle should be moved to a repairs queue.
+    func runInspections(vehicle: inout Vehicle, workList: inout [Vehicle], inspectList: inout [Vehicle], repairList: inout [Vehicle]) {
+        // If all inspections pass, the vehicle is returned to the customer and removed from the shop.
+        vehicle.accelerationNeedsToBeInspected = false
+        vehicle.brakingNeedsToBeInspected = false
+        print("Completed inspections for vehicle with id \(vehicle.id)")
+        if (vehicle.accelerationNeedsRepairs == false && vehicle.brakingNeedsRepairs == false) {
+            // return car to customer
+            print("Vehicle returned to customer ")
+            workList.remove(at: 0)
+        }
+        // If any of the inspections fail, the vehicle should be moved to a repairs queue.
+        else {
+            if vehicle.accelerationNeedsRepairs == false {
+                print("Acceleration repairs needed for vehicle with id \(vehicle.id)")
+            } else if vehicle.brakingNeedsRepairs == false {
+                print("Braking repairs needed for vehicle with id \(vehicle.id)")
+            } else {
+                print("Error 2")
+            }
+            repairList.append(vehicle)
+            for (index, v) in inspectList.enumerated() {
+                if (v.id == vehicle.id) {
+                    inspectList.remove(at: index)
+                }
+            }
+        }
+    }
+    
+    func runRepairs(vehicle: inout Vehicle, workList: inout [Vehicle], inspectList: inout [Vehicle], repairList: inout [Vehicle]) {
+        vehicle.brakingNeedsRepairs = false
+        vehicle.accelerationNeedsRepairs = false
+        print("The vehicle with id \(vehicle.id) has been repaired")
+        moveVehicleToInspectionList(vehicle: vehicle, workList: &workList, inspectList: &inspectList, repairList: &repairList)
+    }
+    
+    // 5. When the mechanic finishes the necessary repairs, the car will be added back to the inspections queue.
+    func moveVehicleToInspectionList(vehicle: Vehicle, workList: inout [Vehicle], inspectList: inout [Vehicle], repairList: inout [Vehicle]) {
+        inspectList.append(vehicle)
+        for (index, v) in repairList.enumerated() {
+            if v.id == vehicle.id {
+                repairList.remove(at: index)
+                workList.remove(at: index)
+            }
+        }
+    }
     
 }

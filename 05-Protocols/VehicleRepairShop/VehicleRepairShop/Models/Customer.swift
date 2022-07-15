@@ -11,5 +11,7 @@ struct Customer: Identity {
     var id: Int
     var firstName: String
     var lastName: String
+    var vehicle: Vehicle
     var hasPossessionOfVehicle: Bool
+    
 }
