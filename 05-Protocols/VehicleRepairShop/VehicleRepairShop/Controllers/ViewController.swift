@@ -15,6 +15,9 @@ class ViewController: UIViewController {
         // Enter random variable for testing:
         let accelerationNeedsRepairs = Bool.random()
         let brakingNeedsRepairs = Bool.random()
+        print("Testing argument values")
+        print("   - Acceleration repairs needed: \(accelerationNeedsRepairs)")
+        print("   - Braking repairs needed: \(accelerationNeedsRepairs)")
         // CUSTOMER'S VEHICLE:
         let kiaOptima = Vehicle(id: 0, make: "Kia", model: "Optima", accelerationNeedsToBeInspected: false, accelerationNeedsRepairs: accelerationNeedsRepairs, brakingNeedsToBeInspected: true, brakingNeedsRepairs: brakingNeedsRepairs)
         // CUSTOMER:

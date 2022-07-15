@@ -15,10 +15,12 @@ struct Mechanic: Identity {
     
     
     // 3. The mechanic will add the vehicle to the inspection queue.
-    func addVehicleToInspectionList(vehicle: Vehicle, inspectionList: inout [Vehicle], workList: inout [Vehicle]) {
+    func addVehicleToInspectionList(vehicle: inout Vehicle, inspectionList: inout [Vehicle], repairList: inout [Vehicle], workList: inout [Vehicle]) {
         inspectionList.append(vehicle)
         addVehicleToWorkList(vehicle: vehicle, workList: &workList)
         print("Vehicle with id \(vehicle.id) added to the inspection list")
+        // TODO: What next?
+        runInspections(vehicle: &vehicle, workList: &workList, inspectList: &inspectionList, repairList: &repairList)
     }
     // add vehicle to repair list
     func addVehicleToRepairList(vehicle: Vehicle, repairList: inout [Vehicle], workList: inout [Vehicle]) {
@@ -41,14 +43,16 @@ struct Mechanic: Identity {
         print("Completed inspections for vehicle with id \(vehicle.id)")
         if (vehicle.accelerationNeedsRepairs == false && vehicle.brakingNeedsRepairs == false) {
             // return car to customer
-            print("Vehicle returned to customer ")
-            workList.remove(at: 0)
+            print("Inspections passed. No repairs needed. Vehicle returned to customer ")
+            if workList.count > 0 {
+                workList.remove(at: 0)
+            }
         }
         // If any of the inspections fail, the vehicle should be moved to a repairs queue.
         else {
-            if vehicle.accelerationNeedsRepairs == false {
+            if vehicle.accelerationNeedsRepairs == true {
                 print("Acceleration repairs needed for vehicle with id \(vehicle.id)")
-            } else if vehicle.brakingNeedsRepairs == false {
+            } else if vehicle.brakingNeedsRepairs == true {
                 print("Braking repairs needed for vehicle with id \(vehicle.id)")
             } else {
                 print("Error 2")
@@ -59,6 +63,7 @@ struct Mechanic: Identity {
                     inspectList.remove(at: index)
                 }
             }
+            runRepairs(vehicle: &vehicle, workList: &workList, inspectList: &inspectList, repairList: &repairList)
         }
     }
     
@@ -66,11 +71,11 @@ struct Mechanic: Identity {
         vehicle.brakingNeedsRepairs = false
         vehicle.accelerationNeedsRepairs = false
         print("The vehicle with id \(vehicle.id) has been repaired")
-        moveVehicleToInspectionList(vehicle: vehicle, workList: &workList, inspectList: &inspectList, repairList: &repairList)
+        moveVehicleToInspectionList(vehicle: &vehicle, workList: &workList, inspectList: &inspectList, repairList: &repairList)
     }
     
     // 5. When the mechanic finishes the necessary repairs, the car will be added back to the inspections queue.
-    func moveVehicleToInspectionList(vehicle: Vehicle, workList: inout [Vehicle], inspectList: inout [Vehicle], repairList: inout [Vehicle]) {
+    func moveVehicleToInspectionList(vehicle: inout Vehicle, workList: inout [Vehicle], inspectList: inout [Vehicle], repairList: inout [Vehicle]) {
         inspectList.append(vehicle)
         for (index, v) in repairList.enumerated() {
             if v.id == vehicle.id {
@@ -78,6 +83,7 @@ struct Mechanic: Identity {
                 workList.remove(at: index)
             }
         }
+        runInspections(vehicle: &vehicle, workList: &workList, inspectList: &inspectList, repairList: &repairList)
     }
     
 }

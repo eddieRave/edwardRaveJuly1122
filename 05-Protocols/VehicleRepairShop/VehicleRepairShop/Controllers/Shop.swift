@@ -23,14 +23,14 @@ class Shop {
     func addVehicleToShop(vehicle: inout Vehicle) {
         print("The following vehicle has been added to the shop - Make: \(vehicle.make) Model: \(vehicle.model) id: \(vehicle.id)")
         // 2. The customer will indicate what inspections should be performed – acceleration, braking, or both.
-        reviewInspectionsNeeded(vehicle: vehicle)
+        reviewInspectionsNeeded(vehicle: &vehicle)
     }
     
-    func reviewInspectionsNeeded(vehicle: Vehicle) {
+    func reviewInspectionsNeeded(vehicle: inout Vehicle) {
         if (vehicle.accelerationNeedsToBeInspected == true || vehicle.brakingNeedsToBeInspected == true) {
             // 3. The mechanic will add the vehicle to the inspection queue.
             print("The vehicle with id \(vehicle.id) needs to be inspected")
-            mechanic.addVehicleToInspectionList(vehicle: vehicle, inspectionList: &listOfVehiclesToInspect, workList: &nextVehicleToWorkOn)
+            mechanic.addVehicleToInspectionList(vehicle: &vehicle, inspectionList: &listOfVehiclesToInspect, repairList: &listOfVehiclesToRepair, workList: &nextVehicleToWorkOn)
         }
     }
     
