@@ -86,6 +86,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B72DDF32881C27500244BBC /* Support files */ = {
+			isa = PBXGroup;
+			children = (
+				0B819303288082AF008056AC /* Info.plist */,
+				0B8192F5288082AE008056AC /* AppDelegate.swift */,
+				0B8192F7288082AE008056AC /* SceneDelegate.swift */,
+			);
+			name = "Support files";
+			sourceTree = "<group>";
+		};
 		0B8192E9288082AE008056AC = {
 			isa = PBXGroup;
 			children = (
@@ -109,11 +119,11 @@
 		0B8192F4288082AE008056AC /* VehicleRepairShop */ = {
 			isa = PBXGroup;
 			children = (
+				0B72DDF32881C27500244BBC /* Support files */,
 				0B81932F2880A6E1008056AC /* Models */,
 				0B8193302880A6EB008056AC /* Views */,
 				0B8193312880A6FB008056AC /* Controllers */,
 				0B8192FE288082AF008056AC /* Assets.xcassets */,
-				0B8193322880A70B008056AC /* Supporting Files */,
 			);
 			path = VehicleRepairShop;
 			sourceTree = "<group>";
@@ -162,16 +172,6 @@
 				0B8192F9288082AE008056AC /* ViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		0B8193322880A70B008056AC /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				0B819303288082AF008056AC /* Info.plist */,
-				0B8192F5288082AE008056AC /* AppDelegate.swift */,
-				0B8192F7288082AE008056AC /* SceneDelegate.swift */,
-			);
-			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -13,9 +13,7 @@ struct Vehicle {
     var model: String
     var customer: Customer
     var accelerationNeedsToBeInspected: Bool = false
-    var accelerationInspected: Bool = false
-    var accelerationNeedsRepairs: Bool = false
+    var accelerationNeedsRepairs: Bool? = false
     var brakingNeedsToBeInspected: Bool = false
-    var brakingInspected: Bool = false
-    var brakingNeedsRepairs: Bool = false
+    var brakingNeedsRepairs: Bool? = false
 }
