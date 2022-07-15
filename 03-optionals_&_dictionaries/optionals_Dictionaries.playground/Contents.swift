@@ -60,8 +60,6 @@ case .some(let num):
     print(num)
 }
 
-
-
 //
 
 let myDict: [String: ()->Void ]
