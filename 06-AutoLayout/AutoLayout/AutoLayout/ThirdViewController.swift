@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  ThirdViewController.swift
 //  AutoLayout
 //
 //  Created by Spencer Hurd on 7/16/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class ThirdViewController: UIViewController {
 
     @IBOutlet weak var midButton: UIButton!
     
@@ -15,9 +15,10 @@ class SecondViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    
     @IBAction func disappearMidButton(_ sender: UIButton) {
-//        midButton.isHidden = true
         self.midButton.removeFromSuperview()
     }
+    
 
 }
