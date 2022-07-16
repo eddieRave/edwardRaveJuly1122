@@ -9,7 +9,29 @@ import SwiftUI
 
 struct Slide2: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader() { geometry in
+            ZStack {
+                Rectangle()
+                    .opacity(0)
+                    .scaledToFit()
+                VStack {
+                    Spacer()
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(.teal)
+                            .frame(width: geometry.size.width / 2, height: geometry.size.height / 2)
+                        Image(systemName: "star.circle")
+                            .foregroundColor(.blue)
+                            .font(.system(size: 160))
+                    }
+                    Spacer()
+                    NavigationLink(destination: Slide3()) {
+                        Text("Next Screen")
+                    }
+                    Spacer()
+                }
+            }
+        }
     }
 }
 

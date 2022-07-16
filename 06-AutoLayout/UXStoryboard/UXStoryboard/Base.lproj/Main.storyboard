@@ -147,37 +147,50 @@ and should not compress</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HwU-Re-ecH">
-                                <rect key="frame" x="20" y="433" width="100" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" priority="997" constant="120" id="RGC-D1-cUF"/>
-                                    <constraint firstAttribute="width" priority="998" constant="100" id="Ve5-4R-SPe"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="401" width="100" height="37"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="Left">
+                                <buttonConfiguration key="configuration" style="tinted">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Left">
+                                            <attributes>
+                                                <font key="NSFont" size="20" name="Helvetica"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
                                     <color key="baseForegroundColor" systemColor="linkColor"/>
                                     <color key="baseBackgroundColor" systemColor="systemPurpleColor"/>
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkI-nt-f7c">
-                                <rect key="frame" x="294" y="432" width="100" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="4Ig-PP-Il1"/>
-                                    <constraint firstAttribute="width" priority="998" constant="100" id="MmA-oI-uNb"/>
-                                    <constraint firstAttribute="width" priority="997" constant="120" id="fx8-F5-D4E"/>
-                                </constraints>
+                                <rect key="frame" x="294" y="401" width="100" height="37"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="Right">
+                                <buttonConfiguration key="configuration" style="tinted">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Right">
+                                            <attributes>
+                                                <font key="NSFont" size="20" name="Helvetica"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
                                     <color key="baseForegroundColor" systemColor="linkColor"/>
                                     <color key="baseBackgroundColor" systemColor="systemYellowColor"/>
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3q4-le-wJ4">
-                                <rect key="frame" x="157" y="432" width="100" height="31"/>
+                                <rect key="frame" x="157" y="401" width="100" height="37"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="8p9-n1-j4I"/>
+                                    <constraint firstAttribute="width" constant="100" id="Nha-hF-6Kk"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="Mid"/>
+                                <buttonConfiguration key="configuration" style="tinted">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Mid">
+                                            <attributes>
+                                                <font key="NSFont" size="20" name="Helvetica"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="onClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1OY-6o-Uy9"/>
                                 </connections>
@@ -186,18 +199,18 @@ and should not compress</string>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vkI-nt-f7c" firstAttribute="leading" secondItem="3q4-le-wJ4" secondAttribute="trailing" constant="37" id="6T9-if-9gA"/>
-                            <constraint firstItem="3q4-le-wJ4" firstAttribute="leading" secondItem="HwU-Re-ecH" secondAttribute="trailing" constant="37" id="Lgy-gq-xOl"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HwU-Re-ecH" secondAttribute="bottom" constant="398" id="Mbf-ag-ptH"/>
-                            <constraint firstItem="3q4-le-wJ4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="388" id="N6n-QI-dp5"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vkI-nt-f7c" secondAttribute="trailing" constant="20" id="WR9-Ec-sut"/>
-                            <constraint firstItem="HwU-Re-ecH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="gMg-18-kyA"/>
-                            <constraint firstItem="HwU-Re-ecH" firstAttribute="width" secondItem="vkI-nt-f7c" secondAttribute="width" id="mUu-VD-A2H"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3q4-le-wJ4" secondAttribute="bottom" constant="399" id="pVy-bW-JdX"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vkI-nt-f7c" secondAttribute="bottom" constant="399" id="pZe-aC-hTO"/>
-                            <constraint firstItem="vkI-nt-f7c" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="388" id="rjl-G5-12M"/>
-                            <constraint firstItem="vkI-nt-f7c" firstAttribute="leading" secondItem="HwU-Re-ecH" secondAttribute="trailing" priority="999" constant="20" id="sAL-kd-wr3"/>
-                            <constraint firstItem="HwU-Re-ecH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="389" id="wyj-Hv-cxh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3q4-le-wJ4" secondAttribute="bottom" constant="404" id="1Qo-FI-xTR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vkI-nt-f7c" secondAttribute="bottom" constant="404" id="F0i-Cl-9ed"/>
+                            <constraint firstItem="HwU-Re-ecH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="GeT-QG-Jm7"/>
+                            <constraint firstItem="vkI-nt-f7c" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="357" id="Kxj-lm-4YQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HwU-Re-ecH" secondAttribute="bottom" constant="404" id="Nz7-hx-H1l"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vkI-nt-f7c" secondAttribute="trailing" constant="20" id="Og9-0q-gR8"/>
+                            <constraint firstItem="3q4-le-wJ4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="357" id="QpE-7f-zpK"/>
+                            <constraint firstItem="vkI-nt-f7c" firstAttribute="leading" secondItem="3q4-le-wJ4" secondAttribute="trailing" constant="37" id="S5h-Ye-wcV"/>
+                            <constraint firstItem="vkI-nt-f7c" firstAttribute="leading" secondItem="HwU-Re-ecH" secondAttribute="trailing" priority="999" constant="20" id="aVr-q1-S8x"/>
+                            <constraint firstItem="HwU-Re-ecH" firstAttribute="width" secondItem="vkI-nt-f7c" secondAttribute="width" id="fuD-4e-VH7"/>
+                            <constraint firstItem="3q4-le-wJ4" firstAttribute="leading" secondItem="HwU-Re-ecH" secondAttribute="trailing" constant="37" id="iTj-5D-hmU"/>
+                            <constraint firstItem="HwU-Re-ecH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="357" id="khu-Mc-7P4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XX9-WD-h89"/>

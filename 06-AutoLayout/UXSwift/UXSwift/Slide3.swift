@@ -9,7 +9,17 @@ import SwiftUI
 
 struct Slide3: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 20) {
+            Text("Some text here   Compress this so there's not enough room")
+                .lineLimit(1)
+            Text("This label should have multiple lines that can expand based on how long the text is, and should not compress")
+            Rectangle()
+                .foregroundColor(.yellow)
+            NavigationLink(destination: Slide4()) {
+                Text("Next Screen")
+            }
+        }
+        .padding(40)
     }
 }
 
@@ -18,3 +28,5 @@ struct Slide3_Previews: PreviewProvider {
         Slide3()
     }
 }
+
+

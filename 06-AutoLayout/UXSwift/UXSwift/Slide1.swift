@@ -7,22 +7,24 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct Slide1: View {
     var body: some View {
-        VStack {
-            Text("Some text here")
-            Spacer()
-            Button(action: <#T##() -> Void#>) {
-                Text("Next Screen")
+        NavigationView {
+            VStack {
+                Text("Some text here")
+                Spacer()
+                NavigationLink(destination: Slide2()) {
+                    Text("Next Screen")
+                }
+                Spacer()
             }
-            Spacer()
+            .padding(70)
         }
-        .padding(100)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct Slide1_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Slide1()
     }
 }

@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		D091CCAE28821B5F001C65CD /* UXSwiftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091CCAD28821B5F001C65CD /* UXSwiftApp.swift */; };
-		D091CCB028821B5F001C65CD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091CCAF28821B5F001C65CD /* ContentView.swift */; };
+		D091CCB028821B5F001C65CD /* Slide1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091CCAF28821B5F001C65CD /* Slide1.swift */; };
 		D091CCB228821B60001C65CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D091CCB128821B60001C65CD /* Assets.xcassets */; };
 		D091CCB528821B60001C65CD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D091CCB428821B60001C65CD /* Preview Assets.xcassets */; };
 		D091CCBF28821B60001C65CD /* UXSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091CCBE28821B60001C65CD /* UXSwiftTests.swift */; };
 		D091CCC928821B60001C65CD /* UXSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091CCC828821B60001C65CD /* UXSwiftUITests.swift */; };
 		D091CCCB28821B60001C65CD /* UXSwiftUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091CCCA28821B60001C65CD /* UXSwiftUITestsLaunchTests.swift */; };
+		D091CCD828821D51001C65CD /* Slide2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091CCD728821D51001C65CD /* Slide2.swift */; };
+		D091CCDA288220B7001C65CD /* Slide3.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091CCD9288220B7001C65CD /* Slide3.swift */; };
+		D091CCDC2882246B001C65CD /* Slide4.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091CCDB2882246B001C65CD /* Slide4.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,7 @@
 /* Begin PBXFileReference section */
 		D091CCAA28821B5F001C65CD /* UXSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UXSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D091CCAD28821B5F001C65CD /* UXSwiftApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXSwiftApp.swift; sourceTree = "<group>"; };
-		D091CCAF28821B5F001C65CD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D091CCAF28821B5F001C65CD /* Slide1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide1.swift; sourceTree = "<group>"; };
 		D091CCB128821B60001C65CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D091CCB428821B60001C65CD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D091CCBA28821B60001C65CD /* UXSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UXSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +47,9 @@
 		D091CCC428821B60001C65CD /* UXSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UXSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D091CCC828821B60001C65CD /* UXSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXSwiftUITests.swift; sourceTree = "<group>"; };
 		D091CCCA28821B60001C65CD /* UXSwiftUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXSwiftUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D091CCD728821D51001C65CD /* Slide2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide2.swift; sourceTree = "<group>"; };
+		D091CCD9288220B7001C65CD /* Slide3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide3.swift; sourceTree = "<group>"; };
+		D091CCDB2882246B001C65CD /* Slide4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide4.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +101,10 @@
 			isa = PBXGroup;
 			children = (
 				D091CCAD28821B5F001C65CD /* UXSwiftApp.swift */,
-				D091CCAF28821B5F001C65CD /* ContentView.swift */,
+				D091CCAF28821B5F001C65CD /* Slide1.swift */,
+				D091CCD728821D51001C65CD /* Slide2.swift */,
+				D091CCD9288220B7001C65CD /* Slide3.swift */,
+				D091CCDB2882246B001C65CD /* Slide4.swift */,
 				D091CCB128821B60001C65CD /* Assets.xcassets */,
 				D091CCB328821B60001C65CD /* Preview Content */,
 			);
@@ -257,8 +266,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D091CCB028821B5F001C65CD /* ContentView.swift in Sources */,
+				D091CCB028821B5F001C65CD /* Slide1.swift in Sources */,
+				D091CCD828821D51001C65CD /* Slide2.swift in Sources */,
 				D091CCAE28821B5F001C65CD /* UXSwiftApp.swift in Sources */,
+				D091CCDA288220B7001C65CD /* Slide3.swift in Sources */,
+				D091CCDC2882246B001C65CD /* Slide4.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
