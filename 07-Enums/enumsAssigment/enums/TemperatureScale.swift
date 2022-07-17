@@ -32,13 +32,13 @@ enum TemperatureScale: TempConvertable {
         case .celcius(let temperature):
             // Formula to convert Celsius to Fahrenheit:
                 // °F = °C × (9/5) + 32
-            let temperatureInCelsius = temperature * 9 / 5 + 32
-            return temperatureInCelsius
+            let temperatureInFahrenheit = temperature * 9 / 5 + 32
+            return temperatureInFahrenheit
         case .kelvin(let temperature):
             // Formula to convert Kelvin to Fahrenheit:
                 // °F = (K − 273.15) × 9/5 + 32
-            let temperatureInKelvin = (temperature - Int(273.15)) * 9 / 5 + 32
-            return temperatureInKelvin
+            let temperatureInFahrenheit = (temperature - Int(273.15)) * 9 / 5 + 32
+            return temperatureInFahrenheit
         }
     }
     
