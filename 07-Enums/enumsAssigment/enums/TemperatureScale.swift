@@ -27,8 +27,8 @@ enum TemperatureScale: TempConvertable {
     
     func getTempInFahrenheit() -> Int {
         switch self {
-        case .fahrenheit(let temperature):
-            return temperature
+        case .fahrenheit(let temperatureInF):
+            return temperatureInF
         case .celcius(let temperatureInC):
             // Formula to convert Celsius to Fahrenheit:
                 // °F = °C × (9/5) + 32
