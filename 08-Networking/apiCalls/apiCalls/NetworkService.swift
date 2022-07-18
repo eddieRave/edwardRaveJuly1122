@@ -14,15 +14,12 @@ let musicStr = "https://rss.applemarketingtools.com/api/v2/us/music/most-played/
 
 /// Only pass the first items for testing purposes
 class NetworkService {
-    static let shared = NetworkService()
-    private init() {}
     
     func fetchJoke(completion: @escaping (Joke?) -> Void) {
         guard let url = URL(string: jokesStr) else{
             return
         }
-        URLSession.shared.dataTask(with: url){
-            data, response, error in
+        URLSession.shared.dataTask(with: url){ data, response, error in
             if let data = data {
                 do {
                     let decodedData  = try JSONDecoder().decode(Joke.self, from: data)
@@ -34,41 +31,52 @@ class NetworkService {
         }.resume()
     }
     
-    func fetchDrink(completion: @escaping (Drink?) -> Void) {
-        
+    func fetchDrink(completion: @escaping (Drinks?) -> Void) {
+        guard let url = URL(string: drinksStr) else{
+            return
+        }
+        URLSession.shared.dataTask(with: url){ data, response, error in
+            if let data = data {
+                do {
+                    let decodedData  = try JSONDecoder().decode(Drinks.self, from: data)
+                    completion(decodedData)
+                } catch  {
+                    print(error)
+                }
+            }
+        }.resume()
     }
     
     func fetchEpisode(completion: @escaping (Episode?) -> Void) {
-        
+        guard let url = URL(string: tvShowsStr) else{
+            return
+        }
+        URLSession.shared.dataTask(with: url){ data, response, error in
+            if let data = data {
+                do {
+                    let decodedData  = try JSONDecoder().decode([Episode].self, from: data)
+                    completion(decodedData.first)
+                } catch  {
+                    print(error.localizedDescription)
+                }
+            }
+        }.resume()
     }
     
     func fetchMusic(completion: @escaping (Music?) -> Void) {
-        
+        guard let url = URL(string: musicStr) else{
+            return
+        }
+        URLSession.shared.dataTask(with: url){ data, response, error in
+            if let data = data {
+                do {
+                    let decodedData  = try JSONDecoder().decode(Music.self, from: data)
+                    completion(decodedData)
+                } catch  {
+                    print(error.localizedDescription)
+                }
+            }
+        }.resume()
     }
     
 }
-
-/*
- static let shared = APIManager()
- private init(){}
- 
- let url = "https://api.jokes.one/jod"
- 
- func fetchData(completion: @escaping (JokeModel) -> Void){
-     guard let url = URL(string: url) else{
-         return
-     }
-     URLSession.shared.dataTask(with: url){
-         data, response, error in
-         if let data = data {
-             do {
-                 let decodedData  = try JSONDecoder().decode(JokeModel.self, from: data)
-                 completion(decodedData)
-             } catch  {
-                 print(error)
-             }
-         }
-     }.resume()
-     print("line 31")
- }
- */
