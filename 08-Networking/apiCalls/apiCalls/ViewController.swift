@@ -20,8 +20,7 @@ class ViewController: UIViewController {
     /// 3. Update firstLabel with the first item only
     @IBAction func jokesPressed(_ sender: UIButton) {
 //        firstLabel.text = "Testing Joke button"
-        networkService.fetchJoke() {
-            data in
+        networkService.fetchJoke() { data in
             if let text = data?.value {
                 DispatchQueue.main.async {
                     self.firstLabel.text = text
@@ -34,8 +33,7 @@ class ViewController: UIViewController {
     /// Display the first drink's name
     @IBAction func drinksPressed(_ sender: UIButton) {
 //        firstLabel.text = "Testing Drinks button"
-        networkService.fetchDrink() {
-            data in
+        networkService.fetchDrink() { data in
             if let text = data?.drinks.first?.strDrink {
                 DispatchQueue.main.async {
                     self.firstLabel.text = text
@@ -48,8 +46,7 @@ class ViewController: UIViewController {
     /// Show the name of the first episode
     @IBAction func tvShowsPressed(_ sender: UIButton) {
 //        firstLabel.text = "Testing TVShows button"
-        networkService.fetchEpisode() {
-            data in
+        networkService.fetchEpisode() { data in
             if let text = data?.name {
                 DispatchQueue.main.async {
                     self.firstLabel.text = text
@@ -62,8 +59,7 @@ class ViewController: UIViewController {
     /// Show the artistName from the first result of the response
     @IBAction func musicPressed(_ sender: UIButton) {
 //        firstLabel.text = "Testing music button"
-        networkService.fetchMusic() {
-            data in
+        networkService.fetchMusic() { data in
             if let text = data?.feed.results.first?.artistName {
                 DispatchQueue.main.async {
                     self.firstLabel.text = text
