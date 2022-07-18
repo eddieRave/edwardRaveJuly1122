@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        APIManager.shared.fetchData(){
+        APIManager.shared.fetchData() {
             data in
             if let text = data.contents?.jokes?.first?.joke?.text{
                 DispatchQueue.main.async {

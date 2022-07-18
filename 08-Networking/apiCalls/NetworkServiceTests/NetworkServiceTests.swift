@@ -10,7 +10,7 @@ import XCTest
 
 class NetworkServiceTests: XCTestCase {
 
-    let sut = NetworkService()
+    let sut = NetworkService.shared
     
     func testFetchJoke() {
         let expectation = expectation(description: "fetching data")
@@ -26,7 +26,7 @@ class NetworkServiceTests: XCTestCase {
     
     func testFetchDrink() {
         let expectation = expectation(description: "fetching data")
-        var resultData: Drink?
+        var resultData: DrinkList?
         sut.fetchDrink { data in
             resultData = data
             expectation.fulfill()
