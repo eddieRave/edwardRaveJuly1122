@@ -10,10 +10,8 @@ import SwiftUI
 struct Slide2: View {
     var body: some View {
         GeometryReader() { geometry in
-            ZStack {
-                Rectangle()
-                    .opacity(0)
-                    .scaledToFit()
+            HStack {
+                Spacer()
                 VStack {
                     Spacer()
                     ZStack {
@@ -30,6 +28,7 @@ struct Slide2: View {
                     }
                     Spacer()
                 }
+                Spacer()
             }
         }
     }
