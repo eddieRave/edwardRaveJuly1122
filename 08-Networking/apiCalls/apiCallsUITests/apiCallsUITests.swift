@@ -51,7 +51,7 @@ class apiCallsUITests: XCTestCase {
         sleep(1)
         let textField = app.staticTexts["FirstLabel"]
         let artistStr = textField.label
-        XCTAssert(artistStr.contains("Pusha T"))
+        XCTAssert(artistStr.contains("Bad Bunny"))
         
         
     }
