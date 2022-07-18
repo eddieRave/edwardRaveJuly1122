@@ -24,7 +24,6 @@ class ViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.jokeLabel.text = text
                 }
-                
             }
         }
         // Do any additional setup after loading the view.
