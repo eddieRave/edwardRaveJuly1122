@@ -10,17 +10,16 @@ import UIKit
 class ViewController: UIViewController {
 
     let label = UILabel()
-    @IBOutlet weak var leftButton: UIButton!
+
+    @IBOutlet weak var midButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func middleButton(_ sender: UIButton, forEvent event: UIEvent) {
-        
-        leftButton.titleLabel = UILabel.
+    @IBAction func leftButton(_ sender: UIButton, forEvent event: UIEvent) {
+        self.midButton.removeFromSuperview()
     }
-    
 }
 
