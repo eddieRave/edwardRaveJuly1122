@@ -17,6 +17,23 @@ class NetworkService {
 
     func fetchJoke(completion: @escaping (Joke?) -> Void) {
         
+        let url = URL(string: jokesStr)else do {
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) {
+            data, response, error in
+            
+            if let data = data {
+                do {
+                    let decodedData  = try JSONDecoder().decode(JokeModel.self, from: data)
+                    completion(decodedData)
+                } catch  {
+                    print(error)
+                }
+            }
+        }.resume()
+        
     }
     func fetchDrink(completion: @escaping (Drink?) -> Void) {
         
