@@ -1,5 +1,6 @@
 import UIKit
 
+
 protocol Sendable{
     var text: String {get set}
     var date: Date {get}
