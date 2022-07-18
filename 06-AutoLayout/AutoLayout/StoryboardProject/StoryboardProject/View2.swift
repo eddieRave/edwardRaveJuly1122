@@ -5,16 +5,23 @@
 //  Created by WillC on 7/17/22.
 //
 
-import SwiftUI
 
-struct View2: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+import UIKit
 
-struct View2_Previews: PreviewProvider {
-    static var previews: some View {
-        View2()
+class View2: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
     }
+    @IBOutlet weak var BUTTON2: UIButton!
+
+ 
+    @IBAction func DELETE2(_ sender: Any) {
+        BUTTON2.removeFromSuperview()
+    }
+    //    @IBAction func DELETE(_ sender: Any) {
+//        BUTTON.removeFromSuperview()
+//    }
+    
 }

@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     let button = UIButton()
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLable.text = "Better Title"
+//        titleLable.text = "Better Title"
 //        view.addSubview(label)
 //        view.addSubview(image)
 //        view.addSubview(button)
