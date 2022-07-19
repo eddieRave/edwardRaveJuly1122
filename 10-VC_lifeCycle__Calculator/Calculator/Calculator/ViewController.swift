@@ -5,6 +5,11 @@
 //  Created by Spencer Hurd on 7/19/22.
 //
 
+// TODO: add active button highlighting
+// TODO: support float/decimal numbers
+// TODO: add a decimal button
+// TODO: add negative/positive button
+
 import UIKit
 
 class ViewController: UIViewController {
