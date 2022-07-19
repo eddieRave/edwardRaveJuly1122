@@ -23,9 +23,11 @@ class ViewController: UIViewController {
     
     var lInput : [Int] = []
     var rInput : [Int] = []
+
     
     var mode : String = "NULL"
-    var decimalPlace : Float = 0.0
+    var lDecimalPlace : Float = 0.0
+    var rDecimalPlace : Float = 0.0
     var decimalOn : Bool = false
 
     
@@ -37,25 +39,21 @@ class ViewController: UIViewController {
         return resultNum
     }
     
-    func displayNumber(numArr : [Int] ) -> String {
-        var resultStr  = ""
-        for i in  numArr{
-            resultStr.append(String(i))
-        }
-        return resultStr
-    }
-    
     func handleInput(number : Int) -> Void {
-        if decimalOn {
-            decimalPlace += 1
-        }
         if mode == "NULL"{
+            if decimalOn {
+                lDecimalPlace += 1
+            }
             lInput.append(number)
-            resultDisplay.text = displayNumber(numArr : lInput)
+            resultDisplay.text = String(sumToNumber(numArr: lInput.reversed()) / pow(10.0, lDecimalPlace))
             return
         } else {
+            if decimalOn {
+                rDecimalPlace += 1
+            }
             rInput.append(number)
-            resultDisplay.text = displayNumber(numArr : rInput)
+            resultDisplay.text = String(sumToNumber(numArr: rInput.reversed()) / pow(10.0, lDecimalPlace))
+
             return
         }
     }
@@ -63,32 +61,35 @@ class ViewController: UIViewController {
     @IBAction func decimalPressed(_ sender: Any) {
         if mode == "NULL"{
             decimalOn = true
-            resultDisplay.text = displayNumber(numArr : lInput) +  "."
+//            resultDisplay.text = displayNumber(numArr : lInput) +  "."
         }
         
     }
     @IBAction func plusPressed(_ sender: Any) {
-        
+        decimalOn = false
         mode = "PLUS"
         resultDisplay.text = "+"
 //        resultDisplay.text = String( sumToNumber(numArr : lInput.reversed()) / pow(10,   decimalPlace))
     }
     @IBAction func dividePressed(_ sender: Any) {
+        decimalOn = false
         mode = "DIVIDE"
         resultDisplay.text = "/"
     }
     @IBAction func multiplyPressed(_ sender: Any) {
+        decimalOn = false
         mode = "MULTIPLY"
         resultDisplay.text = "*"
     }
     @IBAction func minusPressed(_ sender: Any) {
+        decimalOn = false
         mode = "MINUS"
         resultDisplay.text = "-"
         
     }
     @IBAction func equalsPressed(_ sender: Any) {
-        let lhs : Float  = sumToNumber(numArr : lInput.reversed())
-        let rhs : Float = sumToNumber(numArr : rInput.reversed())
+        let lhs : Float  = sumToNumber(numArr : lInput.reversed()) / pow(10.0, lDecimalPlace)
+        let rhs : Float = sumToNumber(numArr : rInput.reversed()) / pow(10.0, rDecimalPlace)
         var result : Float = 0.0
         if mode == "NULL"{
             result = lhs
@@ -105,6 +106,9 @@ class ViewController: UIViewController {
         if mode == "DIVIDE"{
             result = lhs / rhs
         }
+        rDecimalPlace = 0.0
+        lDecimalPlace = 0.0
+        decimalOn = false
         resultDisplay.text = String(result)
         lInput.removeAll()
         rInput.removeAll()
