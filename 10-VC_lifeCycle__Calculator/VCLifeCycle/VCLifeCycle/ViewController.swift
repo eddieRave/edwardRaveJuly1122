@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
-        print("will apear")
+       
     }
     override func viewWillLayoutSubviews() {
         print("layout subs")
