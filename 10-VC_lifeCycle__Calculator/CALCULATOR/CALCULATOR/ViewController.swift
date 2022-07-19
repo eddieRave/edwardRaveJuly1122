@@ -21,6 +21,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var minusPressed: UIButton!
     @IBOutlet weak var resultDisplay: UILabel!
     
+    @IBAction func zeroPressed(_ sender: Any) { handleInput(number: 0) }
+    @IBAction func One(_ sender: Any) { handleInput(number: 1) }
+    @IBAction func Two(_ sender: Any) { handleInput(number: 2) }
+    @IBAction func Three(_ sender: Any) { handleInput(number: 3) }
+    @IBAction func Four(_ sender: Any) { handleInput(number: 4) }
+    @IBAction func Five(_ sender: Any) { handleInput(number: 5) }
+    @IBAction func Six(_ sender: Any) { handleInput(number: 6) }
+    @IBAction func Seven(_ sender: Any) { handleInput(number: 7) }
+    @IBAction func Eight(_ sender: Any) { handleInput(number: 8) }
+    @IBAction func Nine(_ sender: Any) { handleInput(number: 9) }
+    
     var lInput : [Int] = []
     var rInput : [Int] = []
 
@@ -53,7 +64,6 @@ class ViewController: UIViewController {
             }
             rInput.append(number)
             resultDisplay.text = String(sumToNumber(numArr: rInput.reversed()) / pow(10.0, lDecimalPlace))
-
             return
         }
     }
@@ -61,15 +71,12 @@ class ViewController: UIViewController {
     @IBAction func decimalPressed(_ sender: Any) {
         if mode == "NULL"{
             decimalOn = true
-//            resultDisplay.text = displayNumber(numArr : lInput) +  "."
         }
-        
     }
     @IBAction func plusPressed(_ sender: Any) {
         decimalOn = false
         mode = "PLUS"
         resultDisplay.text = "+"
-//        resultDisplay.text = String( sumToNumber(numArr : lInput.reversed()) / pow(10,   decimalPlace))
     }
     @IBAction func dividePressed(_ sender: Any) {
         decimalOn = false
@@ -90,7 +97,9 @@ class ViewController: UIViewController {
     @IBAction func equalsPressed(_ sender: Any) {
         let lhs : Float  = sumToNumber(numArr : lInput.reversed()) / pow(10.0, lDecimalPlace)
         let rhs : Float = sumToNumber(numArr : rInput.reversed()) / pow(10.0, rDecimalPlace)
+        
         var result : Float = 0.0
+        
         if mode == "NULL"{
             result = lhs
         }
@@ -114,44 +123,7 @@ class ViewController: UIViewController {
         rInput.removeAll()
         mode = "NULL"
     }
-    @IBAction func zeroPressed(_ sender: Any) {
-        handleInput(number: 0)
-    }
     
-    @IBAction func One(_ sender: Any) {
-        handleInput(number: 1)
-    }
-    @IBAction func Two(_ sender: Any) {
-        
-        handleInput(number: 2)
-    }
-    @IBAction func Three(_ sender: Any) {
-        
-        handleInput(number: 3)
-    }
-    @IBAction func Four(_ sender: Any) {
-        
-        handleInput(number: 4)
-    }
-    @IBAction func Five(_ sender: Any) {
-        
-        handleInput(number: 5)
-    }
-    @IBAction func Six(_ sender: Any) {
-        
-        handleInput(number: 6)
-    }
-    @IBAction func Seven(_ sender: Any) {
-        
-        handleInput(number: 7)
-    }
-    @IBAction func Eight(_ sender: Any) {
-        
-        handleInput(number: 8)
-    }
-    @IBAction func Nine(_ sender: Any) {
-        handleInput(number: 9)
-    }
 
 }
 
