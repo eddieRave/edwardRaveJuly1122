@@ -32,6 +32,5 @@ struct Music: Decodable {
             let artistName: String?
         }
     }
-    
 }
 

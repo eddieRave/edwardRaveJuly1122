@@ -14,7 +14,6 @@ let musicStr = "https://rss.applemarketingtools.com/api/v2/us/music/most-played/
 
 /// Only pass the first items for testing purposes
 class NetworkService {
-
     func fetchJoke(completion: @escaping (Joke?) -> Void) {
         guard let url = URL(string: jokesStr) else{
                return
@@ -26,12 +25,13 @@ class NetworkService {
                     let decodedData  = try JSONDecoder().decode(Joke.self, from: data)
                     completion(decodedData)
                     print(decodedData)
-                } catch  {
+                } catch {
                     print(error)
                 }
             }
         }.resume()
     }
+    
     func fetchDrink(completion: @escaping (Drink?) -> Void) {
         guard let url = URL(string: drinksStr) else{
                return
@@ -49,8 +49,9 @@ class NetworkService {
             }
         }.resume()
     }
+    
     func fetchEpisode(completion: @escaping (Episode?) -> Void) {
-        guard let url = URL(string: tvShowsStr) else{
+        guard let url = URL(string: tvShowsStr) else {
                return
            }
         URLSession.shared.dataTask(with: url){
