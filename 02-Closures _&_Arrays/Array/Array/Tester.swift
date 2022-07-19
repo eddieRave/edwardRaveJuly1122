@@ -68,12 +68,27 @@ class Tester {
     /// 5. Write a function that returns the number of pairs of elements that SUMS up to 0
     /// Input [1,2,3,-1,-2,-4] -> Output 2
     func findPairs(nums: [Int]) -> Int {
-        return -1
+        var pairs: Int = 0
+        for i in 0..<nums.count {
+            for j in 0..<nums.count {
+                if (nums[i] + nums[j] == 0) {
+                    pairs += 1
+                }
+            }
+        }
+        pairs /= 2
+        return pairs
     }
     
     /// 6. Returns an array of indexes where the char occurs in input word
     func positionsOf(character: Character, in word: String) -> [Int] {
-        return []
+        var arrayOfOccurences: [Int] = []
+        for (index, letter) in word.enumerated() {
+            if letter == character {
+                arrayOfOccurences.append(index)
+            }
+        }
+        return arrayOfOccurences
     }
     
     /**
@@ -87,7 +102,17 @@ class Tester {
             [ I, I, O, I, I, O, O, O] = 3
      */
     func minimumChairs(array: [Character]) -> Int {
-        return -1
+        var chairsNeeded = 0
+        var arrayOfNeededChairs: [Int] = []
+        for event in array {
+            if event == "I" {
+                chairsNeeded += 1
+            } else {
+                chairsNeeded -= 1
+            }
+            arrayOfNeededChairs.append(chairsNeeded)
+        }
+        return arrayOfNeededChairs.max() ?? 0
     }
     
     /// 8. Pig latin but with words separated by spaces
