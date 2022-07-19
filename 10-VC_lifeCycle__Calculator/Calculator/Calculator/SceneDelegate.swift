@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  Array
+//  Calculator
 //
-//  Created by Luat on 5/19/21.
+//  Created by Rave Bizz 63 on 7/19/22.
 //
 
 import UIKit
