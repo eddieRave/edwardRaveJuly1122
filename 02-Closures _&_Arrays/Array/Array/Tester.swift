@@ -12,17 +12,36 @@ class Tester {
     
     /// 1. Write a function that takes an array of numbers and returns an array with each of the numbers multiplied by 2
     func multiplyByTwo(numbers original: [Int]) -> [Int]{
-        return []
+//        var multipliedByTwo: [Int] = []
+//        for num in original {
+//            multipliedByTwo.append(num * 2)
+//        }
+//        return multipliedByTwo
+        // Alternate, more efficient
+        let doubled = original.map { $0 * 2 }
+        return doubled
     }
 
     /// 2. Write a function to return the last half of the array, not including the median
     func lastHalf(array: [Int]) -> [Int] {
-        return []
+        var newArray: [Int] = []
+        var midpoint = array.count / 2
+        if (array.count % 1 == 0) {
+            midpoint = (array.count / 2) + 1
+        }
+        for i in stride(from: midpoint, through: array.count - 1, by: 1) {
+            newArray.append(array[i])
+        }
+        return newArray
     }
 
     /// 3. Write a function that can creates an array populated with integers going from start (input) to end (input)
     func createArray(from start: Int, to end: Int) -> [Int] {
-        return []
+        var limitedArray: [Int] = []
+        for i in stride(from: start, through: end, by: 1) {
+            limitedArray.append(i)
+        }
+        return limitedArray
     }
 
     /**
@@ -33,7 +52,17 @@ class Tester {
         [7,8,9]]
      */
     func create2DArray(n: Int) -> [[Int]] {
-        return []
+        var boxArray: [[Int]] = []
+        var counter = 0
+        for _ in 0..<n {
+            var rowArray: [Int] = []
+            for _ in 0..<n {
+                counter += 1
+                rowArray.append(counter)
+            }
+            boxArray.append(rowArray)
+        }
+        return boxArray
     }
 
     /// 5. Write a function that returns the number of pairs of elements that SUMS up to 0
