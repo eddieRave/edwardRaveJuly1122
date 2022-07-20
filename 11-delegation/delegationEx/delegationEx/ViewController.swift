@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         let coder = Coder()
         let assistant = Assistant()
-        coder.assistant = assistant
+        coder.delegate = assistant
         coder.work()
     }
 
@@ -28,11 +28,17 @@ class ViewController: UIViewController {
  - can pass info as parameters from Coder into Assistant class
  */
 
+protocol CoderDelegate {
+    func getCoffee(orderType: Int) -> Beverage
+}
+
 class Coder {
-    var assistant: Assistant?
+    var delegate: CoderDelegate?
+//    var assistant: Assistant?
     var hasEnergy = false
     func work() {
-        let beverage = assistant?.getCoffee(orderType: 1)
+        let beverage = delegate?.getCoffee(orderType: 1)
+//        let beverage = assistant?.getCoffee(orderType: 1)
         switch beverage {
         case let .lightRoast(oz):
             hasEnergy = oz > 6
@@ -51,7 +57,7 @@ class Coder {
     }
 }
 
-class Assistant {
+class Assistant: CoderDelegate {
     func getCoffee(orderType: Int) -> Beverage {
         let oz = Int.random(in: 0...16)
         switch orderType {
