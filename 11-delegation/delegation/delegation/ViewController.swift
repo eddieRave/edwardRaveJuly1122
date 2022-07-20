@@ -7,17 +7,15 @@
 
 import UIKit
 
-protocol ColorChangeAble{
+protocol ColorChangable{
     func changeColor(color: UIColor)
 }
 
-class ViewController: UIViewController, ColorChangeAble {
+class ViewController: UIViewController, ColorChangable {
     func changeColor(color: UIColor) {
         view.backgroundColor = color
     }
     
-
-
     @IBAction func handleTap(_ sender: Any) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "ColorVC") as? ColorViewController{
             vc.delegate = self
@@ -30,6 +28,5 @@ class ViewController: UIViewController, ColorChangeAble {
         // Do any additional setup after loading the view.
     }
     
-
 }
 

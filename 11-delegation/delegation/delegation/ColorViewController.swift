@@ -10,7 +10,7 @@ import UIKit
 
 class ColorViewController: UIViewController{
     
-    var delegate: ColorChangeAble? = nil
+    var delegate: ColorChangable? = nil
     
     @IBAction func pinkButton(_ sender: Any) {
         delegate?.changeColor(color: .systemPink)
@@ -24,6 +24,5 @@ class ColorViewController: UIViewController{
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 }
