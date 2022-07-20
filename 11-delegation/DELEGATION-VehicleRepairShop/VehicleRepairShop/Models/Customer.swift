@@ -12,6 +12,7 @@ protocol VehicleAble {
     var vehicle: Vehicle { get set }
 }
 
+// MARK: Conform to protocol
 struct Customer: Identity, VehicleAble {
     var id: Int
     var firstName: String

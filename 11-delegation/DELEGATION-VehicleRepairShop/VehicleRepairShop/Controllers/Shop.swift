@@ -16,8 +16,10 @@ class Shop {
     
     // MARK: Before Delegate implementation:
     // MARK: func customerEntersTheShop(customer: inout Customer) {
+    // MARK: pass in the protocol as the parameter type
     func customerEntersTheShop(customer: inout VehicleAble) {
         print("Customer enters the shop")
+        // MARK: instead of passing an entire customer, I am just passing a vehicle
         addVehicleToShop(vehicle: &customer.vehicle)
     }
     
