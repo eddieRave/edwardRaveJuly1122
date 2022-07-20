@@ -28,12 +28,12 @@ class ViewController: UIViewController {
  - can pass info as parameters from Coder into Assistant class
  */
 
-protocol CoderDelegate {
+protocol DidGetCoffee {
     func getCoffee(orderType: Int) -> Beverage
 }
 
 class Coder {
-    var delegate: CoderDelegate?
+    var delegate: DidGetCoffee?
 //    var assistant: Assistant?
     var hasEnergy = false
     func work() {
@@ -57,7 +57,7 @@ class Coder {
     }
 }
 
-class Assistant: CoderDelegate {
+class Assistant: DidGetCoffee {
     func getCoffee(orderType: Int) -> Beverage {
         let oz = Int.random(in: 0...16)
         switch orderType {
