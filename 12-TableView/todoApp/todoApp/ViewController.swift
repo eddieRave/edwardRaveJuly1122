@@ -15,9 +15,9 @@ var testArr :[String] = [""]
 class ViewController: UIViewController, textDelegate {
     
     func sendText(text: String) {
-        testArr.append(textFromBox.text)
-        self.tableView.reloadData()
+        print(text)
         testArr.append(text)
+        self.tableView.reloadData()
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -32,11 +32,7 @@ class ViewController: UIViewController, textDelegate {
         configureTable()
     }
     
-    @IBAction func buttonClick(sender: UIButton) {
-        testArr.append(textFromBox.text)
-        self.tableView.reloadData()
-        
-    }
+
     func configureTable(){
         tableView.dataSource = self
         tableView.delegate = self

@@ -101,7 +101,6 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="ADD NOTE"/>
                                         <connections>
-                                            <action selector="buttonClickWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JvO-11-m8Q"/>
                                             <segue destination="KiS-xj-YhV" kind="show" id="uGc-dS-uPc"/>
                                         </connections>
                                     </button>
