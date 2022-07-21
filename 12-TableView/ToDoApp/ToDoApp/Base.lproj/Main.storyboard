@@ -27,7 +27,7 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="iGy-jK-3cz" kind="show" id="xRR-AP-5lY"/>
+                                    <segue destination="iGy-jK-3cz" kind="show" id="Ypd-Pw-qwq"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -51,10 +51,10 @@
             </objects>
             <point key="canvasLocation" x="421.73913043478262" y="79.6875"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Task View Controller-->
         <scene sceneID="QIm-47-dCC">
             <objects>
-                <viewController id="iGy-jK-3cz" customClass="ViewController" customModule="ToDoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iGy-jK-3cz" customClass="AddTaskViewController" customModule="ToDoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dTm-wm-Ob5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,7 +65,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="task name" borderStyle="roundedRect" placeholder="Enter task name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D5C-vS-5dB">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter task name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D5C-vS-5dB">
                                 <rect key="frame" x="122.5" y="320" width="169.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -77,7 +77,7 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="addTaskToList:" destination="iGy-jK-3cz" eventType="touchUpInside" id="w7r-T8-lir"/>
+                                    <action selector="addTaskToList:" destination="iGy-jK-3cz" eventType="touchUpInside" id="kEi-Je-3Je"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -94,7 +94,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="1VV-gp-suu"/>
                     <connections>
-                        <outlet property="newlyAddedTaskName" destination="D5C-vS-5dB" id="waD-62-1SM"/>
+                        <outlet property="newlyAddedTaskName" destination="D5C-vS-5dB" id="APq-Sh-K6N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mEh-Nb-sq3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

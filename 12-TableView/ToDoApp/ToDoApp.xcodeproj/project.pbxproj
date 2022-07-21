@@ -19,6 +19,7 @@
 		0BCBF6F92888953A001BF732 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCBF6F82888953A001BF732 /* Task.swift */; };
 		0BCBF6FC288897B3001BF732 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCBF6FA288897B3001BF732 /* TaskTableViewCell.swift */; };
 		0BCBF6FD288897B3001BF732 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BCBF6FB288897B3001BF732 /* TaskTableViewCell.xib */; };
+		0BCBF6FF28898675001BF732 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCBF6FE28898675001BF732 /* AddTaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		0BCBF6F82888953A001BF732 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		0BCBF6FA288897B3001BF732 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		0BCBF6FB288897B3001BF732 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
+		0BCBF6FE28898675001BF732 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 			children = (
 				0BCBF6C628889303001BF732 /* ViewController.swift */,
 				0BCBF6FA288897B3001BF732 /* TaskTableViewCell.swift */,
+				0BCBF6FE28898675001BF732 /* AddTaskViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BCBF6F92888953A001BF732 /* Task.swift in Sources */,
+				0BCBF6FF28898675001BF732 /* AddTaskViewController.swift in Sources */,
 				0BCBF6C728889303001BF732 /* ViewController.swift in Sources */,
 				0BCBF6FC288897B3001BF732 /* TaskTableViewCell.swift in Sources */,
 				0BCBF6C328889303001BF732 /* AppDelegate.swift in Sources */,

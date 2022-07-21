@@ -7,27 +7,30 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol DidSetTasksDelegate {
+    func addedNewTask(task: Task)
+}
 
+class ViewController: UIViewController, DidSetTasksDelegate {
+    
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var newlyAddedTaskName: UITextField!
-    @IBAction func addTaskToList(_ sender: UIButton) {
-        let task = Task(name: newlyAddedTaskName?.text)
-        tasks.append(task)
+    var tasks = [Task]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
-    
-    var tasks: [Task] = []
-    
-    // PLACEHOLDER:
-//    var task1 = Task(name: "Task 1")
-//    var task2 = Task(name: "Task 2")
-//    lazy var tasks: [Task] = [task1, task2]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         configureTable()
+    }
+    
+    func addedNewTask(task: Task) {
+        tasks.append(task)
     }
     
     func configureTable() {
