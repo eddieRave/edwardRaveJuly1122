@@ -7,15 +7,18 @@
 
 import UIKit
 protocol textDelegate{
-    func sendText(text : String) -> String
+    func sendText(text : String) 
 }
 
 var testArr :[String] = [""]
 
-class ViewController: UIViewController {
-    func sendText(text: String) -> String {
-        return text
-}
+class ViewController: UIViewController, textDelegate {
+    
+    func sendText(text: String) {
+        testArr.append(textFromBox.text)
+        self.tableView.reloadData()
+        testArr.append(text)
+    }
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textFromBox: UITextView!
@@ -24,6 +27,7 @@ class ViewController: UIViewController {
 //    var notes[]
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         configureTable()
     }

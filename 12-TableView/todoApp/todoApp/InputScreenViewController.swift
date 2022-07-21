@@ -8,11 +8,17 @@
 import UIKit
 
 class InputScreenViewController: UIViewController {
-
+    
+    @IBOutlet weak var inputFromUser: UITextView!
+    @IBOutlet weak var submitButton: UIButton!
+    
+    var  tD : textDelegate?
     override func viewDidLoad() {
+        tD = navigationController?.viewControllers[0] as? textDelegate
         super.viewDidLoad()
-
-        
+    }
+    @IBAction func submitButton(_ sender: Any) {
+        tD?.sendText(text: inputFromUser.text)
     }
     
 
