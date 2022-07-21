@@ -10,7 +10,7 @@ protocol textDelegate{
     func sendText(text : String) 
 }
 
-var testArr :[String] = [""]
+var testArr :[String] = []
 
 class ViewController: UIViewController, textDelegate {
     

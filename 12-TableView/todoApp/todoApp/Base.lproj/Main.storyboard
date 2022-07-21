@@ -70,34 +70,15 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="P3C-Tk-Rcm">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smt-uS-XcV">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="fWl-X7-Hlc"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pry-88-FUu">
-                                        <rect key="frame" x="0.0" y="137" width="414" height="100"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="X2O-cu-g60"/>
-                                        </constraints>
-                                        <color key="textColor" systemColor="labelColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="continue" enablesReturnKeyAutomatically="YES"/>
-                                    </textView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="BrU-fF-671">
-                                        <rect key="frame" x="0.0" y="274" width="414" height="255"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="637"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="500" id="bQP-Ke-Pfs"/>
-                                        </constraints>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2G1-cD-CiD">
-                                        <rect key="frame" x="0.0" y="566" width="414" height="208"/>
+                                        <rect key="frame" x="0.0" y="674" width="414" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="vqC-37-nOi"/>
+                                        </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="ADD NOTE"/>
                                         <connections>
@@ -118,9 +99,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="044-8v-fBq"/>
                     <connections>
-                        <outlet property="labelForOutput" destination="smt-uS-XcV" id="Ukl-su-bw7"/>
                         <outlet property="tableView" destination="BrU-fF-671" id="9Cw-gS-9Q4"/>
-                        <outlet property="textFromBox" destination="pry-88-FUu" id="waj-kP-hnk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
