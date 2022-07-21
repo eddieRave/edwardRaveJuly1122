@@ -24,6 +24,7 @@ class AddTaskViewController: UIViewController {
         guard let taskName = newlyAddedTaskName.text else { return }
         let task = Task(name: taskName)
         delegate.addedNewTask(task: task)
+        navigationController?.popViewController(animated: true)
     }
 
 }
