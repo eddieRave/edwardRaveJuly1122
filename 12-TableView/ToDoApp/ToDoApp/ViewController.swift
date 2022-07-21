@@ -45,7 +45,6 @@ class ViewController: UIViewController, DidSetTasksDelegate {
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? TaskTableViewCell {
-            // TODO: Loop through tasks array and display each item as a cell in tableView
             cell.taskName.text = tasks[indexPath.row].name
             return cell
         }
