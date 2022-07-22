@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct CalculatorApp: App {
+    
+    @StateObject var controller = Controller()
+    
     var body: some Scene {
         WindowGroup {
-            CalculatorView()
+            CalculatorView(controller: controller)
         }
     }
 }

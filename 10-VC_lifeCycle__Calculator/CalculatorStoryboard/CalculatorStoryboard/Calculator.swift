@@ -27,7 +27,7 @@ struct Calculator {
         firstEntry ? 0 : 1
     }
     
-    var text = ""
+    var text = "0"
     
     mutating func enterNumber(digit: Int) {
         
@@ -123,6 +123,7 @@ struct Calculator {
         decimals[index] = 0
         extraZeroes[index] = 0
         decimalEntry = false
+        if firstEntry { result = 0 }
     }
     mutating func clearAll() {
         firstEntry = true
