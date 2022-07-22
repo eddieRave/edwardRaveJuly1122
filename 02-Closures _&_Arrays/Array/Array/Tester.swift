@@ -6,7 +6,7 @@
 //
 
 import Foundation
-// array changes 02
+
 class Tester {
     static let shared = Tester()
     
