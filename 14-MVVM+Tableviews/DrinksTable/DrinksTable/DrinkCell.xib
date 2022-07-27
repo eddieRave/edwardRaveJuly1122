@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="drinkCell" rowHeight="302" id="KGk-i7-Jjw" customClass="DrinkCell" customModule="DrinksTable" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="313" height="302"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="313" height="302"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWH-BW-4kS">
+                        <rect key="frame" x="26" y="235" width="261" height="46"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="89c-cc-vMl">
+                        <rect key="frame" x="10" y="10" width="293" height="215"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="215" id="vZe-mF-YZS"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="qWH-BW-4kS" firstAttribute="top" secondItem="89c-cc-vMl" secondAttribute="bottom" constant="10" id="1RM-Ai-9WO"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="qWH-BW-4kS" secondAttribute="bottom" constant="10" id="GCD-57-1Ir"/>
+                    <constraint firstItem="qWH-BW-4kS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="MrQ-Rw-ep5"/>
+                    <constraint firstAttribute="trailing" secondItem="89c-cc-vMl" secondAttribute="trailing" constant="10" id="PQv-Td-Zst"/>
+                    <constraint firstItem="89c-cc-vMl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Qy1-MJ-q7Y"/>
+                    <constraint firstItem="89c-cc-vMl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="iAg-OG-a7s"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="qWH-BW-4kS" secondAttribute="trailing" constant="10" id="xfr-dW-VNX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="drinkImg" destination="89c-cc-vMl" id="yZ0-Y5-1dD"/>
+                <outlet property="drinkName" destination="qWH-BW-4kS" id="IFT-85-Mjs"/>
+            </connections>
+            <point key="canvasLocation" x="126.81159420289856" y="200.22321428571428"/>
+        </tableViewCell>
+    </objects>
+</document>
