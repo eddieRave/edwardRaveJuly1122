@@ -9,6 +9,8 @@
 import UIKit
 
 class Network {
+    static let shared = Network()
+    
     let apiKey = "5885c445eab51c7004916b9c0313e2d3"
     let baseImgUrl = "https://image.tmdb.org/t/p/w300/"
     
@@ -23,7 +25,7 @@ class Network {
                 print("no data, networking error")
                 return
             }
-            guard let httpResonse = response as? HTTPURLResponse, httpResonse.statusCode == 200 else {
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
                 print("http status code error")
                 return
             }
@@ -42,15 +44,15 @@ class Network {
         
     }
     
-    func getImage(imageUrl: String, completion: @escaping (UIImage?) -> Void) {
-        guard let url = URL(string: imageUrl) else {
+    func getImage(imageUrl: String, completion: @escaping (Data) -> Void) {
+        guard let url = URL(string: baseImgUrl + imageUrl) else {
             print("invalid url")
             return
         }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else {
-                print("no data, networking error")
+                print("no data, networking error, \(imageUrl)")
                 return
             }
             
@@ -61,11 +63,7 @@ class Network {
                 print("http status code error")
                 return
             }
-            if let image = UIImage(data: data) {
-                completion(image)
-            } else {
-                completion(nil)
-            }
+            completion(data)
         }.resume()
     }
 }

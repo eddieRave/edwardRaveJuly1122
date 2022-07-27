@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 
 class MovieCell: UITableViewCell {
+    static let identifier = String(describing: MovieCell.self)
     
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!

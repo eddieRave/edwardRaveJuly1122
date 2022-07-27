@@ -1,8 +1,8 @@
 //
-//  Model.swift
+//  MovieResults.swift
 //  MovieBrowser
 //
-//  Created by developer on 6/11/22.
+//  Created by Joel Maldonado on 7/26/22.
 //  Copyright © 2022 Lowe's Home Improvement. All rights reserved.
 //
 

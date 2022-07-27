@@ -15,10 +15,12 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UITextView!
     @IBOutlet weak var movieImg: UIImageView!
     
-    var movieTitle: String = "no title"
-    var releaseDate: String = "no release date"
-    var descriptionText: String = "no description"
-    var imgPath: String = ""
+//    var movieTitle: String = "no title"
+//    var releaseDate: String = "no release date"
+//    var descriptionText: String = "no description"
+//    var imgPath: String = ""
+    
+    var viewModel: MovieViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,20 +29,15 @@ class MovieDetailViewController: UIViewController {
     }
     
     func configure() {
-        guard let date = formatDate(dateString: self.releaseDate, outFormat: "M/d/yy") else { return }
-        movieTitleLabel.text = self.movieTitle
+        guard let viewModel = viewModel else { return }
+        guard let date = formatDate(dateString: viewModel.date, outFormat: "M/d/yy") else { return }
+        movieTitleLabel.text = viewModel.movieTitle
         releaseDateLabel.text = "Release Date: \(date)"
-        descriptionLabel.text = self.descriptionText
-        getPoster()
+        descriptionLabel.text = viewModel.overview
+        bindImage()
+        viewModel.fetchImage()
     }
     
-    func getPoster() {
-        Network().getImage(imageUrl: imgPath) { image in
-            DispatchQueue.main.async {
-                self.movieImg.image = image
-            }
-        }
-    }
     
     func formatDate(dateString: String, inFormat: String = "yyyy/MM/dd", outFormat: String) -> String? {
         let dateFormatter = DateFormatter.posixFormatter
@@ -48,6 +45,18 @@ class MovieDetailViewController: UIViewController {
         guard let date = dateFormatter.date(from: dateString) else { return nil }
         dateFormatter.dateFormat = outFormat
         return dateFormatter.string(from: date)
+    }
+    
+    func bindImage() {
+        guard let viewModel = viewModel else { return }
+        viewModel.updateImg = {
+            guard let imageData = viewModel.imgData else {
+                return
+            }
+            DispatchQueue.main.async {
+                self.movieImg.image = UIImage(data: imageData)
+            }
+        }
     }
 }
 
