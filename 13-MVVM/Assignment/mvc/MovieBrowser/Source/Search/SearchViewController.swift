@@ -16,14 +16,6 @@ class SearchViewController: UIViewController {
     
     let viewModel = SearchViewModel()
     
-    var movies: [Movie] = [] {
-        didSet {
-            DispatchQueue.main.sync {
-                moviesTableView.reloadData()
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let nib = UINib(nibName: "MovieCell", bundle: nil)
@@ -42,46 +34,26 @@ class SearchViewController: UIViewController {
         }
         
         print(searchTerm)
-//        search(searchTerm: searchTerm)
         viewModel.search(for: searchTerm) { [weak self] in
             self?.moviesTableView.reloadData()
         }
     }
-    
-//    func search(searchTerm: String) {
-//        Network().getMovies(searchTerm: searchTerm) { movies in
-//            self.movies = movies
-//        }
-//        print("searched for movies")
-//    }
-    
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return movies.count
         viewModel.numMovies
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = moviesTableView.dequeueReusableCell(withIdentifier: MovieCell.identifier) as! MovieCell
-//        cell.configure(movie: movies[indexPath.row])
         cell.configure(movie: viewModel.getMovie(at: indexPath.row))
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let movie = movies[indexPath.row]
-//        let movie = viewModel.getMovie(at: indexPath.row)
-//        let posterPath = movie.poster_path ?? ""
-//        let imgUrl = Network().baseImgUrl + posterPath
         let storyBoard : UIStoryboard = UIStoryboard(name: "MovieDetail", bundle:nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as! MovieDetailViewController
         
         nextViewController.viewModel = viewModel.getViewModel(at: indexPath.row)
-        
-//        nextViewController.movieTitle = movie.original_title
-//        nextViewController.releaseDate = movie.release_date
-//        nextViewController.descriptionText = movie.overview
-//        nextViewController.imgPath = imgUrl
 
         navigationController?.show(nextViewController, sender: nil)
     }

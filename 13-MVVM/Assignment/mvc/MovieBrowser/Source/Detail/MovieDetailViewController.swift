@@ -15,11 +15,6 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UITextView!
     @IBOutlet weak var movieImg: UIImageView!
     
-//    var movieTitle: String = "no title"
-//    var releaseDate: String = "no release date"
-//    var descriptionText: String = "no description"
-//    var imgPath: String = ""
-    
     var viewModel: MovieViewModel?
     
     override func viewDidLoad() {

@@ -16,6 +16,7 @@ class SearchViewModel {
     }
     
     func search(for searchTerm: String, completion: @escaping () -> Void) {
+        model.movies = []
         Network.shared.getMovies(searchTerm: searchTerm) { movies in
             for movie in movies {
                 self.model.movies.append(MovieViewModel(movie: movie))
