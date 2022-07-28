@@ -12,7 +12,7 @@ var count = 0
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var albums: [Album] = [] {
+    var albums: [AlbumCellViewModel] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -34,7 +34,9 @@ class ViewController: UIViewController {
     }
     func getData() {
         ImageCache.shared.getAlbums { albums in
-            self.albums = albums
+            for album in albums {
+                self.albums.append(AlbumCellViewModel(album: album))
+            }
         }
     }
 }
@@ -49,13 +51,13 @@ extension ViewController: UITableViewDataSource {
         guard let cell = (tableView.dequeueReusableCell(withIdentifier: "AlbumCell") as? AlbumCell) else {
             return UITableViewCell()
         }
-        let album = albums[indexPath.row]
+//        cell.tag = indexPath.row
+//        let album = albums[indexPath.row]
         cell.tableViewMoreInfoDelegate = tableView
-        cell.configure(album: album)
+        cell.configure(album: albums[indexPath.row])
         
         return cell
     }
-    
-    
 }
-extension UITableView: TableViewMoreInfoDelegate {}
+extension UITableView: TableViewMoreInfoDelegate {
+}
