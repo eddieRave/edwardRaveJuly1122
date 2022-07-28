@@ -15,8 +15,6 @@ class ViewController: UIViewController, ColorChangeAble {
     func changeColor(color: UIColor) {
         view.backgroundColor = color
     }
-    
-
 
     @IBAction func handleTap(_ sender: Any) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "ColorVC") as? ColorViewController{

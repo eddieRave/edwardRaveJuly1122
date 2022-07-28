@@ -15,16 +15,16 @@ import UIKit
  */
 
 class TableViewCell: UITableViewCell {
+    
+    var delegate: CellDelegate? = nil
 
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var catImage: UIImageView!
     
     @IBOutlet weak var catCount: UILabel!
     @IBAction func printCount(_ sender: Any) {
-        catCount.text = delegate?.printCountOfCats() // textFromControllerMethod
+        catCount.text = delegate?.printCountOfCats()
     }
-    
-    var delegate: CellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

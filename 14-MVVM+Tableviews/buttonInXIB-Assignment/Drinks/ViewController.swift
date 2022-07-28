@@ -32,8 +32,9 @@ class ViewController: UIViewController, CellDelegate {
     }
     
     func printCountOfCats() -> String {
-        let countText = "\(String(describing: viewModel.getcount()))"
-        print("There are \(String(describing: viewModel.getcount())) cats")
+        let numOfCats = viewModel.getcount() ?? 0
+        let countText = "\(numOfCats)"
+        print("There are \(numOfCats) cats")
         return countText
     }
     
@@ -50,6 +51,7 @@ extension ViewController: UITableViewDataSource {
             if let url = viewModel.getImage(for: indexPath.row){
                 cell.catImage.fetchImage(for: url)
             }
+            cell.delegate = self
             return cell
         }
         return UITableViewCell()
