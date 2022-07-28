@@ -33,8 +33,14 @@ class Employee {
     }
     
     func addToHoursWorked(hours: Int) {
+        hoursWorked += hours
     }
     
     func attempt(task: inout Task) {
+        if task.roleReq == role {
+            let totalHrsWorked = min(task.timeReq, 40 - hoursWorked)
+            addToHoursWorked(hours: totalHrsWorked)
+            task.setTimeReq(timeLeft: task.timeReq - totalHrsWorked)
+        }
     }
 }

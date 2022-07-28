@@ -41,29 +41,72 @@ class Team {
     var taskList: [Task] = []
     
     func add(employee: Employee) {
+        employees.append(employee)
     }
     
     func add(task: Task) {
+        taskList.append(task)
     }
     
     func startWeek() {
+        for (i,_) in taskList.enumerated() {
+            validate(taskNum: i)
+        }
     }
     
     func validate(taskNum: Int) {
+        for(i,_) in employees.enumerated() {
+            if employees[i].role == taskList[i].roleReq {
+                taskList[i].setIsValid(status: true)
+                assign(taskNum: taskNum, to: employees[i])
+            }
+        }
+        
     }
     
     func assign(taskNum: Int, to employee: Employee) {
+        employee.attempt(task: &taskList[taskNum])
     }
     
     func allTasksCompleted() -> Bool {
-        return false
+        for i in taskList {
+            if i.isComplete == false {
+                return false
+            }
+        }
+        return true
     }
     
+    // Needs to be worked on
+    // returns number of weeks required for the current team to complete all tasks
+    // Consider valid number of employees and their hours worked
     func weeksTillComplete() -> Int {
-        return 0
+        
+        var validEmployees = 0
+        var totalHours = 0
+        
+        // Loop through task array
+        for i in taskList {
+            if i.isValid {
+                validEmployees += 1
+            }
+        }
+        
+        // Loop through employees array
+        for i in employees {
+            totalHours += i.hoursWorked
+        }
+        print("totalHours = ",totalHours)
+        print("validEmployees = ", validEmployees)
+        let result = totalHours + validEmployees
+        print("result = ", result)
+        return result
     }
 
     func printMoney() {
+        // Using ternary operator since there are only two possibilities
+        allTasksCompleted() == true ? print("BRRRRRRRRRRRRRRRRRRRRRRRRRRRRR") : print("Tasks not completed")
     }
     
 }
+
