@@ -9,42 +9,21 @@ import Foundation
 
 import UIKit
 
-extension UIImageView{
-    func fetchImage(for url: String){
-        guard let url = URL(string: url) else{
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url, completionHandler: {
-            data,_ ,_ in
-            
-            if let data = data {
-                DispatchQueue.main.async{
-                    self.image = UIImage(data: data)
-                }
-                
-            }
-        }).resume()
-    }
-}
-
-
-final class ApiManger{
-    private init(){}
+final class ApiManger {
+    
     static let shared = ApiManger()
     
+    private init() {}
     
-    func fetchData(completion: @escaping ([Cats])->Void){
+    func fetchData(completion: @escaping ([Cats])->Void) {
         let url = "https://api.thecatapi.com/v1/images/search?limit=50"
         guard let url = URL(string: url) else {
             return
         }
-        let task = URLSession.shared.dataTask(with: url, completionHandler: {
-            data, response, error in
+        let task = URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
             guard let data = data else {
                 return
             }
-
             do {
                 let decodedData =  try JSONDecoder().decode([Cats].self, from:data )
                 completion(decodedData)
@@ -52,9 +31,22 @@ final class ApiManger{
                 print("error")
             }
         })
-        
         task.resume()
     }
-    
 
+}
+
+extension UIImageView {
+    func fetchImage(for url: String) {
+        guard let url = URL(string: url) else {
+            return
+        }
+        URLSession.shared.dataTask(with: url, completionHandler: { data,_ ,_ in
+            if let data = data {
+                DispatchQueue.main.async {
+                    self.image = UIImage(data: data)
+                }
+            }
+        }).resume()
+    }
 }

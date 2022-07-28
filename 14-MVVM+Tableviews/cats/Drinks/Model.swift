@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Cats: Decodable{
+struct Cats: Decodable {
     let id: String?
     let url: String?
 }

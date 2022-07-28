@@ -7,8 +7,9 @@
 
 import Foundation
 
-class ViewModel{
-    init(){
+class ViewModel {
+    
+    init() {
         getData()
     }
     
@@ -19,20 +20,24 @@ class ViewModel{
             update?()
         }
     }
-    func getData(){
-        ApiManger.shared.fetchData{
+    
+    func getData() {
+        ApiManger.shared.fetchData {
             cats in
             self.model = cats
         }
     }
     
-    func getId(for index: Int) -> String?{
+    func getId(for index: Int) -> String? {
         model?[index].id
     }
-    func getImage(for index: Int) -> String?{
+    
+    func getImage(for index: Int) -> String? {
         model?[index].url
     }
-    func getcount() -> Int?{
+    
+    func getcount() -> Int? {
         model?.count
     }
+    
 }

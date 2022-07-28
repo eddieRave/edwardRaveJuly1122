@@ -49,6 +49,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0BCBF7112892DAEE001BF732 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				C931C4BF2891AFA1000A206A /* AppDelegate.swift */,
+				C931C4C12891AFA1000A206A /* SceneDelegate.swift */,
+			);
+			name = Supporting;
+			sourceTree = "<group>";
+		};
+		0BCBF7122892DB06001BF732 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C931C4D72891B8DE000A206A /* Model.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		0BCBF7132892DB10001BF732 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C931C4C32891AFA1000A206A /* ViewController.swift */,
+				C931C4C52891AFA1000A206A /* Main.storyboard */,
+				C931C4DB2891C0F5000A206A /* TableViewCell.swift */,
+				C931C4DC2891C0F5000A206A /* TableViewCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		0BCBF7142892DB1D001BF732 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C931C4D92891BAEC000A206A /* ViewModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		0BCBF7152892DB46001BF732 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C931C4D52891B7A8000A206A /* Networking.swift */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
 		C931C4B32891AFA1000A206A = {
 			isa = PBXGroup;
 			children = (
@@ -68,19 +112,15 @@
 		C931C4BE2891AFA1000A206A /* Drinks */ = {
 			isa = PBXGroup;
 			children = (
-				C931C4BF2891AFA1000A206A /* AppDelegate.swift */,
-				C931C4C12891AFA1000A206A /* SceneDelegate.swift */,
-				C931C4D72891B8DE000A206A /* Model.swift */,
-				C931C4C32891AFA1000A206A /* ViewController.swift */,
-				C931C4D92891BAEC000A206A /* ViewModel.swift */,
-				C931C4DB2891C0F5000A206A /* TableViewCell.swift */,
-				C931C4DC2891C0F5000A206A /* TableViewCell.xib */,
-				C931C4C52891AFA1000A206A /* Main.storyboard */,
+				0BCBF7122892DB06001BF732 /* Model */,
+				0BCBF7132892DB10001BF732 /* View */,
+				0BCBF7142892DB1D001BF732 /* ViewModel */,
+				0BCBF7152892DB46001BF732 /* Service */,
+				0BCBF7112892DAEE001BF732 /* Supporting */,
 				C931C4C82891AFA3000A206A /* Assets.xcassets */,
 				C931C4CA2891AFA3000A206A /* LaunchScreen.storyboard */,
 				C931C4CD2891AFA3000A206A /* Info.plist */,
 				C931C4D32891B571000A206A /* Secrets.swift */,
-				C931C4D52891B7A8000A206A /* Networking.swift */,
 			);
 			path = Drinks;
 			sourceTree = "<group>";
@@ -315,6 +355,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Drinks/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Cats;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -342,6 +383,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Drinks/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Cats;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
