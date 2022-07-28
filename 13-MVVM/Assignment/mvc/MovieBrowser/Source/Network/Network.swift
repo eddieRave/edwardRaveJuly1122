@@ -9,6 +9,9 @@
 import UIKit
 
 class Network {
+    // Add singleton pattern
+    static let shared = Network()
+    
     let apiKey = "5885c445eab51c7004916b9c0313e2d3"
     let baseImgUrl = "https://image.tmdb.org/t/p/w300/"
     
@@ -29,7 +32,7 @@ class Network {
             }
             
             do {
-                let feed = try JSONDecoder().decode(MovieResult.self, from: data)
+                let feed = try JSONDecoder().decode(MovieModel.self, from: data)
                 let movies = feed.results
                 completion(movies)
             } catch {

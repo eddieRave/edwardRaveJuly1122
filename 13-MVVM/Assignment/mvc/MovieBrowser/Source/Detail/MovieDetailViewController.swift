@@ -18,7 +18,9 @@ class MovieDetailViewController: UIViewController {
     var movieTitle: String = "no title"
     var releaseDate: String = "no release date"
     var descriptionText: String = "no description"
-    var imgPath: String = ""
+//    var imgPath: String = ""    // MVC
+    
+    var movieDetailVM = MovieDetailViewModel()   // MVVM
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,16 +33,17 @@ class MovieDetailViewController: UIViewController {
         movieTitleLabel.text = self.movieTitle
         releaseDateLabel.text = "Release Date: \(date)"
         descriptionLabel.text = self.descriptionText
-        getPoster()
+//        getPoster()     // MVC
+        movieDetailVM.getPoster() // MVVM
     }
     
-    func getPoster() {
-        Network().getImage(imageUrl: imgPath) { image in
-            DispatchQueue.main.async {
-                self.movieImg.image = image
-            }
-        }
-    }
+//    func getPoster() {
+//        Network().getImage(imageUrl: imgPath) { image in
+//            DispatchQueue.main.async {
+//                self.movieImg.image = image
+//            }
+//        }
+//    }     // MVC
     
     func formatDate(dateString: String, inFormat: String = "yyyy/MM/dd", outFormat: String) -> String? {
         let dateFormatter = DateFormatter.posixFormatter

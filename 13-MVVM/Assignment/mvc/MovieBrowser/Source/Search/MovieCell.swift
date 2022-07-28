@@ -23,7 +23,8 @@ class MovieCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configure(movie: Movie) {
+//    func configure(movie: Movie) {    // MVC
+    func configure(movie: MovieCellViewModel) {      // MVVM
         guard let date = formatDate(dateString: movie.release_date, outFormat: "MMMM dd, yyyy") else { return }
         movieTitleLabel.text = movie.original_title
         releaseDateLabel.text = date
