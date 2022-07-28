@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+ 
     
 }
 
@@ -39,6 +40,8 @@ extension ViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? TableViewCell{
+            cell.tag = indexPath.row
+            cell.deletionDelegate = self
             cell.idLabel.text = viewModel.getId(for: indexPath.row) ?? "no id"
             if let url = viewModel.getImage(for: indexPath.row){
                 cell.catImage.fetchImage(for: url)
@@ -48,5 +51,14 @@ extension ViewController: UITableViewDataSource{
         
         return UITableViewCell()
     }
+}
+
+extension ViewController: Deleting {
+    func removeCell(index: Int) {
+        viewModel.deleteCat(index: index)
+    }
+}
+protocol Deleting{
+    func removeCell(index: Int)
 }
 

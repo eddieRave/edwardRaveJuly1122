@@ -14,14 +14,13 @@ class ViewModel{
     
     var update: (()->Void)?
     
-    var model: [Cats]? = nil{
+    private var model: [Cats]? = nil{
         didSet{
             update?()
         }
     }
     func getData(){
-        ApiManger.shared.fetchData{
-            cats in
+        ApiManger.shared.fetchData{ cats in
             self.model = cats
         }
     }
@@ -34,5 +33,9 @@ class ViewModel{
     }
     func getcount() -> Int?{
         model?.count
+    }
+    
+    func deleteCat(index: Int) {
+        model?.remove(at: index)
     }
 }
