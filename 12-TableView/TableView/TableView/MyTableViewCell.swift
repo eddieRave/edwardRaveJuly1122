@@ -13,6 +13,8 @@ class MyTableViewCell: UITableViewCell {
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,4 +26,9 @@ class MyTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    var rowRemovingDelegate: RowRemoving?
+
+    @IBAction func onClickMinus(_ sender: Any) {
+        rowRemovingDelegate?.removeRow(at: self.tag)
+    }
 }

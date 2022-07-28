@@ -37,6 +37,8 @@ class ViewController: UIViewController {
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         
     }
+    
+
 }
 
 
@@ -45,19 +47,26 @@ extension ViewController: UITableViewDataSource{
         if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? MyTableViewCell{
             cell.nameLabel.text = people[indexPath.row].name
             cell.ageLabel.text = people[indexPath.row].age
+            cell.tag = indexPath.row
+            cell.rowRemovingDelegate = self
             return cell
         }
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        people.count
         people.count
     }
 }
 
-extension ViewController: UITableViewDelegate{
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        100
+extension ViewController: UITableViewDelegate { }
+
+extension ViewController: RowRemoving {
+    func removeRow(at row: Int) {
+        people.remove(at: row)
     }
+}
+
+protocol RowRemoving {
+    func removeRow(at row: Int)
 }
