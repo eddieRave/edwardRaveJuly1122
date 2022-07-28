@@ -35,4 +35,10 @@ class ViewModel{
     func getcount() -> Int?{
         model?.count
     }
+    
+    // Created to delete a row
+    func removeCat(row: Int) {
+        model?.remove(at: row)
+    }
+    
 }

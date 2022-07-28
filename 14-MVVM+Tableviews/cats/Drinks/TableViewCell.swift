@@ -12,6 +12,13 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var catImage: UIImageView!
     
+    var rowRemovingDelegate: RowRemoving?
+    
+    // This is the action of the button that was created to delete a row
+    @IBAction func deleteRow(_ sender: Any) {
+        rowRemovingDelegate?.deleteCatPicture(row: self.tag)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

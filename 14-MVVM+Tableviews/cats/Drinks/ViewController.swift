@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableview: UITableView!
     
     let viewModel = ViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableview.dataSource = self
@@ -28,17 +29,26 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+
     
 }
 
 extension ViewController: UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = viewModel.getcount()
         return count ?? 0
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? TableViewCell{
+            
+            //-------Added stuff to delete row---------------------------
+            cell.tag = indexPath.row
+            cell.rowRemovingDelegate = self
+            //---------------------------------
+            
             cell.idLabel.text = viewModel.getId(for: indexPath.row) ?? "no id"
             if let url = viewModel.getImage(for: indexPath.row){
                 cell.catImage.fetchImage(for: url)
@@ -48,5 +58,18 @@ extension ViewController: UITableViewDataSource{
         
         return UITableViewCell()
     }
+    
+   
+    
+} // end of extension
+
+//---------- Stuff below created to delete row--------------
+extension ViewController: RowRemoving {
+    func deleteCatPicture(row: Int) {
+        viewModel.removeCat(row: row)
+    }
 }
 
+protocol RowRemoving {
+    func deleteCatPicture(row: Int)
+}
