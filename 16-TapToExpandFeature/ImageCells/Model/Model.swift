@@ -27,4 +27,5 @@ struct Album: Decodable {
     let imageUrl: String
     let releaseDate: String
     let urlStr: String
+
 }

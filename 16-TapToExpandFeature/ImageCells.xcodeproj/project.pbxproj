@@ -17,6 +17,7 @@
 		C95DBA812821658100FC8809 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95DBA802821658100FC8809 /* WebService.swift */; };
 		C95DBA842821698000FC8809 /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95DBA822821698000FC8809 /* AlbumCell.swift */; };
 		C95DBA852821698000FC8809 /* AlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C95DBA832821698000FC8809 /* AlbumCell.xib */; };
+		D0925C8B28935270004E2850 /* AlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0925C8A28935270004E2850 /* AlbumViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		C95DBA822821698000FC8809 /* AlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
 		C95DBA832821698000FC8809 /* AlbumCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumCell.xib; sourceTree = "<group>"; };
 		C9BB029E2822DE0F007769C4 /* TapToExpandOutline.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TapToExpandOutline.md; sourceTree = "<group>"; };
+		D0925C8A28935270004E2850 /* AlbumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 		C95DBA87282169A400FC8809 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D0925C8A28935270004E2850 /* AlbumViewModel.swift */,
 				C95DBA6D2821630800FC8809 /* ViewController.swift */,
 			);
 			path = Controller;
@@ -188,6 +191,7 @@
 				C95DBA6E2821630800FC8809 /* ViewController.swift in Sources */,
 				C95DBA6A2821630800FC8809 /* AppDelegate.swift in Sources */,
 				C95DBA6C2821630800FC8809 /* SceneDelegate.swift in Sources */,
+				D0925C8B28935270004E2850 /* AlbumViewModel.swift in Sources */,
 				C95DBA812821658100FC8809 /* WebService.swift in Sources */,
 				C95DBA7F2821647100FC8809 /* Model.swift in Sources */,
 				C95DBA842821698000FC8809 /* AlbumCell.swift in Sources */,
