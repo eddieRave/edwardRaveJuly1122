@@ -25,8 +25,23 @@ class MovieViewModel {
         }
     }
     
+    func fetchImgUrl(posterPath: String) -> String {
+        Network.shared.baseImgUrl + posterPath
+    }
+    
     func createCellVM(at index: Int) -> MovieCellViewModel {
         return MovieCellViewModel(movie: movies[index])
+    }
+    
+    func updateMovieInTable(index: Int, navCont: MovieDetailViewController) {
+        let movie = movies[index]   // MVVM
+        let posterPath = movie.poster_path ?? ""
+//        let imgUrl = Network.shared.baseImgUrl + posterPath     // MVC
+        let imgUrl = fetchImgUrl(posterPath: posterPath)     // MVVM
+        navCont.movieDetailVM.movieTitle = movie.original_title
+        navCont.movieDetailVM.releaseDate = movie.release_date
+        navCont.movieDetailVM.descriptionText = movie.overview
+        navCont.movieDetailVM.imgPath = imgUrl     // MVC
     }
     
 }

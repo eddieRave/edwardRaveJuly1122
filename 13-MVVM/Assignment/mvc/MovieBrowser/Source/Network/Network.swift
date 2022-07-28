@@ -45,7 +45,8 @@ class Network {
         
     }
     
-    func getImage(imageUrl: String, completion: @escaping (UIImage?) -> Void) {
+//    func getImage(imageUrl: String, completion: @escaping (UIImage?) -> Void) {   // MVC
+    func getImage(imageUrl: String, completionGI: @escaping (Data?) -> Void) {   // MVVM
         guard let url = URL(string: imageUrl) else {
             print("invalid url")
             return
@@ -64,11 +65,12 @@ class Network {
                 print("http status code error")
                 return
             }
-            if let image = UIImage(data: data) {
-                completion(image)
-            } else {
-                completion(nil)
-            }
+            completionGI(data)
+//            if let image = UIImage(data: data) {
+//                completion(image)
+//            } else {
+//                completion(nil)
+//            }     MVC
         }.resume()
     }
 }

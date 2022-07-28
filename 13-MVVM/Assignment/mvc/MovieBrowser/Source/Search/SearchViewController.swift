@@ -71,19 +71,17 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        #warning("Move model to ViewModel")
 //        let movie = movies[indexPath.row]   // MVC
-        let movie = movieVM.movies[indexPath.row]   // MVVM
-        let posterPath = movie.poster_path ?? ""
-        #warning("TODO: Move Network call to ViewModel?")
-        let imgUrl = Network().baseImgUrl + posterPath
+//        let posterPath = movie.poster_path ?? ""      // MVC
+//        let imgUrl = Network.shared.baseImgUrl + posterPath     // MVC
         let storyBoard : UIStoryboard = UIStoryboard(name: "MovieDetail", bundle:nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as! MovieDetailViewController
-        nextViewController.movieTitle = movie.original_title
-        nextViewController.releaseDate = movie.release_date
-        nextViewController.descriptionText = movie.overview
-        #warning("FIXME: ")
-        nextViewController.imgPath = imgUrl     // MVC
-
+//        nextViewController.movieDetailVM.movieTitle = movie.original_title     // MVC
+//        nextViewController.movieDetailVM.releaseDate = movie.release_date     // MVC
+//        nextViewController.movieDetailVM.descriptionText = movie.overview     // MVC
+//        nextViewController.movieDetailVM.imgPath = imgUrl     // MVC
+        movieVM.updateMovieInTable(index: indexPath.row, navCont: nextViewController)
         navigationController?.show(nextViewController, sender: nil)
     }
 }

@@ -10,16 +10,17 @@ import Foundation
 
 class MovieDetailViewModel {
     
+    var movieTitle: String = "no title"
+    var releaseDate: String = "no release date"
+    var descriptionText: String = "no description"
     var imgPath: String = ""
     
-    #warning("FIXME: ")
     // Create a function to fetch images
-    func getPoster() {
-        Network.shared.getImage(imageUrl: imgPath) { image in
-            DispatchQueue.main.async {
-                self.movieImg.image = image
-            }
-        }
+    func getPoster(completionGP: @escaping (Data?) -> Void) {
+        Network.shared.getImage(imageUrl: imgPath, completionGI: { data in
+            completionGP(data)
+         })
+//        Network.shared.getImage(imageUrl: imgPath, completionGI: completionGP)    // simplier way of doing the above
     }
     
 }

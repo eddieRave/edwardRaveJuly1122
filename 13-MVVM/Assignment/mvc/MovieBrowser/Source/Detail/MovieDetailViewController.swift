@@ -15,9 +15,9 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UITextView!
     @IBOutlet weak var movieImg: UIImageView!
     
-    var movieTitle: String = "no title"
-    var releaseDate: String = "no release date"
-    var descriptionText: String = "no description"
+//    var movieTitle: String = "no title"    // MVC
+//    var releaseDate: String = "no release date"    // MVC
+//    var descriptionText: String = "no description"    // MVC
 //    var imgPath: String = ""    // MVC
     
     var movieDetailVM = MovieDetailViewModel()   // MVVM
@@ -29,16 +29,23 @@ class MovieDetailViewController: UIViewController {
     }
     
     func configure() {
-        guard let date = formatDate(dateString: self.releaseDate, outFormat: "M/d/yy") else { return }
-        movieTitleLabel.text = self.movieTitle
+//        guard let date = formatDate(dateString: self.releaseDate, outFormat: "M/d/yy") else { return }      // MVC
+        guard let date = formatDate(dateString: self.movieDetailVM.releaseDate, outFormat: "M/d/yy") else { return } // MVVM
+//        movieTitleLabel.text = self.movieTitle      // MVC
+        movieTitleLabel.text = self.movieDetailVM.movieTitle    // MVVM
         releaseDateLabel.text = "Release Date: \(date)"
-        descriptionLabel.text = self.descriptionText
+//        descriptionLabel.text = self.descriptionText      // MVC
+        descriptionLabel.text = self.movieDetailVM.descriptionText      // MVVM
 //        getPoster()     // MVC
-        movieDetailVM.getPoster() // MVVM
+        movieDetailVM.getPoster(completionGP: { data in
+            DispatchQueue.main.async {
+                self.movieImg.image = UIImage(data: data!)
+            }
+        })      // MVVM
     }
     
 //    func getPoster() {
-//        Network().getImage(imageUrl: imgPath) { image in
+//       image in
 //            DispatchQueue.main.async {
 //                self.movieImg.image = image
 //            }
