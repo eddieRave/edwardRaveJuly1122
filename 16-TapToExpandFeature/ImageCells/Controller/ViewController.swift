@@ -55,10 +55,5 @@ extension ViewController: UITableViewDataSource {
         cell.configure(album: album)
         return cell
     }
-    
-    
 }
-
-
-extension UITableView: TableViewMoreInfoDelegate {}
 
