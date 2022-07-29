@@ -52,18 +52,12 @@ extension ViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         let album = albums[indexPath.row]
-        #warning("Problem #2 - Memory Leak:")
-//            - TableView holds strong references to cell
-//            - Cell holds strong reference back to TableView
-//            - Neither can be remove from memory even when the ViewController is gone
-//            - Make one reference `weak` or `unowned`
         cell.tableViewMoreInfoDelegate = tableView
         cell.configure(album: album)
         return cell
     }
-    
-    
 }
+
 extension UITableView: TableViewMoreInfoDelegate {
-    #warning("Add data from delegate here? (Problem #2)")
+    // Should this be empty?
 }
