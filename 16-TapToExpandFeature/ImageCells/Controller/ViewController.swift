@@ -49,17 +49,16 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = (tableView.dequeueReusableCell(withIdentifier: "AlbumCell") as? AlbumCell) else {
-            #warning("Problem #2 - Memory Leak:")
-//                - TableView holds strong references to cell
-//                - Cell holds strong reference back to TableView
-//                - Neither can be remove from memory even when the ViewController is gone
-//                - Make one reference `weak` or `unowned`
             return UITableViewCell()
         }
         let album = albums[indexPath.row]
+        #warning("Problem #2 - Memory Leak:")
+//            - TableView holds strong references to cell
+//            - Cell holds strong reference back to TableView
+//            - Neither can be remove from memory even when the ViewController is gone
+//            - Make one reference `weak` or `unowned`
         cell.tableViewMoreInfoDelegate = tableView
         cell.configure(album: album)
-        
         return cell
     }
     
