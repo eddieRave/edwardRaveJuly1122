@@ -15,6 +15,8 @@ class MovieCell: UITableViewCell {
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     
+    let viewModel = SearchViewModel()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -24,19 +26,19 @@ class MovieCell: UITableViewCell {
     }
     
     func configure(movie: Movie) {
-        guard let date = formatDate(dateString: movie.release_date, outFormat: "MMMM dd, yyyy") else { return }
+        guard let date = viewModel.formatDate(dateString: movie.release_date, outFormat: "MMMM dd, yyyy") else { return }
         movieTitleLabel.text = movie.original_title
         releaseDateLabel.text = date
         ratingLabel.text = String(movie.vote_average)
     }
     
-    func formatDate(dateString: String, inFormat: String = "yyyy/MM/dd", outFormat: String) -> String? {
-        let dateFormatter = DateFormatter.posixFormatter
-        dateFormatter.dateFormat = inFormat
-        guard let date = dateFormatter.date(from: dateString) else { return nil }
-        dateFormatter.dateFormat = outFormat
-        return dateFormatter.string(from: date)
-    }
+//    func formatDate(dateString: String, inFormat: String = "yyyy/MM/dd", outFormat: String) -> String? {
+//        let dateFormatter = DateFormatter.posixFormatter
+//        dateFormatter.dateFormat = inFormat
+//        guard let date = dateFormatter.date(from: dateString) else { return nil }
+//        dateFormatter.dateFormat = outFormat
+//        return dateFormatter.string(from: date)
+//    }
 }
 
 

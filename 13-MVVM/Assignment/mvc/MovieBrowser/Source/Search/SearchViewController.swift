@@ -14,16 +14,29 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchTxt: UISearchBar!
     @IBOutlet weak var moviesTableView: UITableView!
     
-    var movies: [Movie] = [] {
-        didSet {
-            DispatchQueue.main.sync {
-                moviesTableView.reloadData()
+    let viewModel = SearchViewModel()
+    let movieViewModel = MovieViewModel()
+    
+    //    var movies: [Movie] = [] {
+    //        didSet {
+    //            DispatchQueue.main.sync {
+    //                moviesTableView.reloadData()
+    //            }
+    //        }
+    //    }
+    
+    
+    func bindMovies() {
+        viewModel.update = {
+            DispatchQueue.main.async {
+                self.moviesTableView.reloadData()
             }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindMovies()
         let nib = UINib(nibName: "MovieCell", bundle: nil)
         moviesTableView.delegate = self
         moviesTableView.dataSource = self
@@ -40,38 +53,44 @@ class SearchViewController: UIViewController {
         }
         print(searchTerm)
         search(searchTerm: searchTerm)
-        }
-    
-    func search(searchTerm: String) {
-        Network().getMovies(searchTerm: searchTerm) { movies in
-            self.movies = movies
-        }
-        print("searched for movies")
     }
     
+    func search(searchTerm: String) {
+        //        Network().getMovies(searchTerm: searchTerm) { movies in
+        //            self.viewModel.movies = movies
+        //        }
+        //        print("searched for movies")
+        //    }
+        viewModel.getData(for: searchTerm) {}
+    }
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        return viewModel.getMovieCount()
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = moviesTableView.dequeueReusableCell(withIdentifier: "MovieCell") as! MovieCell
-        cell.configure(movie: movies[indexPath.row])
+        cell.configure(movie: viewModel.getMovieAtCell(at: indexPath.row))
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let movie = movies[indexPath.row]
+        let movie = viewModel.getMovieAtCell(at: indexPath.row)
         let posterPath = movie.poster_path ?? ""
         let imgUrl = Network().baseImgUrl + posterPath
         let storyBoard : UIStoryboard = UIStoryboard(name: "MovieDetail", bundle:nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as! MovieDetailViewController
+//        guard movie.original_title != nil else { return }
+//        guard movie.release_date != nil else { return }
+//        guard movie.overview != nil else { return }
+        nextViewController.movieTitleLabel.text = movie.original_title
+        nextViewController.releaseDateLabel.text = movie.release_date
+        nextViewController.descriptionLabel.text = movie.overview
+        movieViewModel.getImageData { image in
+            
+            nextViewController.movieImg.image = image
+        }
         
-        nextViewController.movieTitle = movie.original_title
-        nextViewController.releaseDate = movie.release_date
-        nextViewController.descriptionText = movie.overview
-        nextViewController.imgPath = imgUrl
-
         navigationController?.show(nextViewController, sender: nil)
     }
 }

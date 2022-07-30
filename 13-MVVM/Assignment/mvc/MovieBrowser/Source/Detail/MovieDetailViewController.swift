@@ -15,11 +15,13 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UITextView!
     @IBOutlet weak var movieImg: UIImageView!
     
-    var movieTitle: String = "no title"
-    var releaseDate: String = "no release date"
-    var descriptionText: String = "no description"
-    var imgPath: String = ""
+    let viewModel = MovieViewModel()
     
+//    var movieTitle: String = "no title"
+//    var releaseDate: String = "no release date"
+//    var descriptionText: String = "no description"
+//    var imgPath: String = ""
+//
     override func viewDidLoad() {
         super.viewDidLoad()
         movieImg.image = UIImage(named: "placeholder")
@@ -27,28 +29,34 @@ class MovieDetailViewController: UIViewController {
     }
     
     func configure() {
-        guard let date = formatDate(dateString: self.releaseDate, outFormat: "M/d/yy") else { return }
-        movieTitleLabel.text = self.movieTitle
+        guard let date = viewModel.formatDate(dateString: viewModel.releaseDate, outFormat: "M/d/yy") else { return }
+        movieTitleLabel.text = viewModel.movieTitle
         releaseDateLabel.text = "Release Date: \(date)"
-        descriptionLabel.text = self.descriptionText
+        descriptionLabel.text = viewModel.descriptionText
         getPoster()
     }
     
     func getPoster() {
-        Network().getImage(imageUrl: imgPath) { image in
-            DispatchQueue.main.async {
+        viewModel.getImageData { image in
+            
+            DispatchQueue.main.async{
                 self.movieImg.image = image
             }
         }
     }
+//        Network().getImage(imageUrl: imgPath) { image in
+//            DispatchQueue.main.async {
+//                self.movieImg.image = image
+//            }
+//        }
     
-    func formatDate(dateString: String, inFormat: String = "yyyy/MM/dd", outFormat: String) -> String? {
-        let dateFormatter = DateFormatter.posixFormatter
-        dateFormatter.dateFormat = inFormat
-        guard let date = dateFormatter.date(from: dateString) else { return nil }
-        dateFormatter.dateFormat = outFormat
-        return dateFormatter.string(from: date)
-    }
+//    func formatDate(dateString: String, inFormat: String = "yyyy/MM/dd", outFormat: String) -> String? {
+//        let dateFormatter = DateFormatter.posixFormatter
+//        dateFormatter.dateFormat = inFormat
+//        guard let date = dateFormatter.date(from: dateString) else { return nil }
+//        dateFormatter.dateFormat = outFormat
+//        return dateFormatter.string(from: date)
+//    }
 }
 
 
