@@ -12,13 +12,14 @@ var count = 0
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var albums: [Album] = [] {
-        didSet {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
+    
+    var albums: [ViewModel] = [] {
+           didSet {
+               DispatchQueue.main.async {
+                   self.tableView.reloadData()
+               }
+           }
+       }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +35,9 @@ class ViewController: UIViewController {
     }
     func getData() {
         ImageCache.shared.getAlbums { albums in
-            self.albums = albums
-        }
+                    self.albums = albums.map { album in
+                        ViewModel(album) }
+                }
     }
 }
 
@@ -50,6 +52,7 @@ extension ViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         let album = albums[indexPath.row]
+        cell.tag = indexPath.row
         cell.tableViewMoreInfoDelegate = tableView
         cell.configure(album: album)
         

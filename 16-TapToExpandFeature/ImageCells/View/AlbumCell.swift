@@ -18,13 +18,14 @@ class AlbumCell: UITableViewCell {
     @IBOutlet weak var albumName: UILabel!
     @IBOutlet weak var albumImage: UIImageView!
     @IBAction func handleMoreInfoTapped(_ sender: UIButton) {
-        artistname.isHidden = artistname.isHidden ? false : true
-        
-        tableViewMoreInfoDelegate?.beginUpdates()
-        tableViewMoreInfoDelegate?.endUpdates()
+               artistname.isHidden.toggle()
+               album?.detailsHidden.toggle()
+               tableViewMoreInfoDelegate?.beginUpdates()
+               tableViewMoreInfoDelegate?.endUpdates()
     }
     
     var tableViewMoreInfoDelegate: TableViewMoreInfoDelegate?
+    var album: ViewModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,10 +35,12 @@ class AlbumCell: UITableViewCell {
         print("cell deinit")
     }
     
-    func configure(album: Album) {
-        albumName.text = album.name
-        artistname.text = "\(album.artistName )\n" + "\(album.releaseDate)\n" + "\(album.urlStr)"
-        self.loadImage(imageUrl: album.imageUrl)
+    func configure(album: ViewModel) {
+        self.album = album
+                artistname.isHidden = album.detailsHidden
+                albumName.text = album.model.name
+                artistname.text = "\(album.model.artistName )\n" + "\(album.model.releaseDate)\n" + "\(album.model.urlStr)"
+                self.loadImage(imageUrl: album.model.imageUrl)
     }
     
     func loadImage(imageUrl: String) {
