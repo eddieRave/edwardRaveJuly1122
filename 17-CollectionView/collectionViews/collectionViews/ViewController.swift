@@ -7,40 +7,69 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+
+class ViewController: UIViewController, UICollectionViewDelegate {
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let colors: [UIColor] = [.blue, .cyan, .systemMint, .systemTeal, .systemPurple, .systemOrange, .systemRed, .green, .magenta, .systemIndigo,.blue, .cyan, .systemMint, .systemTeal, .systemPurple, .systemOrange, .systemRed, .green, .magenta, .systemIndigo,.blue, .cyan, .systemMint, .systemTeal, .systemPurple, .systemOrange, .systemRed, .green, .magenta, .systemIndigo,.blue, .cyan, .systemMint, .systemTeal, .systemPurple, .systemOrange, .systemRed, .green, .magenta, .systemIndigo,.blue, .cyan, .systemMint, .systemTeal, .systemPurple, .systemOrange, .systemRed, .green, .magenta, .systemIndigo,.blue, .cyan, .systemMint, .systemTeal, .systemPurple, .systemOrange, .systemRed, .green, .magenta, .systemIndigo,.blue, .cyan, .systemMint, .systemTeal, .systemPurple, .systemOrange, .systemRed, .green, .magenta, .systemIndigo,.blue, .cyan, .systemMint, .systemTeal, .systemPurple, .systemOrange, .systemRed, .green, .magenta, .systemIndigo]
+
     
-    
-    override func viewDidLoad() {
+
+//    func configureTable(){
+//        tableView.dataSource = self
+//        tableView.delegate = self
+//        let nib = UINib(nibName: "MyTableViewCell", bundle: nil)
+//        tableView.register(nib, forCellReuseIdentifier: "Cell")
+//
+//    }
+    func configureCollection(){
         super.viewDidLoad()
         let nib = UINib(nibName: "CollectionViewCell", bundle: nil)
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = .init(width: 100, height: 50)
         layout.minimumLineSpacing = 0
-//        layout.minimumInteritemSpacing = 20
-//        layout.
         
+        collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.register(nib, forCellWithReuseIdentifier: "cell")
         collectionView.collectionViewLayout = layout
-        collectionView.dataSource = self
-        
-        // Do any additional setup after loading the view.
+    }
+    
+    var vm : ViewModel? = nil
+    override func viewDidLoad() {
+        vm = ViewModel()
+//        layout.minimumInteritemSpacing = 20
+        configureCollection()
+//        vm?.getData{
+//            collectionView.reloadData()
+//        }
+        vm?.getData()
+        vm?.update = {
+            [unowned self] in
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+            
+        }
+       
     }
 }
 
 extension ViewController: UICollectionViewDataSource{
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = colors[indexPath.row]
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as?  CollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        if let url = vm?.getImage(for: indexPath.row){
+            cell.digimonImage.fetchImage(for: url)
+          }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        colors.count
+        vm?.getCount() ?? 0
     }
     
 }
