@@ -8,6 +8,10 @@
 import UIKit
 
 class DigimonCollectionViewCell: UICollectionViewCell {
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var imgLabel: UIImageView!
+    @IBOutlet weak var levelLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

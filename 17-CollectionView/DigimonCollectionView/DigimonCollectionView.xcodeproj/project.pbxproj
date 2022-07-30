@@ -167,9 +167,9 @@
 			children = (
 				0BDF6A3528958267007605CB /* DigimonViewController.swift */,
 				0BDF6A3728958267007605CB /* Main.storyboard */,
-				0BDF6A3C28958268007605CB /* LaunchScreen.storyboard */,
 				0BDF6A6C289583F6007605CB /* DigimonCollectionViewCell.swift */,
 				0BDF6A6D289583F6007605CB /* DigimonCollectionViewCell.xib */,
+				0BDF6A3C28958268007605CB /* LaunchScreen.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";

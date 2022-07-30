@@ -15,9 +15,9 @@ import Foundation
 
 struct Digimon: Decodable {
     
-    let name: String
-    let img: String
-    let level: String
+    let name: String?
+    let img: String?
+    let level: String?
     
 }
 
