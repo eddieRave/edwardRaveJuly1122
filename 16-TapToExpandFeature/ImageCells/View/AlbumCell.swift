@@ -30,10 +30,13 @@ import UIKit
     - Use StackView to easily hide/show label that will expand the stackView, which will expand the cell
  */
 
-#warning("Problem #4 - Cell Reuse")
-//    - when cells are reused, their expanded state is also reused
-//    - aka. artistName.isHidden stays the same when cell is reused
-//    - Fix this by not saving the isHidden state on the cell itself
+/*
+ (COMPLETED)
+ Problem #4 - Cell Reuse
+    - when cells are reused, their expanded state is also reused
+    - aka. artistName.isHidden stays the same when cell is reused
+    - Fix this by not saving the isHidden state on the cell itself
+ */
 
 protocol TableViewMoreInfoDelegate: AnyObject {
     func beginUpdates()
@@ -41,23 +44,26 @@ protocol TableViewMoreInfoDelegate: AnyObject {
 }
 
 class AlbumCell: UITableViewCell {
+    
+    var albumData: AlbumData?
+    // Solution to Problem #2 - Memory Leak
+    weak var tableViewMoreInfoDelegate: TableViewMoreInfoDelegate?
 
     @IBOutlet weak var artistname: UILabel!
     @IBOutlet weak var albumName: UILabel!
     @IBOutlet weak var albumImage: UIImageView!
     
     @IBAction func handleMoreInfoTapped(_ sender: UIButton) {
-        // Could this be rewritten as:
-            // artistname.isHidden.toggle()
-        artistname.isHidden = artistname.isHidden ? false : true
+        // Solution to Problem #4 - Cell Reuse
+            // also see viewModel and model
+        if let albumDataVM = albumData {
+            albumDataVM.expandIsHidden.toggle()
+            artistname.isHidden = albumDataVM.expandIsHidden
+        }
         
         tableViewMoreInfoDelegate?.beginUpdates()
         tableViewMoreInfoDelegate?.endUpdates()
     }
-    
-    // Solution to Problem #2 - Memory Leak
-    weak var tableViewMoreInfoDelegate: TableViewMoreInfoDelegate?
-//    var tableViewMoreInfoDelegate: TableViewMoreInfoDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -67,10 +73,12 @@ class AlbumCell: UITableViewCell {
         print("cell deinit")
     }
     
-    func configure(album: Album) {
-        albumName.text = album.name
+    func configure(album: AlbumData) {
+        albumData = album
+        albumName.text = album.albumName
         artistname.text = "\(album.artistName )\n" + "\(album.releaseDate)\n" + "\(album.urlStr)"
         self.loadImage(imageUrl: album.imageUrl)
+        artistname.isHidden = albumData?.expandIsHidden ?? true   // set to value in model, default to true if needed
     }
     
     func loadImage(imageUrl: String) {
@@ -80,8 +88,5 @@ class AlbumCell: UITableViewCell {
             }
         }
     }
-    
-    func toggleExpandIsHidden(index: Int) {
-        Album.expandIsHidden = Album[index].expandIsHidden ? false : true
-    }
+
 }

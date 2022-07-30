@@ -13,7 +13,9 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var albums: [Album] = [] {
+    // Pass in array of ViewModel instead of Album,
+        // the ViewModel will initilize an Album
+    var albumsArray: [AlbumData] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -35,23 +37,29 @@ class ViewController: UIViewController {
     
     func getData() {
         ImageCache.shared.getAlbums { albums in
-            self.albums = albums
+            // Unable to assign it like this:
+//            self.albumsArray = albums
+            // I get the following error: Cannot assign value of type '[Album]' to type '[AlbumData]'
+            
+            // Use .map to transform each albums type and create a new array
+            self.albumsArray = albums.map { album in
+                AlbumData(albumInit: album)
+            }
         }
     }
     
 }
 
-
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        albums.count
+        albumsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = (tableView.dequeueReusableCell(withIdentifier: "AlbumCell") as? AlbumCell) else {
             return UITableViewCell()
         }
-        let album = albums[indexPath.row]
+        let album = albumsArray[indexPath.row]
         cell.tableViewMoreInfoDelegate = tableView
         cell.configure(album: album)
         return cell

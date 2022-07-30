@@ -27,6 +27,6 @@ struct Album: Decodable {
     let imageUrl: String
     let releaseDate: String
     let urlStr: String
-    // Solution to Problem #4
-    let expandIsHidden: Bool = true
+    // Part of solution to Problem #4
+    var expandIsHidden: Bool = true
 }
