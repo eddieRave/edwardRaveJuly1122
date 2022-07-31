@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Breed View Controller-->
+        <scene sceneID="BIM-xS-Len">
+            <objects>
+                <viewController storyboardIdentifier="BreedViewController" id="zyE-fK-CH8" customClass="BreedViewController" customModule="CollectionViewAssignment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gNg-0M-e6t">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Dog Breed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbC-uj-1SU">
+                                <rect key="frame" x="48" y="74" width="318" height="51.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="43"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lZN-wK-KK6">
+                                <rect key="frame" x="0.0" y="165.5" width="414" height="696.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5RV-BO-kiD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lZN-wK-KK6" firstAttribute="leading" secondItem="5RV-BO-kiD" secondAttribute="leading" id="P2g-0Z-nnq"/>
+                            <constraint firstItem="lZN-wK-KK6" firstAttribute="top" secondItem="qbC-uj-1SU" secondAttribute="bottom" constant="40" id="Rqb-pg-JRY"/>
+                            <constraint firstItem="5RV-BO-kiD" firstAttribute="bottom" secondItem="lZN-wK-KK6" secondAttribute="bottom" id="SGS-TO-8nh"/>
+                            <constraint firstItem="qbC-uj-1SU" firstAttribute="centerX" secondItem="gNg-0M-e6t" secondAttribute="centerX" id="ZIo-P0-JMg"/>
+                            <constraint firstItem="5RV-BO-kiD" firstAttribute="trailing" secondItem="lZN-wK-KK6" secondAttribute="trailing" id="i0R-Vv-8wJ"/>
+                            <constraint firstItem="qbC-uj-1SU" firstAttribute="top" secondItem="5RV-BO-kiD" secondAttribute="top" constant="30" id="rHP-vH-lcy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="JKK-ph-UZ9"/>
+                    <connections>
+                        <outlet property="breedTableView" destination="lZN-wK-KK6" id="dWN-FQ-mu4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kSi-jz-nTr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1897.1014492753625" y="65.625"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
