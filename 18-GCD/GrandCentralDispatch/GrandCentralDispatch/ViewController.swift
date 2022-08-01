@@ -41,6 +41,7 @@ class ViewController: UIViewController {
     }
     
     lazy var username: String = usernameOutlet?.text ?? ""
+    lazy var loremIpsum: String = loremIpsumOutlet?.text ?? ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,14 +51,14 @@ class ViewController: UIViewController {
     // This code runs when the "createQrCodeAction" button is pressed,
     // navigating me from the input screen to the QR screen
     override func viewDidAppear(_ animated: Bool) {
+        let textForQR = self.username + " " + "said the following: " + self.loremIpsum
         DispatchQueue.main.async {
             self.updateCodeAsync()
-            let textForQR = self.username + (self.loremIpsumOutlet?.text ?? "")
             self.generatedQrLabel1?.image = self.generateQRcode(input: textForQR)
         }
         DispatchQueue.global().sync {
             updateCodeSync()
-            generatedQrLabel2?.image = generateQRcode(input: username)
+            generatedQrLabel2?.image = generateQRcode(input: textForQR)
         }
     }
     
@@ -76,6 +77,7 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let firstVC = segue.destination as? ViewController else { return }
         firstVC.username = usernameOutlet.text ?? ""
+        firstVC.loremIpsum = loremIpsumOutlet.text ?? "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."
     }
     
     func updateCodeAsync() {
