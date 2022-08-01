@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CollectionViewCell" customModule="ViewCollectionDigimon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="139" height="207"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="139" height="207"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TgB-z6-6MF">
+                        <rect key="frame" x="0.0" y="0.0" width="139" height="111"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MgU-zF-vbc">
+                        <rect key="frame" x="8" y="125" width="111" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="TgB-z6-6MF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="L1X-e8-ZTU"/>
+                <constraint firstAttribute="bottom" secondItem="TgB-z6-6MF" secondAttribute="bottom" constant="40" id="PH8-h9-8YS"/>
+                <constraint firstAttribute="trailing" secondItem="TgB-z6-6MF" secondAttribute="trailing" id="oXz-Db-XEY"/>
+                <constraint firstItem="TgB-z6-6MF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="pKV-xj-1bx"/>
+            </constraints>
+            <size key="customSize" width="139" height="207"/>
+            <connections>
+                <outlet property="digimonImage" destination="TgB-z6-6MF" id="o0l-AY-D97"/>
+                <outlet property="digimonName" destination="MgU-zF-vbc" id="U8Z-x6-S32"/>
+            </connections>
+            <point key="canvasLocation" x="200.72463768115944" y="143.63839285714286"/>
+        </collectionViewCell>
+    </objects>
+</document>
