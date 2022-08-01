@@ -9,20 +9,22 @@ import UIKit
 
 class Pokedex: UIViewController {
     
-    var vm = PokedexViewModel()
-
+    var vm: PokedexViewModel?
+    
     @IBOutlet weak var pokedex: UICollectionView!
+    @IBOutlet weak var loadScreen: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        vm = PokedexViewModel()
+        title = "Pokedex"
         
         configurePokedex()
         
-        vm.loadPokemonData {
-            self.vm.loadPokemonImage(for: $0) {
-                DispatchQueue.main.async {
-                    self.pokedex.reloadData()
-                }
+        vm?.loadPokemon {
+            DispatchQueue.main.async {
+                self.loadScreen.removeFromSuperview()
+                self.pokedex.reloadData()
             }
         }
     }
@@ -37,35 +39,45 @@ class Pokedex: UIViewController {
         let width = self.view.frame.width / 3
         layout.itemSize = CGSize(width: width, height: 200)
         
-        pokedex.register(nib, forCellWithReuseIdentifier: "PokedexEntry")
+        pokedex.register(nib, forCellWithReuseIdentifier: "PokedexEntryCell")
         pokedex.collectionViewLayout = layout
         pokedex.dataSource = self
+        pokedex.delegate = self
     }
 }
 
 extension Pokedex: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        vm.pokemonCount
+        vm?.pokemonCount ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cellVM = vm.getEntry(at: indexPath.row + vm.startID)else { return UICollectionViewCell() }
-        guard let entry = pokedex.dequeueReusableCell(withReuseIdentifier: "PokedexEntry", for: indexPath) as? PokedexEntryCell else { return UICollectionViewCell() }
+        guard let vm = vm else { return UICollectionViewCell() }
+        guard let cellVM = vm.getEntry(at: indexPath.row + 1) else { return UICollectionViewCell() }
+        guard let entry = pokedex.dequeueReusableCell(
+            withReuseIdentifier: "PokedexEntryCell", for: indexPath
+        ) as? PokedexEntryCell else { return PokedexEntryCell() }
+    
         entry.configure(for: cellVM)
         return entry
     }
-    
-    
 }
 
-//extension Pokedex: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let storyBoard: UIStoryboard = UIStoryboard(name: "PokemonDetail", bundle: nil)
-//        
-//        guard let detailVC = storyBoard.instantiateViewController(withIdentifier: "PokemonDetail") as? PokemonDetailViewController else { return }
-//        
-//        let detailVM = searchViewModel.getDetailVM(indexPath)
-//        nextViewController.configure(vm: detailVM)
-//        navigationController?.show(nextViewController, sender: nil)
-//    }
-//}
+extension Pokedex: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let vm = vm else { return }
+        let storyBoard: UIStoryboard = UIStoryboard(name: "PokemonDetail", bundle: nil)
+        
+        guard let detailVC = storyBoard.instantiateViewController(
+            withIdentifier: "PokemonDetail"
+        ) as? PokemonDetail else { return }
+        let detailVM = vm.getEntry(at: indexPath.row + 1)
+        
+        detailVC.vm = detailVM
+        detailVC.evolvableDelegate = vm
+        navigationController?.show(detailVC, sender: nil)
+    }
+}
+
+
+

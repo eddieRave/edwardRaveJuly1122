@@ -6,29 +6,52 @@
 //
 
 import Foundation
+import UIKit
 
 struct NetworkService {
-//    typealias Pokemon = PokemonList.Pokemon
     static var shared = NetworkService()
     private init() { }
     
-    private let pokemonAPI = "https://pokeapi.co/api/v2/pokemon/"
+    private let pokemonAPI = "https://pokeapi.co/api/v2/"
     private let pokemonImageURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/"
     
-    func fetchPokemonData(completionHandler: @escaping ([Pokemon]) -> Void) {
-        guard let url = URL(string: pokemonAPI) else { return }
+    func fetchPokemonData(for id: Int, completionHandler: @escaping (Pokemon) -> Void) {
+        guard let url = URL(string: pokemonAPI + "pokemon/" + String(id)) else { return }
         URLSession.shared.dataTask(with: url) { data, _, _ in
             guard let data = data else { return }
-            guard let pokemonList = try? JSONDecoder().decode(PokemonList.self, from: data) else { print("error"); return }
-            completionHandler(pokemonList.results)
+            guard let pokemon = try? JSONDecoder().decode(Pokemon.self, from: data) else { return }
+            completionHandler(pokemon)
         }.resume()
     }
     
-    func fetchPokemonImageData(for id: Int, completionHandler: @escaping (Data) -> Void) {
+    func fetchPokemonSpeciesData(for id: Int, completionHandler: @escaping (PokemonSpecies) -> Void) {
+        guard let url = URL(string: pokemonAPI + "pokemon-species/" + String(id)) else { return }
+        URLSession.shared.dataTask(with: url) { data, _, _ in
+            guard let data = data else { return }
+            guard let species = try? JSONDecoder().decode(PokemonSpecies.self, from: data) else { return }
+            completionHandler(species)
+        }.resume()
+    }
+    
+    func fetchEvolutionChainData(for id: Int, completionHandler: @escaping (EvolutionChain?) -> Void) {
+        guard let url = URL(string: pokemonAPI + "evolution-chain/" + String(id)) else { return }
+        URLSession.shared.dataTask(with: url) { data, _, _ in
+            do {
+                guard let data = data else { return }
+                let chain = try JSONDecoder().decode(EvolutionChain.self, from: data)
+                completionHandler(chain)
+            } catch {
+                completionHandler(nil)
+            }
+        }.resume()
+    }
+    
+    func fetchPokemonImageData(for id: Int, completionHandler: @escaping (UIImage) -> Void) {
         guard let url = URL(string: pokemonImageURL + String(id) + ".png") else { return }
         URLSession.shared.dataTask(with: url) { data, _, _ in
             guard let data = data else { return }
-            completionHandler(data)
+            guard let image = UIImage(data: data) else { return }
+            completionHandler(image)
 
         }.resume()
     }

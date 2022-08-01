@@ -13,8 +13,6 @@ class PokedexEntryCell: UICollectionViewCell {
 
     @IBOutlet weak var pokemon: UIImageView!
     
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,7 +20,7 @@ class PokedexEntryCell: UICollectionViewCell {
 
     func configure(for vm: PokemonViewModel) {
         nameLabel.text = vm.name
-        pokemon.image = UIImage(data: vm.imageData ?? Data()) ?? UIImage()
+        pokemon.image = vm.image
     }
     
 }
