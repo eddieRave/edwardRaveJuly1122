@@ -5,114 +5,110 @@
 //  Created by Rave Bizz on 8/1/22.
 //
 
+/**
+ ## GCD
+
+ ### DispatchQueue.main
+ - UI only
+ - serial Queue, FIFO
+ - only 1 main queue exists
+     
+ ### DispatchQueue.global()
+ - qos
+ - concurrent queue, enqueued tasks can finished in any order
+ - creating custom queues
+
+ ### Sync vs Async
+ - sync waits for the current execution until the sync code returns
+ - async code returns immediately after it enqueues the code to be executed, the code will be executed later
+
+ ### Dispatch Groups
+ - coordinating multiple async calls
+ */
+
 import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var generatedQrLabel1: UIImageView!
+    @IBOutlet weak var generatedQrLabel2: UIImageView!
+    @IBOutlet weak var loremIpsumOutlet: UITextView!
+    @IBOutlet weak var usernameOutlet: UITextField!
+    
+    @IBAction func createQrCodeAction(_ sender: UIButton) {
+//        let qr = generateQRcode(input: username)
+//        generatedQrLabel?.image = qr
+    }
+    
+    lazy var username: String = usernameOutlet?.text ?? ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        GCDdemo().demo()
-        // Do any additional setup after loading the view.
+        // Call functions here
     }
     
-    
-    class GCDdemo{
-        func demo(){
-          
-            
-
-            
-            
-            let _: [DispatchQoS.QoSClass] = [.userInteractive, .userInitiated, .background, .utility]
-            
-            DispatchQueue.global(qos: .userInteractive).async {
-                
-                print("userInteractive")
-            }
-            
-            DispatchQueue.global(qos: .userInitiated).async {
-                print("userInitiated")
-            }
-            
-            DispatchQueue.global(qos: .background).async {
-                print("background")
-            }
-            
-            DispatchQueue.global(qos: .utility).async {
-                print("utility")
-            }
-            //concurent means multiple tasks can bve excuted at once
-//            // serial =  one at a time
-//            let queue = DispatchQueue(label: "my queue", qos: .userInitiated, attributes: .concurrent)
-//            let queue1 = DispatchQueue(label: "my queue", qos: .userInitiated, attributes: .concurrent)
-//            let queue2 = DispatchQueue(label: "my queue", qos: .userInitiated, attributes: .concurrent)
-//
-            let dispatchGroup = DispatchGroup()
-             
-            /*
-            dispatchGroup.enter()
-             dispatchGroup.enter()
-             dispatchGroup.enter()
-             
-             callApi1(completion:{
-                dispatchGroup.leave()
-                })
-             
-              callApi1(completion:{
-                 dispatchGroup.leave()
-                 })
-             
-             
-              callApi1(completion:{
-                 dispatchGroup.leave()
-                 })
-             */
-            
-            //this excute closure inside the .notify method wont run until every enter has a leave called
-            dispatchGroup.notify(qos: .userInteractive, queue: .global(), execute: {
-                //save to core data
-            })
-            
-            dispatchGroup.notify(queue: .main, execute: {
-                //update ui
-            })
-            
-           let operationQueue = OperationQueue()
-            let operation = BlockOperation()
-            let operation1 = BlockOperation()
-            let operation2 = BlockOperation()
-            let delayedOperation = BlockOperation()
-            operation.addExecutionBlock {
-                //excute task
-            }
-            operation1.addExecutionBlock({
-                //excute
-            })
-            operationQueue.addOperation(operation)
-            operationQueue.addOperations([operation1, operation2], waitUntilFinished: true)
-            
-            if operation.isExecuting{
-                operation.cancel()
-            }
-            
-            if operation1.isFinished{
-                operation2.start()
-            }
-            operation.completionBlock = {
-                delayedOperation.cancel()
-            }
-            
-            operation1.addDependency(operation2)
-            
-            //race conditions tasks are excuting in an unpredictable manor
-            // | solutions
-            // V
-            // decouple task
-            // use a serial queue
-            
+    // This code runs when the "createQrCodeAction" button is pressed,
+    // navigating me from the input screen to the QR screen
+    override func viewDidAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.updateCodeAsync()
+            let textForQR = self.username + (self.loremIpsumOutlet?.text ?? "")
+            self.generatedQrLabel1?.image = self.generateQRcode(input: textForQR)
         }
-        
+        DispatchQueue.global().sync {
+            updateCodeSync()
+            generatedQrLabel2?.image = generateQRcode(input: username)
+        }
+    }
+    
+    func generateQRcode(input: String) -> UIImage? {
+        let data = input.data(using: String.Encoding.ascii)
+        if let qrFilter = CIFilter(name: "CIQRCodeGenerator") {
+            qrFilter.setValue(data, forKey: "inputMessage")
+            guard let qrImage = qrFilter.outputImage else {
+                return nil
+            }
+            return UIImage(ciImage: qrImage)
+        }
+        return nil
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let firstVC = segue.destination as? ViewController else { return }
+        firstVC.username = usernameOutlet.text ?? ""
+    }
+    
+    func updateCodeAsync() {
+        let startDate = Date()
+        print("start image processing")
+        print("finish image processing")
+        print("start image update")
+        printElapedTimeAsync(date: startDate)
+    }
+    
+    func printElapedTimeAsync(date: Date) {
+        let endTime = Date()
+        let elapsedTme = endTime.timeIntervalSince(date)
+        print("async elapsed time:", elapsedTme, "seconds")
+    }
+    
+    func updateCodeSync() {
+        let startDate = Date()
+        print("start image processing")
+        print("finish image processing")
+        print("start image update")
+        printElapedTimeSync(date: startDate)
+    }
+    
+    func printElapedTimeSync(date: Date) {
+        let endTime = Date()
+        let elapsedTme = endTime.timeIntervalSince(date)
+        print("sync elapsed time:", elapsedTme, "seconds")
+    }
+    
 }
 
+/**
+ Tutorial on generating QR codes:
+    - https://medium.com/codex/qr-codes-are-simple-in-swift-6d203ebc3f5b
+ */
