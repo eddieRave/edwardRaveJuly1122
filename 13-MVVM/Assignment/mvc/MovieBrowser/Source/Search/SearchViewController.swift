@@ -14,13 +14,13 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchTxt: UISearchBar!
     @IBOutlet weak var moviesTableView: UITableView!
     
-    var movies: [Movie] = [] {
-        didSet {
-            DispatchQueue.main.sync {
-                moviesTableView.reloadData()
-            }
-        }
-    }
+//    var movies: [Movie] = [] {
+//        didSet {
+//            DispatchQueue.main.sync {
+//                moviesTableView.reloadData()
+//            }
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,9 +43,9 @@ class SearchViewController: UIViewController {
         }
     
     func search(searchTerm: String) {
-        Network().getMovies(searchTerm: searchTerm) { movies in
-            self.movies = movies
-        }
+//        Network().getMovies(searchTerm: searchTerm) { movies in
+//            self.movies = movies
+//        }
         print("searched for movies")
     }
     
