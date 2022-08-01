@@ -10,9 +10,9 @@ import UIKit
 var count = 0
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
-    var albums: [Album] = [] {
+    var albums: [AlbumCellViewModel] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -28,34 +28,37 @@ class ViewController: UIViewController {
         getData()
         
     }
-
+    
     deinit {
         print("Music list VC deinit")
     }
     func getData() {
         ImageCache.shared.getAlbums { albums in
-            self.albums = albums
+            for album in albums {
+                self.albums.append(AlbumCellViewModel(album: album)) //Adds a new view model for each album to the array
+            }
         }
     }
 }
-
-
-extension ViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        albums.count
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = (tableView.dequeueReusableCell(withIdentifier: "AlbumCell") as? AlbumCell) else {
-            return UITableViewCell()
+    
+    extension ViewController: UITableViewDataSource {
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            albums.count
         }
-        let album = albums[indexPath.row]
-        cell.tableViewMoreInfoDelegate = tableView
-        cell.configure(album: album)
         
-        return cell
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            guard let cell = (tableView.dequeueReusableCell(withIdentifier: "AlbumCell") as? AlbumCell) else {
+                return UITableViewCell()
+            }
+            //let album = albums[indexPath.row]  this variable is just redundant and not needed for line 56
+            cell.tableViewMoreInfoDelegate = tableView
+            cell.configure(album: albums[indexPath.row])
+            
+            return cell
+        }
+        
+        
     }
-    
-    
-}
-extension UITableView: TableViewMoreInfoDelegate {}
+    extension UITableView: TableViewMoreInfoDelegate {}
+

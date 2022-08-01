@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C7E135F52897D5E5006C2CBC /* AlbumCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E135F42897D5E5006C2CBC /* AlbumCellViewModel.swift */; };
 		C95DBA6A2821630800FC8809 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95DBA692821630800FC8809 /* AppDelegate.swift */; };
 		C95DBA6C2821630800FC8809 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95DBA6B2821630800FC8809 /* SceneDelegate.swift */; };
 		C95DBA6E2821630800FC8809 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95DBA6D2821630800FC8809 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C7E135F42897D5E5006C2CBC /* AlbumCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCellViewModel.swift; sourceTree = "<group>"; };
 		C95DBA662821630800FC8809 /* ImageCells.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageCells.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C95DBA692821630800FC8809 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C95DBA6B2821630800FC8809 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +48,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C7E135F62897D5F0006C2CBC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C7E135F42897D5E5006C2CBC /* AlbumCellViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		C95DBA5D2821630800FC8809 = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +76,7 @@
 		C95DBA682821630800FC8809 /* ImageCells */ = {
 			isa = PBXGroup;
 			children = (
+				C7E135F62897D5F0006C2CBC /* ViewModel */,
 				C95DBA88282169AD00FC8809 /* Model */,
 				C95DBA862821699900FC8809 /* View */,
 				C95DBA87282169A400FC8809 /* Controller */,
@@ -185,6 +196,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7E135F52897D5E5006C2CBC /* AlbumCellViewModel.swift in Sources */,
 				C95DBA6E2821630800FC8809 /* ViewController.swift in Sources */,
 				C95DBA6A2821630800FC8809 /* AppDelegate.swift in Sources */,
 				C95DBA6C2821630800FC8809 /* SceneDelegate.swift in Sources */,
