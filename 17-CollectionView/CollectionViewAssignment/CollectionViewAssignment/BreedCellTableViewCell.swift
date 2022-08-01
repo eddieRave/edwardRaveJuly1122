@@ -17,6 +17,10 @@ class BreedCellTableViewCell: UITableViewCell {
     @IBAction func breedLabelButton(_ sender: UIButton) {
 
         delegate?.setBreed(for: breedLabel.currentTitle ?? "pug")
+        dismissDelegate?.navigationController?.popViewController(animated: true)
+//        inputViewController?.dismiss(animated: true)
+            
+        
     }
     
     override func awakeFromNib() {

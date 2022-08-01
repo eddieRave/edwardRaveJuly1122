@@ -20,8 +20,9 @@ class ViewModel {
         
         APIManager.shared.fetchBreeds { data in
             
-            self.breeds = Array(data.message.keys)
-//            print("TEST>>>>", self.breeds)
+            self.breeds = Array(data.message.keys.sorted())
+
+//                        print("TEST>>>>", self.breeds)
             completion()
         }
     }
@@ -32,11 +33,8 @@ class ViewModel {
             
             self.dogURLS = data.message
                 completion()
-            
-            
         }
 //            print("HERE>>>>", self.dogURLS.count)
-        
     }
     
     func getDogImages(completion: @escaping () -> Void) {
