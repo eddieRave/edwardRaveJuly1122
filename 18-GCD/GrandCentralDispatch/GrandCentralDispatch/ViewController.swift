@@ -51,7 +51,7 @@ class ViewController: UIViewController {
     // This code runs when the "createQrCodeAction" button is pressed,
     // navigating me from the input screen to the QR screen
     override func viewDidAppear(_ animated: Bool) {
-        let textForQR = self.username + " " + "said the following: " + self.loremIpsum
+        let textForQR = self.username + " said the following: " + self.loremIpsum
         DispatchQueue.main.async {
             self.updateCodeAsync()
             self.generatedQrLabel1?.image = self.generateQRcode(input: textForQR)
