@@ -113,4 +113,7 @@ class ViewController: UIViewController {
 /**
  Tutorial on generating QR codes:
     - https://medium.com/codex/qr-codes-are-simple-in-swift-6d203ebc3f5b
+ 
+ Tutorial on passing data via segue:
+    - https://medium.com/a-developer-in-making/how-to-pass-data-using-segue-and-unwind-in-swift-afaf241186fc
  */
