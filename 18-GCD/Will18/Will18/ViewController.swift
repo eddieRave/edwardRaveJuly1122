@@ -17,15 +17,11 @@ class ViewController: UIViewController {
     }
 
     @IBOutlet weak var QRImageView: UIImageView!
-    
     @IBOutlet weak var textFeild: UITextField!
-    
     @IBAction func updateText(_ sender: Any) {
         
     }
     override func viewDidAppear(_ animated: Bool) {
-        let QRimage = generateQRCode(from: inputText )
-        QRImageView?.image = QRimage
         updateCode()
     }
    lazy var inputText : String = textFeild?.text ?? "EMPTY"
@@ -38,7 +34,8 @@ class ViewController: UIViewController {
 
         if let filter = CIFilter(name: "CIQRCodeGenerator") {
             filter.setValue(data, forKey: "inputMessage")
-            let transform = CGAffineTransform(scaleX: 3, y: 3)
+            let transform = CGAffineTransform(scaleX: 1, y: 0.5
+            )
 
             if let output = filter.outputImage?.transformed(by: transform) {
                 return UIImage(ciImage: output)
@@ -46,15 +43,30 @@ class ViewController: UIViewController {
         }
         return nil
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let firstVC = segue.destination as? ViewController else { return }
         firstVC.inputText = textFeild.text ?? "problem"
     }
 
-    
+    func makeQRAsync(){
+        DispatchQueue.main.async { [self] in
+            let QRimage = generateQRCode(from: inputText )
+            QRImageView?.image = QRimage
+        }
+
+    }
+    func makeQRSync(){
+        DispatchQueue.global().sync {
+            let QRimage = generateQRCode(from: inputText )
+            QRImageView?.image = QRimage
+        }
+    }
     func updateCode() {
         let startDate = Date()
         print("start image processing")
+//        makeQRSync()
+        makeQRAsync()
         print("finish image processing")
         print("start image update")
         printElapsedTime (date: startDate)
