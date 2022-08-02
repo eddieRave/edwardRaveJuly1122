@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W87-y3-axv">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="ALI-Su-V47">
+            <objects>
+                <tabBarController id="W87-y3-axv" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="N40-Zi-leI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="ceQ-Vg-iVs"/>
+                        <segue destination="iCZ-LT-x0k" kind="relationship" relationship="viewControllers" id="9S1-si-BG3"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A9g-K7-LtX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="19" y="-663"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="QRCodeSB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" image="house" catalog="system" id="OSh-bd-lfR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-620" y="78"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="pvJ-pM-YtK">
+            <objects>
+                <viewController id="iCZ-LT-x0k" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ftB-Sw-gLf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEG-hV-dIW">
+                                <rect key="frame" x="132" y="410" width="150" height="37"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Start QR Flow">
+                                            <attributes>
+                                                <font key="NSFont" size="20" name="Helvetica"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="VPN-K5-9Pd" kind="show" id="Gm0-Gy-BwL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gGL-o5-hx6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="DEG-hV-dIW" firstAttribute="centerX" secondItem="gGL-o5-hx6" secondAttribute="centerX" id="GFy-VJ-Ctw"/>
+                            <constraint firstItem="DEG-hV-dIW" firstAttribute="centerY" secondItem="gGL-o5-hx6" secondAttribute="centerY" id="LtD-h5-wQP"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" image="person" catalog="system" id="Spw-KK-vBA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PNM-ub-tlO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="635" y="78"/>
+        </scene>
+        <!--Controller-->
+        <scene sceneID="fML-eY-fNw">
+            <objects>
+                <viewController id="MqZ-12-Me6" customClass="QRController" customModule="QRCodeSB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zIf-sY-PtZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter username and generate a QR code containing the username and the content of the textView below." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ww9-ad-SLB">
+                                <rect key="frame" x="20" y="56" width="384" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2nY-OQ-lZX">
+                                <rect key="frame" x="20" y="137" width="384" height="34"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNC-Ox-3qk">
+                                        <rect key="frame" x="0.0" y="0.0" width="91.5" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GQ1-yB-tQP">
+                                        <rect key="frame" x="91.5" y="0.0" width="292.5" height="34"/>
+                                        <attributedString key="attributedText"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpB-U0-yAk">
+                                <rect key="frame" x="20" y="191" width="384" height="167.5"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cilium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore u fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QRG-nW-M4d">
+                                <rect key="frame" x="91" y="378.5" width="232" height="37"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Create QR Code Async">
+                                            <attributes>
+                                                <font key="NSFont" size="20" name="Helvetica"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="3JX-zG-nfd" kind="show" id="b2g-Ax-aS1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b0O-iO-opJ">
+                                <rect key="frame" x="95.5" y="435.5" width="223" height="37"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Create QR Code Sync">
+                                            <attributes>
+                                                <font key="NSFont" size="20" name="Helvetica"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="3JX-zG-nfd" kind="show" id="rcP-IW-Lqo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LwK-cb-ta6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gpB-U0-yAk" firstAttribute="top" secondItem="2nY-OQ-lZX" secondAttribute="bottom" constant="20" id="285-6x-vRa"/>
+                            <constraint firstItem="2nY-OQ-lZX" firstAttribute="leading" secondItem="ww9-ad-SLB" secondAttribute="leading" id="6N5-jw-bxC"/>
+                            <constraint firstItem="2nY-OQ-lZX" firstAttribute="trailing" secondItem="ww9-ad-SLB" secondAttribute="trailing" id="7m4-5G-ogW"/>
+                            <constraint firstItem="ww9-ad-SLB" firstAttribute="leading" secondItem="LwK-cb-ta6" secondAttribute="leading" constant="20" id="9Qc-cw-CQi"/>
+                            <constraint firstItem="b0O-iO-opJ" firstAttribute="top" secondItem="QRG-nW-M4d" secondAttribute="bottom" constant="20" id="CoY-DC-Sgk"/>
+                            <constraint firstItem="QRG-nW-M4d" firstAttribute="top" secondItem="gpB-U0-yAk" secondAttribute="bottom" constant="20" id="Hc1-wo-BNc"/>
+                            <constraint firstItem="ww9-ad-SLB" firstAttribute="trailing" secondItem="LwK-cb-ta6" secondAttribute="trailing" constant="-10" id="LC0-bZ-Xpa"/>
+                            <constraint firstItem="gpB-U0-yAk" firstAttribute="leading" secondItem="2nY-OQ-lZX" secondAttribute="leading" id="MaP-bm-FNR"/>
+                            <constraint firstItem="gpB-U0-yAk" firstAttribute="trailing" secondItem="2nY-OQ-lZX" secondAttribute="trailing" id="Pij-4U-C2R"/>
+                            <constraint firstItem="QRG-nW-M4d" firstAttribute="centerX" secondItem="LwK-cb-ta6" secondAttribute="centerX" id="UHF-x0-y7b"/>
+                            <constraint firstItem="b0O-iO-opJ" firstAttribute="centerX" secondItem="LwK-cb-ta6" secondAttribute="centerX" id="fFP-Nx-88S"/>
+                            <constraint firstItem="ww9-ad-SLB" firstAttribute="top" secondItem="LwK-cb-ta6" secondAttribute="top" id="lky-5r-rrz"/>
+                            <constraint firstItem="2nY-OQ-lZX" firstAttribute="top" secondItem="ww9-ad-SLB" secondAttribute="bottom" constant="20" id="x2I-eR-pSE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="uJn-bc-Z5B"/>
+                    <connections>
+                        <outlet property="quoteLabel" destination="gpB-U0-yAk" id="Fsu-RN-lSp"/>
+                        <outlet property="usernameInput" destination="GQ1-yB-tQP" id="40n-kH-1P6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A00-hK-L7T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1539.1304347826087" y="728.57142857142856"/>
+        </scene>
+        <!--Image Controller-->
+        <scene sceneID="Ssj-Zz-N9t">
+            <objects>
+                <viewController id="3JX-zG-nfd" customClass="ImageController" customModule="QRCodeSB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cjT-7z-4nU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZGZ-NR-Urn">
+                                <rect key="frame" x="20" y="76" width="372.5" height="372.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ZGZ-NR-Urn" secondAttribute="height" multiplier="1:1" id="61o-e6-RBG"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zAk-RA-c3i"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZGZ-NR-Urn" firstAttribute="top" secondItem="zAk-RA-c3i" secondAttribute="top" constant="20" id="KbL-n3-4CE"/>
+                            <constraint firstItem="ZGZ-NR-Urn" firstAttribute="leading" secondItem="zAk-RA-c3i" secondAttribute="leading" constant="20" id="k5x-kg-VeC"/>
+                            <constraint firstItem="ZGZ-NR-Urn" firstAttribute="width" secondItem="cjT-7z-4nU" secondAttribute="width" multiplier="0.9" id="qh7-H6-PcK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="xqM-V5-md6"/>
+                    <connections>
+                        <outlet property="qrCode" destination="ZGZ-NR-Urn" id="Z3h-5I-rKN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qIo-SA-u5H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2267" y="729"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="suJ-0g-e6v">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VPN-K5-9Pd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="WZk-iK-abi"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZrV-nv-VvK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MqZ-12-Me6" kind="relationship" relationship="rootViewController" id="XAs-aM-qqH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fPu-TK-bml" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="628.98550724637687" y="728.57142857142856"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="rcP-IW-Lqo"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <image name="house" catalog="system" width="128" height="106"/>
+        <image name="person" catalog="system" width="128" height="117"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
