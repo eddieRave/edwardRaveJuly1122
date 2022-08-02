@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Account-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="da6-me-bEX">
+                                <rect key="frame" x="135" y="429" width="144.5" height="38"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Start QR Flow">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="i7q-mC-sHU" kind="show" id="jyX-nt-0yt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="da6-me-bEX" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="3gg-nS-TYw"/>
+                            <constraint firstItem="da6-me-bEX" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="ich-gp-8G4"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Account" image="person" catalog="system" id="VQ6-bb-VVy"/>
+                    <navigationItem key="navigationItem" id="lnT-HU-pvU"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="944.92753623188412" y="97.767857142857139"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="rjY-wr-qTg">
+            <objects>
+                <viewController id="SOl-0F-guD" customClass="ViewController" customModule="QRCode" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="33Q-cB-bRg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAB-ee-e6x">
+                                <rect key="frame" x="10" y="106" width="95.5" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I9q-mv-mpp">
+                                <rect key="frame" x="115.5" y="106" width="288.5" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4X9-6e-kNG">
+                                <rect key="frame" x="10" y="160" width="394" height="226.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Az1-eU-nTU">
+                                <rect key="frame" x="124" y="396.5" width="166.5" height="38"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Create QR Code">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="qwV-Bo-y55" kind="show" id="c35-FF-DQV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RvC-wd-yrR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RvC-wd-yrR" firstAttribute="trailing" secondItem="4X9-6e-kNG" secondAttribute="trailing" constant="10" id="6dH-IY-b3y"/>
+                            <constraint firstItem="RvC-wd-yrR" firstAttribute="trailing" secondItem="I9q-mv-mpp" secondAttribute="trailing" constant="10" id="7fD-Iw-Ux2"/>
+                            <constraint firstItem="Az1-eU-nTU" firstAttribute="centerX" secondItem="33Q-cB-bRg" secondAttribute="centerX" id="AJ5-3A-ths"/>
+                            <constraint firstItem="pAB-ee-e6x" firstAttribute="height" secondItem="I9q-mv-mpp" secondAttribute="height" id="CuC-dM-ls6"/>
+                            <constraint firstItem="Az1-eU-nTU" firstAttribute="top" secondItem="4X9-6e-kNG" secondAttribute="bottom" constant="10" id="EvG-Wn-ByN"/>
+                            <constraint firstItem="pAB-ee-e6x" firstAttribute="leading" secondItem="RvC-wd-yrR" secondAttribute="leading" constant="10" id="G3o-fF-U8Q"/>
+                            <constraint firstItem="I9q-mv-mpp" firstAttribute="leading" secondItem="pAB-ee-e6x" secondAttribute="trailing" constant="10" id="Nw1-zZ-0X9"/>
+                            <constraint firstItem="4X9-6e-kNG" firstAttribute="top" secondItem="pAB-ee-e6x" secondAttribute="bottom" constant="20" id="cfA-Ys-fIN"/>
+                            <constraint firstItem="I9q-mv-mpp" firstAttribute="top" secondItem="RvC-wd-yrR" secondAttribute="top" constant="50" id="mU5-gT-YSn"/>
+                            <constraint firstItem="pAB-ee-e6x" firstAttribute="top" secondItem="RvC-wd-yrR" secondAttribute="top" constant="50" id="pkA-4m-dN0"/>
+                            <constraint firstItem="4X9-6e-kNG" firstAttribute="leading" secondItem="RvC-wd-yrR" secondAttribute="leading" constant="10" id="y0l-E5-5nr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="emy-IA-kBr"/>
+                    <connections>
+                        <outlet property="textView" destination="4X9-6e-kNG" id="2o4-di-S0Z"/>
+                        <outlet property="username" destination="I9q-mv-mpp" id="uqD-vU-r11"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nci-Ig-mxh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2570" y="98"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="5kL-5T-Lf6">
+            <objects>
+                <viewController id="qwV-Bo-y55" customClass="QRViewController" customModule="QRCode" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="X47-Ys-Ps5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Vb-CI-T2Y">
+                                <rect key="frame" x="10" y="106" width="394" height="394"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4Vb-CI-T2Y" secondAttribute="height" multiplier="1:1" id="elL-mX-ZGS"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fEX-JI-bpc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4Vb-CI-T2Y" firstAttribute="top" secondItem="fEX-JI-bpc" secondAttribute="top" constant="50" id="W1p-qX-M6E"/>
+                            <constraint firstItem="fEX-JI-bpc" firstAttribute="trailing" secondItem="4Vb-CI-T2Y" secondAttribute="trailing" constant="10" id="lEs-sn-Dwe"/>
+                            <constraint firstItem="4Vb-CI-T2Y" firstAttribute="leading" secondItem="fEX-JI-bpc" secondAttribute="leading" constant="10" id="qWx-1f-XPh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="XdO-4o-Xzn"/>
+                    <connections>
+                        <outlet property="qrImage" destination="4Vb-CI-T2Y" id="H3d-Ny-fFp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vVE-b9-7zC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3328" y="94"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5KF-wR-jbt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="i7q-mC-sHU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="ucq-QY-a3b"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Dn4-Ux-oeZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="SOl-0F-guD" kind="relationship" relationship="rootViewController" id="QIG-No-bJc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Abq-yp-azL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1761" y="98"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="person" catalog="system" width="128" height="117"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
