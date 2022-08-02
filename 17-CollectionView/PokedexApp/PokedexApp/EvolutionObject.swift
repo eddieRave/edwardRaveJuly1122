@@ -1,5 +1,5 @@
 //
-//  EvolutionChain.swift
+//  EvolutionObject.swift
 //  PokedexApp
 //
 //  Created by Kevin McKenney on 7/31/22.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct EvolutionChain: Codable {
+struct EvolutionObject: Codable {
     let chain: Chain
     
     struct Chain: Codable {

@@ -19,10 +19,10 @@
 		D018467C289461E200456471 /* PokedexEntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D018467A289461E200456471 /* PokedexEntryCell.xib */; };
 		D018467E28953A2400456471 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D018467D28953A2400456471 /* Pokemon.swift */; };
 		D01846802895435800456471 /* PokemonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D018467F2895435800456471 /* PokemonViewModel.swift */; };
-		D01846942895C6C100456471 /* PokemonDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D01846932895C6C100456471 /* PokemonDetail.storyboard */; };
 		D01846962895C6EA00456471 /* PokemonDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01846952895C6EA00456471 /* PokemonDetail.swift */; };
+		D09CBFAA2899678D004E35EA /* PokemonDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D09CBFA92899678D004E35EA /* PokemonDetail.storyboard */; };
 		D0B2CEBF2896E723006CBA37 /* PokemonSpecies.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B2CEBE2896E723006CBA37 /* PokemonSpecies.swift */; };
-		D0B2CEC128973580006CBA37 /* EvolutionChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B2CEC028973580006CBA37 /* EvolutionChain.swift */; };
+		D0B2CEC128973580006CBA37 /* EvolutionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B2CEC028973580006CBA37 /* EvolutionObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,10 +40,10 @@
 		D018467A289461E200456471 /* PokedexEntryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokedexEntryCell.xib; sourceTree = "<group>"; };
 		D018467D28953A2400456471 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		D018467F2895435800456471 /* PokemonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonViewModel.swift; sourceTree = "<group>"; };
-		D01846932895C6C100456471 /* PokemonDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PokemonDetail.storyboard; sourceTree = "<group>"; };
 		D01846952895C6EA00456471 /* PokemonDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetail.swift; sourceTree = "<group>"; };
+		D09CBFA92899678D004E35EA /* PokemonDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PokemonDetail.storyboard; sourceTree = "<group>"; };
 		D0B2CEBE2896E723006CBA37 /* PokemonSpecies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSpecies.swift; sourceTree = "<group>"; };
-		D0B2CEC028973580006CBA37 /* EvolutionChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionChain.swift; sourceTree = "<group>"; };
+		D0B2CEC028973580006CBA37 /* EvolutionObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +114,7 @@
 				D0184679289461E200456471 /* PokedexEntryCell.swift */,
 				D018467A289461E200456471 /* PokedexEntryCell.xib */,
 				D01846952895C6EA00456471 /* PokemonDetail.swift */,
-				D01846932895C6C100456471 /* PokemonDetail.storyboard */,
+				D09CBFA92899678D004E35EA /* PokemonDetail.storyboard */,
 			);
 			name = Pokemon;
 			sourceTree = "<group>";
@@ -132,7 +132,7 @@
 			children = (
 				D018467D28953A2400456471 /* Pokemon.swift */,
 				D0B2CEBE2896E723006CBA37 /* PokemonSpecies.swift */,
-				D0B2CEC028973580006CBA37 /* EvolutionChain.swift */,
+				D0B2CEC028973580006CBA37 /* EvolutionObject.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -196,9 +196,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D018466E2894527C00456471 /* LaunchScreen.storyboard in Resources */,
-				D01846942895C6C100456471 /* PokemonDetail.storyboard in Resources */,
 				D018466B2894527C00456471 /* Assets.xcassets in Resources */,
 				D018467C289461E200456471 /* PokedexEntryCell.xib in Resources */,
+				D09CBFAA2899678D004E35EA /* PokemonDetail.storyboard in Resources */,
 				D01846692894527B00456471 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,7 +219,7 @@
 				D01846802895435800456471 /* PokemonViewModel.swift in Sources */,
 				D01846642894527B00456471 /* SceneDelegate.swift in Sources */,
 				D0B2CEBF2896E723006CBA37 /* PokemonSpecies.swift in Sources */,
-				D0B2CEC128973580006CBA37 /* EvolutionChain.swift in Sources */,
+				D0B2CEC128973580006CBA37 /* EvolutionObject.swift in Sources */,
 				D01846962895C6EA00456471 /* PokemonDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,6 +367,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HW6CWN774D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PokedexApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -394,6 +395,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HW6CWN774D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PokedexApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

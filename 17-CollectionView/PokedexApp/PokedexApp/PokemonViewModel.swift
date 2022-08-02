@@ -35,6 +35,7 @@ class PokemonViewModel {
     }
     
     var predecessor: String? { species?.predecessor?.name }
+    var successors: [String]?
     
     init(_ pokemon: Pokemon) { self.data = pokemon }
     

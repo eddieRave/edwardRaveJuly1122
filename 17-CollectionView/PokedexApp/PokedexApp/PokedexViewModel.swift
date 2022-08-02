@@ -12,27 +12,18 @@ class PokedexViewModel {
     private var imageGroup = DispatchGroup()
     
     private var pokemonList: [Int: PokemonViewModel] = [:]
-    private var chainObjectList: [Int: EvolutionChain] = [:]
-    private var chainList: [Int: [String]] = [:]
+    private var chainList: [Int: EvolutionObject] = [:]
     
-    let totalPokemon = 200
+    let totalPokemon = 600
     let totalChains = 257
     
     var pokemonCount: Int { pokemonList.count }
     
     func loadPokemon(completionHandler: @escaping () -> Void) {
-        for chainID in 1...totalChains {
-            self.chainGroup.enter()
-
-            NetworkService.shared.fetchEvolutionChainData(for: chainID) { evolutionChain in
-                guard let evolutionChain = evolutionChain else { self.chainGroup.leave(); return }
-                self.chainObjectList.updateValue(evolutionChain, forKey: chainID)
-                self.chainGroup.leave()
-            }
-        }
         
         for id in 1...totalPokemon {
             self.imageGroup.enter()
+            self.chainGroup.enter()
             
             NetworkService.shared.fetchPokemonData(for: id) { pokemon in
                 self.pokemonList.updateValue(PokemonViewModel(pokemon), forKey: pokemon.id)
@@ -44,10 +35,20 @@ class PokedexViewModel {
                 NetworkService.shared.fetchPokemonImageData(for: id) { image in
                     self.pokemonList[id]?.image = image
                     self.imageGroup.leave()
+                    self.chainGroup.leave()
                 }
             }
         }
-        chainGroup.notify(queue: .global()) { self.formatEvolution() }
+        for chainID in 1...totalChains {
+            self.chainGroup.enter()
+            
+            NetworkService.shared.fetchEvolutionChainData(for: chainID) { evolutionChain in
+                guard let evolutionChain = evolutionChain else { self.chainGroup.leave(); return }
+                self.chainList.updateValue(evolutionChain, forKey: chainID)
+                self.chainGroup.leave()
+            }
+        }
+        chainGroup.notify(queue: .global()) { self.assignSuccessors() }
         imageGroup.notify(queue: .global()) { completionHandler() }
     }
     
@@ -61,49 +62,41 @@ class PokedexViewModel {
         return pokemonList[index]
     }
     
-    private func formatEvolution() {
-        print("test3")
-        chainObjectList.forEach {
-            chainList.updateValue([], forKey: $0.key)
+    private func assignSuccessors() {
+        pokemonList.forEach { pokemon in
+            guard let chain = chainList[pokemon.value.evolutionChainID]?.chain else { return }
+            guard let evolvesTo = chain.evolvesTo else { return }
+            let name = pokemon.value.name.lowercased()
+            let seconds = evolvesTo.map({ $0.second.name })
             
-            let chain = $0.value.chain
-            chainList[$0.key]?.append(chain.first.name)
-            
-            if chain.evolvesTo?.count ?? 0 >= 1 {
-                
-                guard let second = chain.evolvesTo?[0].second.name else {return}
-                chainList[$0.key]?.append(second)
-                
-                if chain.evolvesTo?[0].evolvesToAgain?.count ?? 0 >= 1 {
-                    
-                    guard let third = chain.evolvesTo?[0].evolvesToAgain?[0].third.name else {return}
-                    chainList[$0.key]?.append(third)
-                }
+            if name == chain.first.name {
+                pokemon.value.successors = seconds
+            } else if seconds.contains(name) {
+                guard let index = seconds.firstIndex(of: name) else { return }
+                guard let evolvesToAgain = evolvesTo[index].evolvesToAgain else { return }
+                pokemon.value.successors = evolvesToAgain.map({ $0.third.name })
             }
         }
     }
 }
 
 extension PokedexViewModel: Evolvable {
-    func evolve(_ pokemon: String, in chainID: Int) -> PokemonViewModel? {
-        guard let chain = chainList[chainID] else { return nil }
-        guard let index = chain.firstIndex(where: { $0 == pokemon.lowercased() }) else { return nil }
-
-        if chain.count > index + 1 {
-            let successor = chain[index + 1]
-            guard let successorID = getPokemonID(of: successor) else { return nil }
-            return pokemonList[successorID]
-        }
-        else { return nil }
+    func evolve(to successors: [String]) -> [PokemonViewModel]? {
+        let successorIDs = successors.map { getPokemonID(of: $0) }
+        let successorModels = pokemonList
+            .filter({ pokemon in successorIDs.contains { $0 == pokemon.key } })
+            .map({ $0.value })
+        
+        return successorModels
     }
     
-    func devolve(to predecessor: String, in chainID: Int) -> PokemonViewModel? {
+    func devolve(to predecessor: String) -> PokemonViewModel? {
         guard let predecessorID = getPokemonID(of: predecessor) else { return nil }
         return pokemonList[predecessorID]
     }
 }
 protocol Evolvable {
-    func evolve(_ pokemon: String, in chainID: Int) -> PokemonViewModel?
+    func evolve(to successors: [String]) -> [PokemonViewModel]?
     
-    func devolve(to pokemon: String, in chainID: Int) -> PokemonViewModel?
+    func devolve(to predecessor: String) -> PokemonViewModel?
 }

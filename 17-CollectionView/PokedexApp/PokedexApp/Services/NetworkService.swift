@@ -33,12 +33,12 @@ struct NetworkService {
         }.resume()
     }
     
-    func fetchEvolutionChainData(for id: Int, completionHandler: @escaping (EvolutionChain?) -> Void) {
+    func fetchEvolutionChainData(for id: Int, completionHandler: @escaping (EvolutionObject?) -> Void) {
         guard let url = URL(string: pokemonAPI + "evolution-chain/" + String(id)) else { return }
         URLSession.shared.dataTask(with: url) { data, _, _ in
             do {
                 guard let data = data else { return }
-                let chain = try JSONDecoder().decode(EvolutionChain.self, from: data)
+                let chain = try JSONDecoder().decode(EvolutionObject.self, from: data)
                 completionHandler(chain)
             } catch {
                 completionHandler(nil)
