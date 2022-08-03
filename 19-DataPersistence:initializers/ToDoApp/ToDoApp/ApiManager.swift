@@ -19,7 +19,7 @@ class ApiManager {
         
         let task = URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
             if let data = data {
-//                print("|||||||| Data is called in URLSession ||||||||||", data)
+//                print("|||||||| Data is called in URLSession", data)
                 do {
                     let  model = try JSONDecoder().decode(Task.self, from: data)
                     completion(model)

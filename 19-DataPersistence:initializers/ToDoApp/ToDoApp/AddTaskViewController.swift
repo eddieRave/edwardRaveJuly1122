@@ -21,23 +21,7 @@ class AddTaskViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if darkModeIsActive {
-            view.backgroundColor = .black
-            view.tintColor = .white
-            view.subviews.forEach { (view) in   
-                 if let label = view as? UILabel {
-                      label.textColor = .white
-                 }
-            }
-        } else {
-            view.backgroundColor = .white
-            view.tintColor = .black
-            view.subviews.forEach { (view) in
-                 if let label = view as? UILabel {
-                      label.textColor = .black
-                 }
-            }
-        }
+        updateDarkMode()
     }
     
     @IBAction func addTaskToList(_ sender: UIButton) {
@@ -51,11 +35,30 @@ class AddTaskViewController: UIViewController {
     
     func fetchTask() {
         ApiManager.shared.fetchData() { data in
-//            print("|||||||| Data is called in fetchTask() ||||||||||", data)
             if let taskText = data.value {
                 DispatchQueue.main.async {
                     self.apiTask.text = taskText
                 }
+            }
+        }
+    }
+    
+    func updateDarkMode() {
+        if darkModeIsActive {
+            view.backgroundColor = .black
+            view.tintColor = .white
+            view.subviews.forEach { (view) in
+                 if let label = view as? UILabel {
+                      label.textColor = .white
+                 }
+            }
+        } else {
+            view.backgroundColor = .white
+            view.tintColor = .black
+            view.subviews.forEach { (view) in
+                 if let label = view as? UILabel {
+                      label.textColor = .black
+                 }
             }
         }
     }
