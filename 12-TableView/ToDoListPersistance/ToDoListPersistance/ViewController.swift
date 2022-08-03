@@ -19,7 +19,6 @@ class ViewController: UIViewController, UITableViewDataSource {
         
         if viewModel.darkMode == true {
             
-            
             darkModeButtonOutlet.setTitle("🌕", for: .normal)
             tableView.backgroundColor = UIColor .black
             viewModel.darkMode = false
@@ -68,8 +67,8 @@ class ViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       viewModel.getDefaults()
-//        viewModel.
+        viewModel.getDefaultsForDarkMode()
+        viewModel.getToDos()
         
         viewModel.update = {
             DispatchQueue.main.async {

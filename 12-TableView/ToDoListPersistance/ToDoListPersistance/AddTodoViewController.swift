@@ -9,9 +9,13 @@ import UIKit
 
 class AddTodoViewController: UIViewController {
 
-//    let viewModel = ViewModel()
+
     var delegate: Addable?
     
+    @IBAction func generateButton(_ sender: UIButton) {
+        
+        delegate?.generateToDo()
+    }
     @IBOutlet weak var toDoTextField: UITextField!
     @IBAction func submitToDoButton(_ sender: UIButton) {
         
