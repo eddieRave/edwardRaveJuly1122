@@ -94,7 +94,7 @@ class ViewController: UIViewController, DidSetTasksDelegate {
         print("|||||| GET: UserDefaults has a dark mode value of: \(String(darkModeIsActive).uppercased())")
     }
     
-    // TODO: Persist tasks cells data using FileManager
+    // TODO: Persist tasks data using FileManager
     func saveFile(){
         let cacheDirectory = FileManager.SearchPathDirectory.cachesDirectory
         let folderURLs = FileManager.default.urls(for: cacheDirectory, in: .userDomainMask)
