@@ -32,6 +32,7 @@ class ViewController: UIViewController, DidSetTasksDelegate {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
+            saveFile()
         }
     }
     
@@ -94,7 +95,7 @@ class ViewController: UIViewController, DidSetTasksDelegate {
         print("|||||| GET: UserDefaults has a dark mode value of: \(String(darkModeIsActive).uppercased())")
     }
     
-    // TODO: Persist tasks data using FileManager
+    // Persist tasks data using FileManager
     func saveFile(){
         let cacheDirectory = FileManager.SearchPathDirectory.cachesDirectory
         let folderURLs = FileManager.default.urls(for: cacheDirectory, in: .userDomainMask)
@@ -103,17 +104,19 @@ class ViewController: UIViewController, DidSetTasksDelegate {
             return
         }
         try? data.write(to: fileURL, options: .atomicWrite)
+        print("|||||| SAVE: saved the following data to the FileManager: \(data)")
     }
     func accessFile() {
         let cacheDirectory = FileManager.SearchPathDirectory.cachesDirectory
         let folderURLs = FileManager.default.urls(for: cacheDirectory, in: .userDomainMask)
         guard let fileURL = folderURLs.first?.appendingPathComponent("tasks") else { fatalError() }
         guard let data = FileManager.default.contents(atPath: fileURL.path) else {
-            fatalError()
+            return
         }
-        if let decodedTask = try? JSONDecoder().decode(Task.self, from: data) {
-            print(decodedTask)
+        if let decodedTask = try? JSONDecoder().decode([Task].self, from: data) {
+            tasks = decodedTask
         }
+        print("|||||| ACCESS: Accessed the following data to the FileManager: \(data)")
     }
 
 }

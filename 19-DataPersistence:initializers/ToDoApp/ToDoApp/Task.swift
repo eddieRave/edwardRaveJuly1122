@@ -32,9 +32,6 @@ struct Task: Codable {
  */
 
 
-//struct Task: Decodable {
-//    let value: String?
-//}
 /*
  MARK: url = https://api.chucknorris.io/jokes/random
  {
@@ -47,6 +44,9 @@ struct Task: Codable {
    "value": "A man once asked Chuck Norris, \"what happens when an unstoppable force meets and immovable object?\" Chuck Norris answered the question by punching himself in the face."
  }
  */
+//struct Task: Decodable {
+//    let value: String?
+//}
 
 
 // MARK: original
