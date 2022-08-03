@@ -29,7 +29,6 @@ class ViewController: UIViewController, DidSetTasksDelegate {
     
     @IBAction func triggerDarkMode(_ sender: UIButton) {
         toggleDarkMode()
-        checkDarkMode()
     }
     
     var tasks = [Task]() {
@@ -44,6 +43,7 @@ class ViewController: UIViewController, DidSetTasksDelegate {
         super.viewDidLoad()
         configureTable()
         getDefaults()
+        checkDarkMode()
     }
     
     func addedNewTask(task: Task) {
@@ -58,52 +58,39 @@ class ViewController: UIViewController, DidSetTasksDelegate {
     }
     
     func checkDarkMode() {
-        print("|||||| CHECK: Dark Mode is currently set to \(darkModeIsActive)")
-        if !darkModeIsActive {
+        print("|||||| CHECK: Dark Mode is currently set to \(String(darkModeIsActive).uppercased())")
+        if darkModeIsActive == true {
             view.backgroundColor = .black
             view.tintColor = .white
             tableView.backgroundColor = .black
             tableView.tintColor = .white
-            darkModeIsActive.toggle()
         } else {
             view.backgroundColor = .white
             view.tintColor = .black
             tableView.backgroundColor = .white
             tableView.tintColor = .black
-            darkModeIsActive.toggle()
         }
         // TODO: Update status bar symbols colors
 //        setNeedsStatusBarAppearanceUpdate()
     }
     
     func toggleDarkMode() {
-//        if !darkModeIsActive {
-//            view.backgroundColor = .black
-//            view.tintColor = .white
-//            tableView.backgroundColor = .black
-//            tableView.tintColor = .white
-//            darkModeIsActive.toggle()
-//        } else {
-//            view.backgroundColor = .white
-//            view.tintColor = .black
-//            tableView.backgroundColor = .white
-//            tableView.tintColor = .black
-//            darkModeIsActive.toggle()
-//        }
         darkModeIsActive.toggle()
-        print("|||||| TOGGLE: Dark Mode updated to \(darkModeIsActive)")
+        print("|||||| TOGGLE: Dark Mode updated to \(String(darkModeIsActive).uppercased())")
         setDefaults()
+        checkDarkMode()
+        
     }
     
     // Persist dark mode data using UserDefaults
     func setDefaults() {
         UserDefaults.standard.set(darkModeIsActive, forKey: "darkMode")
-        print("|||||| SET: darkMode of \(darkModeIsActive) to UserDefaults")
+        print("|||||| SET: sent darkMode \(String(darkModeIsActive).uppercased()) to UserDefaults")
     }
     func getDefaults() {
         let dm = UserDefaults.standard.bool(forKey: "darkMode")
         darkModeIsActive = dm
-        print("|||||| GET: UserDefaults has a dark mode value of: \(darkModeIsActive)")
+        print("|||||| GET: UserDefaults has a dark mode value of: \(String(darkModeIsActive).uppercased())")
     }
     
     // TODO: Persist tasks cells data using FileManager
