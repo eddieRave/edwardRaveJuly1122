@@ -10,7 +10,6 @@ import UIKit
 class PokedexEntryCell: UICollectionViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
-
     @IBOutlet weak var pokemon: UIImageView!
     
     override func awakeFromNib() {

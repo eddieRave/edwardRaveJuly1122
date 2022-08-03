@@ -11,10 +11,10 @@ class PokedexViewModel {
     private var chainGroup = DispatchGroup()
     private var imageGroup = DispatchGroup()
     
-    private var pokemonList: [Int: PokemonViewModel] = [:]
+    var pokemonList: [Int: PokemonViewModel] = [:]
     private var chainList: [Int: EvolutionObject] = [:]
     
-    let totalPokemon = 600
+    let totalPokemon = 250
     let totalChains = 257
     
     var pokemonCount: Int { pokemonList.count }
