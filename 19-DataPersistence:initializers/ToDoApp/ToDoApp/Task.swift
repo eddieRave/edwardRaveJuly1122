@@ -7,6 +7,31 @@
 
 import Foundation
 
+// MARK: Bored API
+/**
+ The boredapi.com server certificate is expired.
+ To allow your app to trust it, do this:
+     1) Info.plist: App Transport Security Settings -> Allow Arbitrary Load = YES
+     2) Allow your URLSession to trust the server manually:
+        https://developer.apple.com/documentation/foundation/url_loading_system/handling_an_authentication_challenge/performing_manual_server_trust_authentication
+ */
+struct Task: Codable {
+    let activity: String?
+}
+/*
+ MARK: url = https://www.boredapi.com/api/activity/
+ {
+   "activity": "Play a game of Monopoly",
+   "type": "social",
+   "participants": 4,
+   "price": 0.2,
+   "link": "",
+   "key": "1408058",
+   "accessibility": 0.3
+ }
+ */
+
+
 //struct Task: Decodable {
 //    let value: String?
 //}
@@ -20,28 +45,6 @@ import Foundation
    "updated_at": "2020-01-05 13:42:28.984661",
    "url": "https://api.chucknorris.io/jokes/XLMSq5qlQnePgOBixRd2Tw",
    "value": "A man once asked Chuck Norris, \"what happens when an unstoppable force meets and immovable object?\" Chuck Norris answered the question by punching himself in the face."
- }
- */
-
-
-// MARK: Bored API
-// MARK: unable to use because it in not secure (bad certificate)
-/*
- NSURLErrorFailingURLPeerTrustErrorKey=<SecTrustRef: 0x600002624140>, NSLocalizedDescription=An SSL error has occurred and a secure connection to the server cannot be made.})"
- */
-struct Task: Decodable {
-    let activity: String?
-}
-/*
- MARK: url = https://www.boredapi.com/api/activity/
- {
-   "activity": "Play a game of Monopoly",
-   "type": "social",
-   "participants": 4,
-   "price": 0.2,
-   "link": "",
-   "key": "1408058",
-   "accessibility": 0.3
  }
  */
 

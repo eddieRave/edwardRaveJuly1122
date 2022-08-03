@@ -27,10 +27,6 @@ class ViewController: UIViewController, DidSetTasksDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBAction func triggerDarkMode(_ sender: UIButton) {
-        toggleDarkMode()
-    }
-    
     var tasks = [Task]() {
         didSet {
             DispatchQueue.main.async {
@@ -44,10 +40,7 @@ class ViewController: UIViewController, DidSetTasksDelegate {
         configureTable()
         getDefaults()
         checkDarkMode()
-    }
-    
-    func addedNewTask(task: Task) {
-        tasks.append(task)
+        accessFile()
     }
     
     func configureTable() {
@@ -57,6 +50,22 @@ class ViewController: UIViewController, DidSetTasksDelegate {
         tableView.register(nib, forCellReuseIdentifier: "Cell")
     }
     
+    // Add tasks
+    func addedNewTask(task: Task) {
+        tasks.append(task)
+    }
+    
+    // Dark Mode
+    @IBAction func triggerDarkMode(_ sender: UIButton) {
+        toggleDarkMode()
+    }
+    func toggleDarkMode() {
+        darkModeIsActive.toggle()
+        print("|||||| TOGGLE: Dark Mode updated to \(String(darkModeIsActive).uppercased())")
+        setDefaults()
+        checkDarkMode()
+        
+    }
     func checkDarkMode() {
         print("|||||| CHECK: Dark Mode is currently set to \(String(darkModeIsActive).uppercased())")
         if darkModeIsActive == true {
@@ -71,15 +80,7 @@ class ViewController: UIViewController, DidSetTasksDelegate {
             tableView.tintColor = .black
         }
         // TODO: Update status bar symbols colors
-//        setNeedsStatusBarAppearanceUpdate()
-    }
-    
-    func toggleDarkMode() {
-        darkModeIsActive.toggle()
-        print("|||||| TOGGLE: Dark Mode updated to \(String(darkModeIsActive).uppercased())")
-        setDefaults()
-        checkDarkMode()
-        
+        // setNeedsStatusBarAppearanceUpdate()
     }
     
     // Persist dark mode data using UserDefaults
@@ -94,6 +95,26 @@ class ViewController: UIViewController, DidSetTasksDelegate {
     }
     
     // TODO: Persist tasks cells data using FileManager
+    func saveFile(){
+        let cacheDirectory = FileManager.SearchPathDirectory.cachesDirectory
+        let folderURLs = FileManager.default.urls(for: cacheDirectory, in: .userDomainMask)
+        guard let fileURL = folderURLs.first?.appendingPathComponent("tasks") else { return }
+        guard let data = try? JSONEncoder().encode(tasks) else {
+            return
+        }
+        try? data.write(to: fileURL, options: .atomicWrite)
+    }
+    func accessFile() {
+        let cacheDirectory = FileManager.SearchPathDirectory.cachesDirectory
+        let folderURLs = FileManager.default.urls(for: cacheDirectory, in: .userDomainMask)
+        guard let fileURL = folderURLs.first?.appendingPathComponent("tasks") else { fatalError() }
+        guard let data = FileManager.default.contents(atPath: fileURL.path) else {
+            fatalError()
+        }
+        if let decodedTask = try? JSONDecoder().decode(Task.self, from: data) {
+            print(decodedTask)
+        }
+    }
 
 }
 
