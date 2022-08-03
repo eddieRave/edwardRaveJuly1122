@@ -28,14 +28,14 @@ class AddTaskViewController: UIViewController {
         guard let delegate = taskDelegate else { return }
 //        guard let taskName = newlyAddedTaskName.text else { return }
         let taskName = apiTask.text
-        let task = Task(value: taskName)
+        let task = Task(activity: taskName)
         delegate.addedNewTask(task: task)
         navigationController?.popViewController(animated: true)
     }
     
     func fetchTask() {
         ApiManager.shared.fetchData() { data in
-            if let taskText = data.value {
+            if let taskText = data.activity {
                 DispatchQueue.main.async {
                     self.apiTask.text = taskText
                 }

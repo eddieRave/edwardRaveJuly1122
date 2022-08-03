@@ -7,10 +7,9 @@
 
 import Foundation
 
-struct Task: Decodable {
-    let value: String?
-}
-
+//struct Task: Decodable {
+//    let value: String?
+//}
 /*
  MARK: url = https://api.chucknorris.io/jokes/random
  {
@@ -30,9 +29,9 @@ struct Task: Decodable {
 /*
  NSURLErrorFailingURLPeerTrustErrorKey=<SecTrustRef: 0x600002624140>, NSLocalizedDescription=An SSL error has occurred and a secure connection to the server cannot be made.})"
  */
-//struct Task: Decodable {
-//    let activity: String?
-//}
+struct Task: Decodable {
+    let activity: String?
+}
 /*
  MARK: url = https://www.boredapi.com/api/activity/
  {
