@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ToDoListView: View {
     @EnvironmentObject var toDo: ToDo
- 
     
     var body: some View {
         NavigationView {
@@ -18,21 +17,25 @@ struct ToDoListView: View {
                     HStack {
                         Text(toDo.list[index])
                         Spacer()
-                        Button(action: { toDo.list.remove(at: index) }) {
-                            Label("", systemImage: "minus.circle")
+                        
+                        Label("", systemImage: "minus.circle").onTapGesture {
+                            toDo.list.remove(at: index)
+                            toDo.saveFile()
+                            
                         }
                     }
                 }
-            }.toolbar {
+            }
+            .toolbar {
                 ToolbarItem {
                     NavigationLink(destination: EntryView()) {
                         Label("", systemImage: "plus")
                     }
                 }
-            }.navigationTitle(
-                "To Do List"
-            )
-        }.navigationViewStyle(.stack)
+            }
+            .navigationTitle("To Do List")
+        }
+        .navigationViewStyle(.stack)
     }
 }
 //

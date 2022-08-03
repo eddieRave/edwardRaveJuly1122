@@ -13,7 +13,7 @@ struct ToDoApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ToDoListView().environmentObject(toDo)
+            HomeView().environmentObject(toDo)
         }
     }
 }

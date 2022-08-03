@@ -9,18 +9,22 @@ import SwiftUI
 
 struct EntryView: View {
     @EnvironmentObject var toDo: ToDo
+    @Environment(\.presentationMode) var presentationMode
+    
     @State var entryText: String = ""
     
     var body: some View {
         VStack {
-            TextField("Enter Item", text: $entryText)
-            Spacer()
             Button(action: {
                 if entryText != "" {
                     toDo.list.append(entryText)
+                    toDo.saveFile()
+                    presentationMode.wrappedValue.dismiss()
                 }
-            }) {
-                Text("Add Item")
+            }) { Text("Add Item") }
+            ZStack {
+                RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)).foregroundColor(.black)
+                TextEditor(text: $entryText).padding(2)
             }
             Spacer()
         }
