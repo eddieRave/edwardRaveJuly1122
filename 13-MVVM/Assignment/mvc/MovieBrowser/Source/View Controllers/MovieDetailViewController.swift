@@ -15,10 +15,11 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UITextView!
     @IBOutlet weak var movieImg: UIImageView!
     
-    var movieTitle: String = "no title"
-    var releaseDate: String = "no release date"
-    var descriptionText: String = "no description"
-    var imgPath: String = ""
+//    Must movie this into it's own view model to start
+//    var movieTitle: String = "no title"
+//    var releaseDate: String = "no release date"
+//    var descriptionText: String = "no description"
+//    var imgPath: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +27,13 @@ class MovieDetailViewController: UIViewController {
         configure()
     }
     
+    var movieDetailViewModel = MovieDetailViewModel()
+    
     func configure() {
-        guard let date = formatDate(dateString: self.releaseDate, outFormat: "M/d/yy") else { return }
-        movieTitleLabel.text = self.movieTitle
+        guard let date = formatDate(dateString: self.movieDetailViewModel.releaseDate, outFormat: "M/d/yy") else { return }
+        movieTitleLabel.text = self.movieDetailViewModel.movieTitle
         releaseDateLabel.text = "Release Date: \(date)"
-        descriptionLabel.text = self.descriptionText
+        descriptionLabel.text = self.movieDetailViewModel.descriptionText
         getPoster()
     }
     

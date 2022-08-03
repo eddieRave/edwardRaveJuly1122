@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MovieResult: Codable {
+struct MovieModel: Codable {
     let page: Int
     let results: [Movie]
     let total_pages: Int

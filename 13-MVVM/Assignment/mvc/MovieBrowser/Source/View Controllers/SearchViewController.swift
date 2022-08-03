@@ -66,7 +66,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let imgUrl = Network().baseImgUrl + posterPath
         let storyBoard : UIStoryboard = UIStoryboard(name: "MovieDetail", bundle:nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as! MovieDetailViewController
-        
+        // I'm stuck here. Fixing the error leads to a new error and a warning which tells me that
+        // I need to move this to a different file, but I can't figure out how to proceed.
         nextViewController.movieTitle = movie.original_title
         nextViewController.releaseDate = movie.release_date
         nextViewController.descriptionText = movie.overview
