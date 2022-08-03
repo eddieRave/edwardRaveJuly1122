@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l1y-Qd-wtW">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Account-->
+        <scene sceneID="qFs-YH-ZCI">
+            <objects>
+                <viewController id="AWo-gp-Rn6" customClass="ViewController" customModule="QRCode" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xct-w0-Lzg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9g-BH-sES">
+                                <rect key="frame" x="20" y="144" width="101" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jiE-4l-qhP">
+                                <rect key="frame" x="141" y="139" width="253" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="userInput:" destination="kUk-0i-D8E" eventType="editingDidEnd" id="aFG-ru-4hg"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzI-ez-a3h">
+                                <rect key="frame" x="123.5" y="675" width="167" height="38"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Create QR Code">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="createQRCode:" destination="AWo-gp-Rn6" eventType="touchUpInside" id="Igq-7y-uB0"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="k30-2a-scW"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4L-F6-YOT">
+                                <rect key="frame" x="20" y="223" width="374" height="310.5"/>
+                                <string key="text">Lorem upsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="W5i-l9-YaL"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="W5i-l9-YaL" firstAttribute="bottom" secondItem="nzI-ez-a3h" secondAttribute="bottom" constant="100" id="69G-2b-stK"/>
+                            <constraint firstItem="S9g-BH-sES" firstAttribute="top" secondItem="W5i-l9-YaL" secondAttribute="top" constant="100" id="9HU-sF-2fg"/>
+                            <constraint firstItem="jiE-4l-qhP" firstAttribute="centerY" secondItem="S9g-BH-sES" secondAttribute="centerY" id="EDh-BK-iao"/>
+                            <constraint firstItem="S9g-BH-sES" firstAttribute="leading" secondItem="W5i-l9-YaL" secondAttribute="leading" constant="20" id="IiM-di-R3I"/>
+                            <constraint firstItem="m4L-F6-YOT" firstAttribute="leading" secondItem="W5i-l9-YaL" secondAttribute="leading" constant="20" id="R9S-jH-yE2"/>
+                            <constraint firstItem="W5i-l9-YaL" firstAttribute="trailing" secondItem="m4L-F6-YOT" secondAttribute="trailing" constant="20" id="btj-1h-8ds"/>
+                            <constraint firstItem="W5i-l9-YaL" firstAttribute="trailing" secondItem="jiE-4l-qhP" secondAttribute="trailing" constant="20" id="ndE-WY-F9i"/>
+                            <constraint firstItem="nzI-ez-a3h" firstAttribute="centerX" secondItem="Xct-w0-Lzg" secondAttribute="centerX" id="tVn-ey-XEf"/>
+                            <constraint firstItem="m4L-F6-YOT" firstAttribute="top" secondItem="S9g-BH-sES" secondAttribute="bottom" constant="55" id="tkX-FN-u29"/>
+                            <constraint firstItem="jiE-4l-qhP" firstAttribute="leading" secondItem="S9g-BH-sES" secondAttribute="trailing" constant="20" id="zhG-rn-kAe"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Account" image="person" catalog="system" selectedImage="person" id="WrI-xN-tyj"/>
+                    <connections>
+                        <outlet property="loremLabel" destination="m4L-F6-YOT" id="wi0-Qt-Haz"/>
+                        <outlet property="userInput" destination="jiE-4l-qhP" id="kO1-Ks-qpl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bn3-X0-eJm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="kUk-0i-D8E" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-631" y="134"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="e8g-6g-VGt">
+            <objects>
+                <viewController id="w2u-qi-ZMz" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GLH-FK-686">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="KNF-jo-GbM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" selectedImage="house" id="fWo-pH-phm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ymC-oa-1NB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-632" y="-472"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="ZvE-LT-xGy">
+            <objects>
+                <tabBarController id="l1y-Qd-wtW" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QLN-ld-xet">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="w2u-qi-ZMz" kind="relationship" relationship="viewControllers" id="u6g-Fx-LKQ"/>
+                        <segue destination="AWo-gp-Rn6" kind="relationship" relationship="viewControllers" id="PCd-wk-Bes"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZmX-Yh-4kF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1523" y="-169"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="QRCode" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4MG-Po-1Le">
+                                <rect key="frame" x="57" y="271" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="JoY-8i-lbd"/>
+                                    <constraint firstAttribute="height" constant="300" id="PXw-4g-Zgt"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4MG-Po-1Le" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6nV-S8-tQL"/>
+                            <constraint firstItem="4MG-Po-1Le" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uFY-Cx-VAg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="qrImageView" destination="4MG-Po-1Le" id="lRW-dx-EXJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="330" y="134"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="house" catalog="system" width="128" height="106"/>
+        <image name="person" catalog="system" width="128" height="117"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
