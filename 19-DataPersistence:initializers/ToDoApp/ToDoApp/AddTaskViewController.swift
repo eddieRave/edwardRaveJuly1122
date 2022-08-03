@@ -20,6 +20,26 @@ class AddTaskViewController: UIViewController {
         fetchTask()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if darkModeIsActive {
+            view.backgroundColor = .black
+            view.tintColor = .white
+            view.subviews.forEach { (view) in   
+                 if let label = view as? UILabel {
+                      label.textColor = .white
+                 }
+            }
+        } else {
+            view.backgroundColor = .white
+            view.tintColor = .black
+            view.subviews.forEach { (view) in
+                 if let label = view as? UILabel {
+                      label.textColor = .black
+                 }
+            }
+        }
+    }
+    
     @IBAction func addTaskToList(_ sender: UIButton) {
         guard let delegate = taskDelegate else { return }
 //        guard let taskName = newlyAddedTaskName.text else { return }
