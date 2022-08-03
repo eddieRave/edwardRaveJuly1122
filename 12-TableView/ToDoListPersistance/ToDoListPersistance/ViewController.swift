@@ -9,21 +9,49 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource {
     
-//    func update() {
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//        }
-//    }
-    
-    
+    @IBOutlet weak var ToDoListLabel: UILabel!
     var viewModel = ViewModel()
+    
+    @IBOutlet weak var darkModeButtonOutlet: UIButton!
+    
+    @IBAction func darkModeButton(_ sender: UIButton) {
+//        print(darkModeButtonOutlet.titleLabel?.text)
+        
+        if viewModel.darkMode == true {
+            
+            
+            darkModeButtonOutlet.setTitle("🌕", for: .normal)
+            tableView.backgroundColor = UIColor .black
+            viewModel.darkMode = false
+            viewModel.setDarkMode()
+        } else {
+            
+            darkModeButtonOutlet.setTitle("🔆", for: .normal)
+            tableView.backgroundColor = UIColor .white
+            viewModel.darkMode = true
+            viewModel.setDarkMode()
+        }
+        
+        tableView.reloadData()
+    }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? toDoCell {
             
+//            lightMode ? cell.backgroundColor = UIColor .white : cell.backgroundColor = UIColor .black
+            if viewModel.darkMode == true {
+                cell.backgroundColor = UIColor .white
+                cell.toDoLabel.textColor = UIColor .black
+            
+//                cell.toDoLabel.text = viewModel.toDos[indexPath.row]
+            } else {
+                cell.backgroundColor = UIColor .black
+                cell.toDoLabel.textColor = UIColor .white
+            }
             cell.toDoLabel.text = viewModel.toDos[indexPath.row]
+//            cell.toDoLabel.text = viewModel.toDos[indexPath.row]
             return cell
         }
         
@@ -39,6 +67,10 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       viewModel.getDefaults()
+//        viewModel.
+        
         viewModel.update = {
             DispatchQueue.main.async {
                 self.tableView.reloadData()

@@ -26,8 +26,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CC2-Yf-cfJ">
-                                <rect key="frame" x="329" y="54" width="51" height="52"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CC2-Yf-cfJ">
+                                <rect key="frame" x="344" y="93" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="52j-sJ-gYl"/>
                                     <constraint firstAttribute="width" constant="50" id="sB7-Wv-Pio"/>
@@ -40,22 +40,40 @@
                                     <segue destination="CC4-1C-VH6" kind="show" id="v6O-bZ-EGH"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="58q-Ug-TQo">
+                                <rect key="frame" x="254" y="93" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1US-wg-BRT"/>
+                                    <constraint firstAttribute="width" constant="50" id="fVo-sg-dxa"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="🔆" cornerStyle="capsule">
+                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="25"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="darkModeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DSq-mf-9zd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="CC2-Yf-cfJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="4Xk-e5-SUd"/>
+                            <constraint firstItem="CC2-Yf-cfJ" firstAttribute="centerY" secondItem="58q-Ug-TQo" secondAttribute="centerY" id="LVd-hl-wKJ"/>
                             <constraint firstItem="WBs-CQ-2qD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="NEZ-g2-ZHt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Dnc-xe-HHy" secondAttribute="trailing" id="NNp-dP-qQ0"/>
                             <constraint firstItem="WBs-CQ-2qD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Ygd-MW-mc9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CC2-Yf-cfJ" secondAttribute="trailing" constant="20" id="ZS7-Hn-agv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Dnc-xe-HHy" secondAttribute="bottom" id="dk2-EO-GXV"/>
                             <constraint firstItem="Dnc-xe-HHy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="fWl-Dy-utI"/>
+                            <constraint firstItem="CC2-Yf-cfJ" firstAttribute="leading" secondItem="58q-Ug-TQo" secondAttribute="trailing" constant="40" id="p7V-sa-yL2"/>
                             <constraint firstItem="Dnc-xe-HHy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yAc-pt-EhZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8o5-fG-yxm"/>
                     <connections>
+                        <outlet property="ToDoListLabel" destination="WBs-CQ-2qD" id="AR9-g6-Qj4"/>
+                        <outlet property="darkModeButtonOutlet" destination="58q-Ug-TQo" id="E82-OU-whu"/>
                         <outlet property="tableView" destination="Dnc-xe-HHy" id="9Z9-lq-OAh"/>
                     </connections>
                 </viewController>
@@ -78,7 +96,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="top" borderStyle="roundedRect" adjustsFontForContentSizeCategory="YES" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="Vs2-aC-MJh">
-                                <rect key="frame" x="20" y="160" width="34" height="500"/>
+                                <rect key="frame" x="20" y="160" width="374" height="500"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="500" id="QMN-he-2ba"/>
                                     <constraint firstAttribute="width" constant="375" id="XE5-mK-7Qn"/>
