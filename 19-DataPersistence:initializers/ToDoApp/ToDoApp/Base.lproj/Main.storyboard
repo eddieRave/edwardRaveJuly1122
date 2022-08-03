@@ -30,15 +30,25 @@
                                     <segue destination="iGy-jK-3cz" kind="show" id="Ypd-Pw-qwq"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbW-MO-wvE">
+                                <rect key="frame" x="20" y="91.5" width="95" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Dark Mode"/>
+                                <connections>
+                                    <action selector="triggerDarkMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NS2-SU-Tw5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="jbW-MO-wvE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="11Q-r6-2Di"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3Ub-By-oZO" secondAttribute="trailing" id="2ga-kV-hvv"/>
-                            <constraint firstItem="htv-WP-kx2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="289" id="9Br-4b-i8I"/>
                             <constraint firstItem="htv-WP-kx2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BNo-3p-qJl"/>
                             <constraint firstItem="3Ub-By-oZO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Dle-Sg-xg8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3Ub-By-oZO" secondAttribute="bottom" constant="20" id="MzR-Am-tUc"/>
+                            <constraint firstItem="jbW-MO-wvE" firstAttribute="centerY" secondItem="htv-WP-kx2" secondAttribute="centerY" id="eay-IN-6eb"/>
+                            <constraint firstItem="htv-WP-kx2" firstAttribute="leading" secondItem="jbW-MO-wvE" secondAttribute="trailing" constant="174" id="oCt-Yu-MuH"/>
                             <constraint firstItem="3Ub-By-oZO" firstAttribute="top" secondItem="htv-WP-kx2" secondAttribute="bottom" constant="19" id="vIc-Dq-heX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="htv-WP-kx2" secondAttribute="trailing" constant="20" id="ywd-jK-dgr"/>
                         </constraints>
@@ -77,7 +87,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task from API" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OnN-lr-O48">
-                                <rect key="frame" x="40" y="340" width="334" height="20.5"/>
+                                <rect key="frame" x="30" y="340" width="354" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -87,11 +97,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="OnN-lr-O48" firstAttribute="top" secondItem="iJz-Oa-F7R" secondAttribute="bottom" constant="50" id="1lc-Bn-I8u"/>
-                            <constraint firstItem="OnN-lr-O48" firstAttribute="leading" secondItem="pEU-WF-SfG" secondAttribute="leading" constant="40" id="7qs-Ze-XLn"/>
+                            <constraint firstItem="OnN-lr-O48" firstAttribute="leading" secondItem="pEU-WF-SfG" secondAttribute="leading" constant="30" id="3oB-Zs-fq9"/>
                             <constraint firstItem="iJz-Oa-F7R" firstAttribute="centerX" secondItem="dTm-wm-Ob5" secondAttribute="centerX" id="NT6-g8-aIX"/>
+                            <constraint firstItem="pEU-WF-SfG" firstAttribute="trailing" secondItem="OnN-lr-O48" secondAttribute="trailing" constant="30" id="RD8-G9-51H"/>
                             <constraint firstItem="iJz-Oa-F7R" firstAttribute="top" secondItem="pEU-WF-SfG" secondAttribute="top" constant="160" id="cPL-bc-jGA"/>
                             <constraint firstItem="OnN-lr-O48" firstAttribute="centerX" secondItem="dTm-wm-Ob5" secondAttribute="centerX" id="edB-Nf-RRj"/>
-                            <constraint firstItem="pEU-WF-SfG" firstAttribute="trailing" secondItem="OnN-lr-O48" secondAttribute="trailing" constant="40" id="lp2-bz-mSe"/>
                             <constraint firstItem="Hmb-1o-BjH" firstAttribute="top" secondItem="OnN-lr-O48" secondAttribute="bottom" constant="50" id="tV9-KB-hZh"/>
                             <constraint firstItem="Hmb-1o-BjH" firstAttribute="centerX" secondItem="dTm-wm-Ob5" secondAttribute="centerX" id="wo6-xg-CYc"/>
                         </constraints>

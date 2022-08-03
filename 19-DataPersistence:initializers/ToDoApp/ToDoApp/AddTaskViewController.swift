@@ -31,7 +31,7 @@ class AddTaskViewController: UIViewController {
     
     func fetchTask() {
         ApiManager.shared.fetchData() { data in
-            print("|||||||| Data is called in fetchTask() ||||||||||", data)
+//            print("|||||||| Data is called in fetchTask() ||||||||||", data)
             if let taskText = data.value {
                 DispatchQueue.main.async {
                     self.apiTask.text = taskText
