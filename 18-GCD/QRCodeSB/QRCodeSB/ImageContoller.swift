@@ -32,11 +32,15 @@ class ImageController: UIViewController {
                 }
             }
         } else {
-            print("start image processing")
-            let image = self.generateQRCode(from: self.codeGeneratorString ?? "")
-            print("finish image processing")
-            print("start image update")
-            self.qrCode.image = image
+            DispatchQueue.global().sync {
+                print("start image processing")
+                let image = self.generateQRCode(from: self.codeGeneratorString ?? "")
+                print("finish image processing")
+                DispatchQueue.main.async {
+                    print("start image update")
+                    self.qrCode.image = image
+                }
+            }
         }
         printElapsedTime (date: startDate)
     }
