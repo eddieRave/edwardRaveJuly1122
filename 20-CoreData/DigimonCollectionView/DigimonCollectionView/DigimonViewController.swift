@@ -20,6 +20,8 @@
 
 import UIKit
 
+#warning("Still need to persist data in CoreData")
+
 class DigimonViewController: UIViewController {
     
     @IBOutlet weak var digimonCollectionView: UICollectionView!
@@ -95,8 +97,4 @@ extension DigimonViewController: UICollectionViewDataSource {
         return cell
     }
     
-}
-
-protocol Favoritable {
-    func addToFavorites(digimonIndexPath: Int)
 }

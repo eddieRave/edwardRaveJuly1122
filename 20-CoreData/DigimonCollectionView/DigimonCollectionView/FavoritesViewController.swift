@@ -10,13 +10,14 @@ import UIKit
 class FavoritesViewController: UIViewController {
 
     @IBOutlet weak var favoritesCollectionView: UICollectionView!
+    var delegate: AddFavoriteProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // register cell & connect with CollectionView
-        let nib = UINib(nibName: "FavoritesCollectionViewCell", bundle: nil)
-        favoritesCollectionView.register(nib, forCellWithReuseIdentifier: "cellF")
+        let nib = UINib(nibName: "DigimonCollectionViewCell", bundle: nil)
+        favoritesCollectionView.register(nib, forCellWithReuseIdentifier: "cell")
         
         // connect extension functions with CollectionView
         favoritesCollectionView.dataSource = self
@@ -31,13 +32,18 @@ class FavoritesViewController: UIViewController {
         // spacing between cells
         layout.minimumLineSpacing = 25
         
-        // background image for CollectionView
-//        let bgView = UIView()
-//        bgView.backgroundColor = UIColor(patternImage: UIImage(named: "cardBg.png")!)
-//        favoritesCollectionView.backgroundView = bgView
-        
         // connect layout
         favoritesCollectionView.collectionViewLayout = layout
+        
+        // fetch Digimon data
+        delegate?.getDigimon()
+        
+        // reload the CollectionView after fetching data
+        delegate?.update = { [unowned self] in
+            DispatchQueue.main.async {
+                self.favoritesCollectionView.reloadData()
+            }
+        }
         
     }
 
@@ -45,21 +51,18 @@ class FavoritesViewController: UIViewController {
 
 extension FavoritesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
-//        digimonVM.getFavoritesCount()
+        delegate?.getFavoritesCount() ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = favoritesCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DigimonCollectionViewCell else {
             return UICollectionViewCell()
         }
-        
-//        cell.nameLabel.text = digimonVM.getName(for: indexPath.row)
-//        if let url = digimonVM.getImage(for: indexPath.row) {
-//            cell.imgLabel.fetchImage(for: url)
-//        }
-//        cell.levelLabel.text = digimonVM.getLevel(for: indexPath.row)
-        
+        cell.nameLabel.text = delegate?.getName(for: indexPath.row)
+        if let url = delegate?.getImage(for: indexPath.row) {
+            cell.imgLabel.fetchImage(for: url)
+        }
+        cell.levelLabel.text = delegate?.getLevel(for: indexPath.row)
         return cell
     }
 }

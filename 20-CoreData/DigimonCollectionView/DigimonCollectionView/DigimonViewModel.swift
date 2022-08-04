@@ -7,7 +7,18 @@
 
 import Foundation
 
-class DigimonViewModel: Favoritable {
+protocol AddFavoriteProtocol {
+    var update: ( () -> Void )? { get set }
+    func getDigimon()
+    func getName(for index: Int) -> String?
+    func getImage(for index: Int) -> String?
+    func getLevel(for index: Int) -> String?
+    func getFavoritesCount() -> Int?
+    func addToFavorites(digimonIndexPath: Int)
+    func removeFromFavorites(digimonIndexPath: Int)
+}
+
+class DigimonViewModel: AddFavoriteProtocol {
     
     var update: ( () -> Void )?
     
@@ -17,14 +28,16 @@ class DigimonViewModel: Favoritable {
         }
     }
     
-    var favorites: [Digimon] = []
-//    {
-//        didSet {
-//            for digi in favorites {
-//                print("Favorites: \(digi.name ?? "")")
-//            }
-//        }
-//    }
+    var favorites: [Digimon] = [] {
+        didSet {
+            var favArray: [String] = []
+            for digi in favorites {
+                favArray.append(digi.name ?? "")
+            }
+            print("Favorites: \(favArray)")
+//            update?()
+        }
+    }
     
     init() {
         getDigimon()
@@ -59,6 +72,10 @@ class DigimonViewModel: Favoritable {
             return
         }
         favorites.append(digimon)
+    }
+    
+    func removeFromFavorites(digimonIndexPath: Int) {
+        favorites.remove(at: digimonIndexPath)
     }
     
 }
