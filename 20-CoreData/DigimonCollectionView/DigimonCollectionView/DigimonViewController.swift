@@ -72,7 +72,7 @@ class DigimonViewController: UIViewController {
 extension DigimonViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        digimonVM.getCount() ?? 0
+        digimonVM.getDigimonArrayCount() ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -84,8 +84,19 @@ extension DigimonViewController: UICollectionViewDataSource {
             cell.imgLabel.fetchImage(for: url)
         }
         cell.levelLabel.text = digimonVM.getLevel(for: indexPath.row)
-        cell.backgroundColor = .blue    // I also set the background color in the cell nib file, but the image covers whole cell so background doesn't show
+        
+        // I also set the background color in the cell nib file, but the image covers whole cell so background doesn't show
+        cell.backgroundColor = .blue
+        
+        // link delegate to ViewModel and indexPath
+        cell.delegate = digimonVM
+        cell.digimonIndex = indexPath.row
+        
         return cell
     }
     
+}
+
+protocol Favoritable {
+    func addToFavorites(digimonIndexPath: Int)
 }

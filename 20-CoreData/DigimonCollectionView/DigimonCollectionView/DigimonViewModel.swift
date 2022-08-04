@@ -7,38 +7,58 @@
 
 import Foundation
 
-class DigimonViewModel {
-    
-    init() {
-        getDigimon()
-    }
+class DigimonViewModel: Favoritable {
     
     var update: ( () -> Void )?
     
-    var digimonModel: [Digimon]? = nil {
+    var digimonArray: [Digimon]? = nil {
         didSet {
             update?()
         }
     }
     
+    var favorites: [Digimon] = []
+//    {
+//        didSet {
+//            for digi in favorites {
+//                print("Favorites: \(digi.name ?? "")")
+//            }
+//        }
+//    }
+    
+    init() {
+        getDigimon()
+    }
+    
     func getDigimon() {
         ApiManager.shared.fetchDigimon(completionFD: { digimon in
-            self.digimonModel = digimon
+            self.digimonArray = digimon
         })
     }
     
     func getName(for index: Int) -> String? {
-        digimonModel?[index].name?.uppercased()
+        digimonArray?[index].name?.uppercased()
     }
     func getImage(for index: Int) -> String? {
-        digimonModel?[index].img
+        digimonArray?[index].img
     }
     func getLevel(for index: Int) -> String? {
-        "Level: \( digimonModel?[index].level?.uppercased() ?? "UNKNOWN" )"
+        "Level: \( digimonArray?[index].level?.uppercased() ?? "UNKNOWN" )"
     }
     
-    func getCount() -> Int? {
-        digimonModel?.count
+    func getDigimonArrayCount() -> Int? {
+        digimonArray?.count
+    }
+    
+    func getFavoritesCount() -> Int? {
+        favorites.count
+    }
+    
+    func addToFavorites(digimonIndexPath: Int) {
+        guard let digimon = digimonArray?[digimonIndexPath] else {
+            return
+        }
+        favorites.append(digimon)
     }
     
 }

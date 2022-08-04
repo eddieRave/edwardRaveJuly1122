@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0B393F90289BEFE700B54B09 /* Favorite.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B393F8E289BEFE700B54B09 /* Favorite.xcdatamodeld */; };
+		0B66B43C289C18BB00FB9EBB /* FavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B66B43A289C18BB00FB9EBB /* FavoritesCollectionViewCell.swift */; };
+		0B66B43D289C18BB00FB9EBB /* FavoritesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B66B43B289C18BB00FB9EBB /* FavoritesCollectionViewCell.xib */; };
+		0B66B43F289C1A2100FB9EBB /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B66B43E289C1A2100FB9EBB /* FavoritesViewController.swift */; };
 		0BDF6A3228958267007605CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDF6A3128958267007605CB /* AppDelegate.swift */; };
 		0BDF6A3428958267007605CB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDF6A3328958267007605CB /* SceneDelegate.swift */; };
 		0BDF6A3628958267007605CB /* DigimonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDF6A3528958267007605CB /* DigimonViewController.swift */; };
@@ -43,6 +46,9 @@
 
 /* Begin PBXFileReference section */
 		0B393F8F289BEFE700B54B09 /* Favorite.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Favorite.xcdatamodel; sourceTree = "<group>"; };
+		0B66B43A289C18BB00FB9EBB /* FavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
+		0B66B43B289C18BB00FB9EBB /* FavoritesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesCollectionViewCell.xib; sourceTree = "<group>"; };
+		0B66B43E289C1A2100FB9EBB /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		0BDF6A2E28958267007605CB /* DigimonCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigimonCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BDF6A3128958267007605CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BDF6A3328958267007605CB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +94,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B66B437289C185B00FB9EBB /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				0BDF6A3528958267007605CB /* DigimonViewController.swift */,
+				0BDF6A6C289583F6007605CB /* DigimonCollectionViewCell.swift */,
+				0BDF6A6D289583F6007605CB /* DigimonCollectionViewCell.xib */,
+			);
+			name = Collection;
+			sourceTree = "<group>";
+		};
+		0B66B438289C186B00FB9EBB /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				0B66B43E289C1A2100FB9EBB /* FavoritesViewController.swift */,
+				0B66B43A289C18BB00FB9EBB /* FavoritesCollectionViewCell.swift */,
+				0B66B43B289C18BB00FB9EBB /* FavoritesCollectionViewCell.xib */,
+			);
+			name = Favorites;
+			sourceTree = "<group>";
+		};
+		0B66B439289C188D00FB9EBB /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				0BDF6A3C28958268007605CB /* LaunchScreen.storyboard */,
+			);
+			name = Launch;
+			sourceTree = "<group>";
+		};
 		0BDF6A2528958267007605CB = {
 			isa = PBXGroup;
 			children = (
@@ -168,11 +202,10 @@
 		0BDF6A64289582B6007605CB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0BDF6A3528958267007605CB /* DigimonViewController.swift */,
 				0BDF6A3728958267007605CB /* Main.storyboard */,
-				0BDF6A6C289583F6007605CB /* DigimonCollectionViewCell.swift */,
-				0BDF6A6D289583F6007605CB /* DigimonCollectionViewCell.xib */,
-				0BDF6A3C28958268007605CB /* LaunchScreen.storyboard */,
+				0B66B437289C185B00FB9EBB /* Collection */,
+				0B66B438289C186B00FB9EBB /* Favorites */,
+				0B66B439289C188D00FB9EBB /* Launch */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -290,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BDF6A6F289583F6007605CB /* DigimonCollectionViewCell.xib in Resources */,
+				0B66B43D289C18BB00FB9EBB /* FavoritesCollectionViewCell.xib in Resources */,
 				0BDF6A3E28958268007605CB /* LaunchScreen.storyboard in Resources */,
 				0BDF6A3B28958268007605CB /* Assets.xcassets in Resources */,
 				0BDF6A3928958267007605CB /* Main.storyboard in Resources */,
@@ -319,11 +353,13 @@
 			files = (
 				0BDF6A6B28958362007605CB /* DigimonViewModel.swift in Sources */,
 				0BDF6A3628958267007605CB /* DigimonViewController.swift in Sources */,
+				0B66B43C289C18BB00FB9EBB /* FavoritesCollectionViewCell.swift in Sources */,
 				0BDF6A3228958267007605CB /* AppDelegate.swift in Sources */,
 				0BDF6A6928958341007605CB /* ApiManager.swift in Sources */,
 				0BDF6A3428958267007605CB /* SceneDelegate.swift in Sources */,
 				0B393F90289BEFE700B54B09 /* Favorite.xcdatamodeld in Sources */,
 				0BDF6A67289582E4007605CB /* Digimon.swift in Sources */,
+				0B66B43F289C1A2100FB9EBB /* FavoritesViewController.swift in Sources */,
 				0BDF6A6E289583F6007605CB /* DigimonCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
