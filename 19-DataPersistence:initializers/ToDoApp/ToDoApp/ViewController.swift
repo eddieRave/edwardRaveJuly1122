@@ -96,7 +96,7 @@ class ViewController: UIViewController, DidSetTasksDelegate {
     }
     
     // Persist tasks data using FileManager
-    func saveFile(){
+    func saveFile() {
         let cacheDirectory = FileManager.SearchPathDirectory.cachesDirectory
         let folderURLs = FileManager.default.urls(for: cacheDirectory, in: .userDomainMask)
         guard let fileURL = folderURLs.first?.appendingPathComponent("tasks") else { return }

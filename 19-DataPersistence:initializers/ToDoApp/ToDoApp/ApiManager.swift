@@ -8,6 +8,7 @@
 import Foundation
 
 class ApiManager: NSObject {
+    
     static let shared = ApiManager()
     
     func fetchData(completion: @escaping (Task)->Void) {
@@ -19,7 +20,7 @@ class ApiManager: NSObject {
         // Fix insecure access to bored API
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
-        session.dataTask(with: url) { data, resp, error in
+        session.dataTask(with: url) { data, response, error in
             print(data ?? "")
         }.resume()
         
