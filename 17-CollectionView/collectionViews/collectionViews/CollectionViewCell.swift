@@ -6,20 +6,30 @@
 //
 
 import UIKit
-protocol digimonImageDelegate{
-    
+protocol digimonDelegate{
+    func getName(name:String) -> Void
+    func getLevel(level:Int) -> Void
 }
-class CollectionViewCell: UICollectionViewCell {
+class CollectionViewCell: UICollectionViewCell, digimonDelegate {
 
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var digimonImage: UIImageView!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    func getName(name: String){
+        nameLabel.text = name 
     }
     
+    func getLevel(level: Int){
+        levelLabel.text =  String(level)
+    }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+
     override func prepareForReuse() {
         digimonImage.image = nil
     }
-
 }

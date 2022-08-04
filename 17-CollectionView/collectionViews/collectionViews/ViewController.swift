@@ -11,24 +11,13 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
-
-    
-
-//    func configureTable(){
-//        tableView.dataSource = self
-//        tableView.delegate = self
-//        let nib = UINib(nibName: "MyTableViewCell", bundle: nil)
-//        tableView.register(nib, forCellReuseIdentifier: "Cell")
-//
-//    }
     func configureCollection(){
         super.viewDidLoad()
         let nib = UINib(nibName: "CollectionViewCell", bundle: nil)
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = .init(width: 100, height: 50)
-        layout.minimumLineSpacing = 0
+        layout.itemSize = .init(width: 100, height: 100)
+        layout.minimumLineSpacing = 30
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -39,11 +28,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     var vm : ViewModel? = nil
     override func viewDidLoad() {
         vm = ViewModel()
-//        layout.minimumInteritemSpacing = 20
         configureCollection()
-//        vm?.getData{
-//            collectionView.reloadData()
-//        }
         vm?.getData()
         vm?.update = {
             [unowned self] in
@@ -52,19 +37,23 @@ class ViewController: UIViewController, UICollectionViewDelegate {
             }
             
         }
-       
+        
     }
 }
 
 extension ViewController: UICollectionViewDataSource{
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as?  CollectionViewCell else {
             return UICollectionViewCell()
         }
         if let url = vm?.getImage(for: indexPath.row){
+            let level = vm?.getLevel(for: indexPath.row)
+            let name = vm?.getName(for: indexPath.row)
             cell.digimonImage.fetchImage(for: url)
-          }
+            cell.levelLabel.text = level
+            cell.nameLabel.text = name
+        }
         return cell
     }
     
