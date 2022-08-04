@@ -14,7 +14,13 @@ class AddTodoViewController: UIViewController {
     
     @IBAction func generateButton(_ sender: UIButton) {
         
-        delegate?.generateToDo()
+        delegate?.generateToDo { toDo in
+            
+            DispatchQueue.main.async {
+                
+                self.toDoTextField.text = toDo
+            }
+        }
     }
     @IBOutlet weak var toDoTextField: UITextField!
     @IBAction func submitToDoButton(_ sender: UIButton) {

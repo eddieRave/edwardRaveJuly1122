@@ -66,12 +66,11 @@ class ViewModel: Addable {
 //        print("todoooooo>>>", fileURL)
     }
     
-    func generateToDo() {
+    func generateToDo(completion: @escaping (String) -> Void) {
         
         APIManager.shared.fetchToDo { toDo in
             
-            
-            
+            completion(toDo.activity)
         }
     }
     
@@ -81,5 +80,5 @@ protocol Addable {
     
     func addToDo(for toDo: String) -> Void
     
-    func generateToDo() -> Void
+    func generateToDo(completion: @escaping (String) -> Void) -> Void
 }
