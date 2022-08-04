@@ -8,6 +8,10 @@
 import UIKit
 
 class InputScreenViewController: UIViewController {
+
+    override func viewWillAppear(_ animated: Bool) {
+        theme.updateTheme(view: self.view)
+    }
     
     @IBOutlet weak var inputFromUser: UITextView!
     @IBOutlet weak var submitButton: UIButton!

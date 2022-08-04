@@ -6,3 +6,12 @@
 //
 
 import Foundation
+import UIKit
+
+struct NumberApi: Decodable{
+    let text: String
+//    let number : Int
+//    let found : Bool
+//    let type : String
+
+}

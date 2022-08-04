@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E2F8D66289B013F001E6672 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2F8D65289B013F001E6672 /* Model.swift */; };
+		9E2F8D68289B0DAD001E6672 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2F8D67289B0DAD001E6672 /* Network.swift */; };
+		9E40A853289C12DE00E6384C /* UIColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E40A852289C12DE00E6384C /* UIColorTheme.swift */; };
 		9E66C498288893540091C974 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E66C497288893540091C974 /* AppDelegate.swift */; };
 		9E66C49A288893540091C974 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E66C499288893540091C974 /* SceneDelegate.swift */; };
 		9E66C49C288893540091C974 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E66C49B288893540091C974 /* ViewController.swift */; };
@@ -39,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E2F8D65289B013F001E6672 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		9E2F8D67289B0DAD001E6672 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		9E40A852289C12DE00E6384C /* UIColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorTheme.swift; sourceTree = "<group>"; };
 		9E66C494288893540091C974 /* todoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E66C497288893540091C974 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E66C499288893540091C974 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,7 +58,7 @@
 		9E66C4B4288893550091C974 /* todoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = todoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E66C4B8288893550091C974 /* todoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todoAppUITests.swift; sourceTree = "<group>"; };
 		9E66C4BA288893550091C974 /* todoAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todoAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		9E66C4C72888E48F0091C974 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
+		9E66C4C72888E48F0091C974 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		9E66C4C82888E48F0091C974 /* NotesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesTableViewCell.xib; sourceTree = "<group>"; };
 		9E66C4CB2889A76E0091C974 /* InputScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,8 +112,9 @@
 			isa = PBXGroup;
 			children = (
 				9E66C497288893540091C974 /* AppDelegate.swift */,
-				9E66C499288893540091C974 /* SceneDelegate.swift */,
+				9E2F8D65289B013F001E6672 /* Model.swift */,
 				9E66C49B288893540091C974 /* ViewController.swift */,
+				9E66C499288893540091C974 /* SceneDelegate.swift */,
 				9E66C4CB2889A76E0091C974 /* InputScreenViewController.swift */,
 				9E66C4C72888E48F0091C974 /* NotesTableViewCell.swift */,
 				9E66C4C82888E48F0091C974 /* NotesTableViewCell.xib */,
@@ -115,6 +122,8 @@
 				9E66C4A0288893550091C974 /* Assets.xcassets */,
 				9E66C4A2288893550091C974 /* LaunchScreen.storyboard */,
 				9E66C4A5288893550091C974 /* Info.plist */,
+				9E2F8D67289B0DAD001E6672 /* Network.swift */,
+				9E40A852289C12DE00E6384C /* UIColorTheme.swift */,
 			);
 			path = todoApp;
 			sourceTree = "<group>";
@@ -271,7 +280,10 @@
 				9E66C49C288893540091C974 /* ViewController.swift in Sources */,
 				9E66C498288893540091C974 /* AppDelegate.swift in Sources */,
 				9E66C49A288893540091C974 /* SceneDelegate.swift in Sources */,
+				9E2F8D66289B013F001E6672 /* Model.swift in Sources */,
 				9E66C4CC2889A76E0091C974 /* InputScreenViewController.swift in Sources */,
+				9E40A853289C12DE00E6384C /* UIColorTheme.swift in Sources */,
+				9E2F8D68289B0DAD001E6672 /* Network.swift in Sources */,
 				9E66C4C92888E48F0091C974 /* NotesTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

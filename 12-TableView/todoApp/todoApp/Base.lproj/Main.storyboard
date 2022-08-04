@@ -67,17 +67,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="P3C-Tk-Rcm">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="P3C-Tk-Rcm">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="BrU-fF-671">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="637"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="624"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2G1-cD-CiD">
-                                        <rect key="frame" x="0.0" y="674" width="414" height="100"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JhI-ke-05U">
+                                        <rect key="frame" x="0.0" y="624" width="414" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="vqC-37-nOi"/>
+                                            <constraint firstAttribute="height" constant="50" id="39i-mI-ryr"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="DARK"/>
+                                        <connections>
+                                            <action selector="DarkButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GFk-cg-J2v"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RnV-9R-HUF">
+                                        <rect key="frame" x="0.0" y="674" width="414" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="DvR-je-baF"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="LIGHT"/>
+                                        <connections>
+                                            <action selector="LightButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hyi-g0-eW6"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2G1-cD-CiD">
+                                        <rect key="frame" x="0.0" y="724" width="414" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="vqC-37-nOi"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="ADD NOTE"/>
@@ -93,8 +115,12 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="P3C-Tk-Rcm" secondAttribute="bottom" id="G1w-gM-jxy"/>
                             <constraint firstItem="P3C-Tk-Rcm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KTz-8G-tjB"/>
+                            <constraint firstItem="P3C-Tk-Rcm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Kas-60-VVC"/>
                             <constraint firstItem="P3C-Tk-Rcm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Nzs-1o-3Ke"/>
+                            <constraint firstItem="P3C-Tk-Rcm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Pnd-qL-apE"/>
                             <constraint firstItem="P3C-Tk-Rcm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="cP3-Xs-Or6"/>
+                            <constraint firstItem="P3C-Tk-Rcm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gfh-I1-ARj"/>
+                            <constraint firstItem="P3C-Tk-Rcm" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="jdB-My-tNd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="044-8v-fBq"/>
