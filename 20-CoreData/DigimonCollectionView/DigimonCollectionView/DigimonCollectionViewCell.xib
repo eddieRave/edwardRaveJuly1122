@@ -35,6 +35,17 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iA-kN-Cfm">
+                        <rect key="frame" x="10" y="10" width="52" height="47"/>
+                        <color key="tintColor" systemColor="systemYellowColor"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="☆">
+                            <fontDescription key="titleFontDescription" type="system" pointSize="27"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="favoriteButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="LqE-9n-lMa"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -48,6 +59,8 @@
                 <constraint firstAttribute="trailing" secondItem="NzO-j9-6Oa" secondAttribute="trailing" id="fGx-gv-hCj"/>
                 <constraint firstAttribute="bottom" secondItem="NzO-j9-6Oa" secondAttribute="bottom" id="ir0-L4-Wqc"/>
                 <constraint firstItem="NzO-j9-6Oa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="mwm-MX-3Ke"/>
+                <constraint firstItem="6iA-kN-Cfm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="pYq-ci-d2r"/>
+                <constraint firstItem="6iA-kN-Cfm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="wVo-OD-hAv"/>
                 <constraint firstItem="Wb8-w6-dny" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="wgT-WO-JiK"/>
             </constraints>
             <connections>
@@ -61,6 +74,9 @@
     <resources>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -7,8 +7,15 @@
 
 /**
  ASSIGNMENT:
-     Create a collection view in mvvm format using data from this api
-        https://digimon-api.vercel.app/api/digimon
+    create a favorites tab in your digimon app
+        - create a way to to add a digimon to your favorites in your digimon app the favorites should be display on a second window (TabBarController)
+        - add core data to your already existing project
+            - https://programmingwithswift.com/add-core-data-to-existing-ios-project/
+ */
+
+/**
+ TUTORIALS:
+ - Tab Bar Quickset: https://guides.codepath.com/ios/Tab-Bar-Quickstart
  */
 
 import UIKit

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B393F90289BEFE700B54B09 /* Favorite.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B393F8E289BEFE700B54B09 /* Favorite.xcdatamodeld */; };
 		0BDF6A3228958267007605CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDF6A3128958267007605CB /* AppDelegate.swift */; };
 		0BDF6A3428958267007605CB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDF6A3328958267007605CB /* SceneDelegate.swift */; };
 		0BDF6A3628958267007605CB /* DigimonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDF6A3528958267007605CB /* DigimonViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B393F8F289BEFE700B54B09 /* Favorite.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Favorite.xcdatamodel; sourceTree = "<group>"; };
 		0BDF6A2E28958267007605CB /* DigimonCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigimonCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BDF6A3128958267007605CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BDF6A3328958267007605CB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				0BDF6A6128958299007605CB /* Supporting */,
 				0BDF6A3A28958268007605CB /* Assets.xcassets */,
 				0BDF6A3F28958268007605CB /* Info.plist */,
+				0B393F8E289BEFE700B54B09 /* Favorite.xcdatamodeld */,
 			);
 			path = DigimonCollectionView;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				0BDF6A3228958267007605CB /* AppDelegate.swift in Sources */,
 				0BDF6A6928958341007605CB /* ApiManager.swift in Sources */,
 				0BDF6A3428958267007605CB /* SceneDelegate.swift in Sources */,
+				0B393F90289BEFE700B54B09 /* Favorite.xcdatamodeld in Sources */,
 				0BDF6A67289582E4007605CB /* Digimon.swift in Sources */,
 				0BDF6A6E289583F6007605CB /* DigimonCollectionViewCell.swift in Sources */,
 			);
@@ -656,6 +660,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0B393F8E289BEFE700B54B09 /* Favorite.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0B393F8F289BEFE700B54B09 /* Favorite.xcdatamodel */,
+			);
+			currentVersion = 0B393F8F289BEFE700B54B09 /* Favorite.xcdatamodel */;
+			path = Favorite.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0BDF6A2628958267007605CB /* Project object */;
 }
