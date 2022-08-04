@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         getDefaults()
         setDefaults()
         getDefaults()
+        saveFile()
         accessFile()
         // Do any additional setup after loading the view.
     }
