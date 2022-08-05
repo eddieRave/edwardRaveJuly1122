@@ -23,11 +23,12 @@ class MovieCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configure(movie: Movie) {
-        guard let date = formatDate(dateString: movie.release_date, outFormat: "MMMM dd, yyyy") else { return }
-        movieTitleLabel.text = movie.original_title
+    func configure(delegate: CellConfigurable, index: Int) {
+        guard let releaseDate = delegate.getReleaseDate(index: index), let date = formatDate(dateString: releaseDate, outFormat: "MMMM dd, yyyy") else { return }
+        
+        movieTitleLabel.text = delegate.getTitle(index: index)
         releaseDateLabel.text = date
-        ratingLabel.text = String(movie.vote_average)
+        ratingLabel.text = delegate.getAverage(index: index)
     }
     
     func formatDate(dateString: String, inFormat: String = "yyyy/MM/dd", outFormat: String) -> String? {

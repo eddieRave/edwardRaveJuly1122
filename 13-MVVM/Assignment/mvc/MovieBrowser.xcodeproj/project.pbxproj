@@ -21,6 +21,7 @@
 		93BB63A42513DEEF00837DF4 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BB63A32513DEEF00837DF4 /* Network.swift */; };
 		93C5866325E9F01B00DBCE60 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C5866225E9F01B00DBCE60 /* MovieDetailViewController.swift */; };
 		93FE107325E056D100F805CE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FE107225E056D100F805CE /* SearchViewController.swift */; };
+		C9E1B447289C48F300000E9E /* MovieVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E1B446289C48F300000E9E /* MovieVIewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		93BB63A32513DEEF00837DF4 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		93C5866225E9F01B00DBCE60 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		93FE107225E056D100F805CE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		C9E1B446289C48F300000E9E /* MovieVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieVIewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 				8BAAE8612854FF8D008FA329 /* MovieDetail.storyboard */,
 				8BAAE86928552941008FA329 /* MovieCell.swift */,
 				8BAAE86A28552941008FA329 /* MovieCell.xib */,
+				C9E1B446289C48F300000E9E /* MovieVIewModel.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			files = (
 				93FE107325E056D100F805CE /* SearchViewController.swift in Sources */,
 				93305A732513D043004E869A /* AppDelegate.swift in Sources */,
+				C9E1B447289C48F300000E9E /* MovieVIewModel.swift in Sources */,
 				8B18A73228579F7600A735AD /* FormatDate.swift in Sources */,
 				93BB63A42513DEEF00837DF4 /* Network.swift in Sources */,
 				8BAAE864285525BB008FA329 /* MovieResults.swift in Sources */,
