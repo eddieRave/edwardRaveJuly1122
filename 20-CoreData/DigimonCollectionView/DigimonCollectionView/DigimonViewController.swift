@@ -26,11 +26,13 @@ import UIKit
 
 #warning("Still need to persist data in CoreData")
 
+let digimonVM = DigimonViewModel()
+
 class DigimonViewController: UIViewController {
     
     @IBOutlet weak var digimonCollectionView: UICollectionView!
     
-    let digimonVM = DigimonViewModel()
+//    let digimonVM = DigimonViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +74,10 @@ class DigimonViewController: UIViewController {
         }
         
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        (segue.destination as? FavoritesViewController).delegate2 = self
+//    }
 
 }
 

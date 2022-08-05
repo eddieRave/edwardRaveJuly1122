@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0B393F90289BEFE700B54B09 /* Favorite.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B393F8E289BEFE700B54B09 /* Favorite.xcdatamodeld */; };
 		0B66B43F289C1A2100FB9EBB /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B66B43E289C1A2100FB9EBB /* FavoritesViewController.swift */; };
+		0B66B442289DA38600FB9EBB /* FavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B66B440289DA38600FB9EBB /* FavoritesCollectionViewCell.swift */; };
+		0B66B443289DA38600FB9EBB /* FavoritesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B66B441289DA38600FB9EBB /* FavoritesCollectionViewCell.xib */; };
 		0BDF6A3228958267007605CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDF6A3128958267007605CB /* AppDelegate.swift */; };
 		0BDF6A3428958267007605CB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDF6A3328958267007605CB /* SceneDelegate.swift */; };
 		0BDF6A3628958267007605CB /* DigimonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDF6A3528958267007605CB /* DigimonViewController.swift */; };
@@ -45,6 +47,8 @@
 /* Begin PBXFileReference section */
 		0B393F8F289BEFE700B54B09 /* Favorite.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Favorite.xcdatamodel; sourceTree = "<group>"; };
 		0B66B43E289C1A2100FB9EBB /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		0B66B440289DA38600FB9EBB /* FavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
+		0B66B441289DA38600FB9EBB /* FavoritesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesCollectionViewCell.xib; sourceTree = "<group>"; };
 		0BDF6A2E28958267007605CB /* DigimonCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigimonCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BDF6A3128958267007605CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BDF6A3328958267007605CB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -180,9 +184,11 @@
 			children = (
 				0BDF6A3728958267007605CB /* Main.storyboard */,
 				0BDF6A3528958267007605CB /* DigimonViewController.swift */,
-				0B66B43E289C1A2100FB9EBB /* FavoritesViewController.swift */,
 				0BDF6A6C289583F6007605CB /* DigimonCollectionViewCell.swift */,
 				0BDF6A6D289583F6007605CB /* DigimonCollectionViewCell.xib */,
+				0B66B43E289C1A2100FB9EBB /* FavoritesViewController.swift */,
+				0B66B440289DA38600FB9EBB /* FavoritesCollectionViewCell.swift */,
+				0B66B441289DA38600FB9EBB /* FavoritesCollectionViewCell.xib */,
 				0B66B439289C188D00FB9EBB /* Launch */,
 			);
 			name = View;
@@ -301,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BDF6A6F289583F6007605CB /* DigimonCollectionViewCell.xib in Resources */,
+				0B66B443289DA38600FB9EBB /* FavoritesCollectionViewCell.xib in Resources */,
 				0BDF6A3E28958268007605CB /* LaunchScreen.storyboard in Resources */,
 				0BDF6A3B28958268007605CB /* Assets.xcassets in Resources */,
 				0BDF6A3928958267007605CB /* Main.storyboard in Resources */,
@@ -336,6 +343,7 @@
 				0B393F90289BEFE700B54B09 /* Favorite.xcdatamodeld in Sources */,
 				0BDF6A67289582E4007605CB /* Digimon.swift in Sources */,
 				0B66B43F289C1A2100FB9EBB /* FavoritesViewController.swift in Sources */,
+				0B66B442289DA38600FB9EBB /* FavoritesCollectionViewCell.swift in Sources */,
 				0BDF6A6E289583F6007605CB /* DigimonCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

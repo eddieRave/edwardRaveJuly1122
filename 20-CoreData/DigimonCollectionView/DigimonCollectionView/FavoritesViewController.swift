@@ -11,13 +11,13 @@ class FavoritesViewController: UIViewController {
 
     @IBOutlet weak var favoritesCollectionView: UICollectionView!
     
-    var delegate: AddFavoriteProtocol?
+//    var delegate2: AddFavoriteProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // register cell & connect with CollectionView
-        let nib = UINib(nibName: "DigimonCollectionViewCell", bundle: nil)
+        let nib = UINib(nibName: "FavoritesCollectionViewCell", bundle: nil)
         favoritesCollectionView.register(nib, forCellWithReuseIdentifier: "cell")
         
         // connect extension functions with CollectionView
@@ -37,10 +37,10 @@ class FavoritesViewController: UIViewController {
         favoritesCollectionView.collectionViewLayout = layout
         
         // fetch Digimon data
-        delegate?.getDigimonData()
+        digimonVM.getDigimonData()
         
         // reload the CollectionView after fetching data
-        delegate?.update = { [unowned self] in
+        digimonVM.update = { [unowned self] in
             DispatchQueue.main.async {
                 self.favoritesCollectionView.reloadData()
                 print("data reloaded")
@@ -52,22 +52,23 @@ class FavoritesViewController: UIViewController {
 }
 
 extension FavoritesViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        delegate?.getFavoritesIdArrayCount() ?? 0
+        digimonVM.getFavoritesIdArrayCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = favoritesCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DigimonCollectionViewCell else {
+        guard let cell = favoritesCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? FavoritesCollectionViewCell else {
             return UICollectionViewCell()
         }
         print("cell created")
-        if ((delegate?.favoritesIdArray.contains(indexPath.row)) != nil) {
-            cell.nameLabel.text = delegate?.getName(for: indexPath.row)
-            if let url = delegate?.getImage(for: indexPath.row) {
+        if (digimonVM.favoritesIdArray.contains(indexPath.row)) {
+            cell.nameLabel.text = digimonVM.getName(for: indexPath.row)
+            if let url = digimonVM.getImage(for: indexPath.row) {
                 cell.imgLabel.fetchImage(for: url)
             }
-            cell.levelLabel.text = delegate?.getLevel(for: indexPath.row)
-            print("name of digimon: \(delegate?.getName(for: indexPath.row))")
+            cell.levelLabel.text = digimonVM.getLevel(for: indexPath.row)
+            print("name of digimon: \(digimonVM.getName(for: indexPath.row))")
         }
         return cell
     }
