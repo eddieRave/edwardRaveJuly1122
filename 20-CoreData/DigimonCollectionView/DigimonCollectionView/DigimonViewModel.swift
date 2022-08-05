@@ -9,46 +9,60 @@ import Foundation
 
 protocol AddFavoriteProtocol {
     var update: ( () -> Void )? { get set }
-    func getDigimon()
+    var favoritesIdArray: [Int] { get set }
+    func getDigimonData()
+    func getDigimon(index: Int) -> Digimon?
+    func getFavoritesIdArrayCount() -> Int
+    func addIdToFavorites(indexPathRow: Int)
+    func removeFromFavories(indexPathRow: Int)
+    
     func getName(for index: Int) -> String?
     func getImage(for index: Int) -> String?
     func getLevel(for index: Int) -> String?
-    func getFavoritesCount() -> Int?
-    func addToFavorites(digimonIndexPath: Int)
-    func removeFromFavorites(digimonIndexPath: Int)
 }
 
 class DigimonViewModel: AddFavoriteProtocol {
     
-    var update: ( () -> Void )?
-    
+    // Arrays
     var digimonArray: [Digimon]? = nil {
         didSet {
             update?()
         }
     }
-    
-    var favorites: [Digimon] = [] {
+//    var favoritesArray: [Digimon] = [] {
+//        didSet {
+//            var favArray: [String] = []
+//            for digi in favoritesArray {
+//                favArray.append(digi.name ?? "")
+//            }
+//            print("Favorites: \(favArray)")
+//        }
+//    }
+    var favoritesIdArray: [Int] = [] {
         didSet {
-            var favArray: [String] = []
-            for digi in favorites {
-                favArray.append(digi.name ?? "")
-            }
-            print("Favorites: \(favArray)")
-//            update?()
+            print("Favorites ID: \(favoritesIdArray)")
         }
     }
     
+    // Update / reloadData()
+    var update: ( () -> Void )?
+    
     init() {
-        getDigimon()
+        getDigimonData()
     }
     
-    func getDigimon() {
+    // API data
+    func getDigimonData() {
         ApiManager.shared.fetchDigimon(completionFD: { digimon in
             self.digimonArray = digimon
         })
     }
     
+    // Digimon details
+    func getDigimon(index: Int) -> Digimon? {
+        let digimon = digimonArray?[index]
+        return digimon
+    }
     func getName(for index: Int) -> String? {
         digimonArray?[index].name?.uppercased()
     }
@@ -59,23 +73,44 @@ class DigimonViewModel: AddFavoriteProtocol {
         "Level: \( digimonArray?[index].level?.uppercased() ?? "UNKNOWN" )"
     }
     
-    func getDigimonArrayCount() -> Int? {
-        digimonArray?.count
+    // Count
+    func getDigimonArrayCount() -> Int {
+        digimonArray?.count ?? 0
+    }
+//    func getFavoritesArrayCount() -> Int {
+//        favoritesArray.count
+//    }
+    func getFavoritesIdArrayCount() -> Int {
+        favoritesIdArray.count
     }
     
-    func getFavoritesCount() -> Int? {
-        favorites.count
+    // Add/remove favorites
+    func addIdToFavorites(indexPathRow: Int) {
+        if var digimon = digimonArray?[indexPathRow] {
+            digimon.favoriteId = indexPathRow
+            favoritesIdArray.append(indexPathRow)
+        }
+    }
+    func removeFromFavories(indexPathRow: Int) {
+        var copyOfArray = favoritesIdArray
+        if favoritesIdArray.contains(indexPathRow) {
+            for i in 0..<favoritesIdArray.count {
+                if favoritesIdArray[i] == indexPathRow {
+                    copyOfArray.remove(at: i)
+                }
+            }
+        }
+        favoritesIdArray = copyOfArray
     }
     
+}
+
+/*
+ PREVIOUS ADD FAVORITE:
     func addToFavorites(digimonIndexPath: Int) {
         guard let digimon = digimonArray?[digimonIndexPath] else {
             return
         }
-        favorites.append(digimon)
+        favoritesArray.append(digimon)
     }
-    
-    func removeFromFavorites(digimonIndexPath: Int) {
-        favorites.remove(at: digimonIndexPath)
-    }
-    
-}
+ */

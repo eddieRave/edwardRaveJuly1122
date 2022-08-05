@@ -20,6 +20,10 @@
 
 import UIKit
 
+#warning("Selected favorite digimon are not showing up on Favorites page")
+
+#warning("Favorites are recycled in the view")
+
 #warning("Still need to persist data in CoreData")
 
 class DigimonViewController: UIViewController {
@@ -58,7 +62,7 @@ class DigimonViewController: UIViewController {
         digimonCollectionView.collectionViewLayout = layout
         
         // fetch Digimon data
-        digimonVM.getDigimon()
+        digimonVM.getDigimonData()
         
         // reload the CollectionView after fetching data
         digimonVM.update = { [unowned self] in
@@ -74,7 +78,7 @@ class DigimonViewController: UIViewController {
 extension DigimonViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        digimonVM.getDigimonArrayCount() ?? 0
+        digimonVM.getDigimonArrayCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -92,7 +96,7 @@ extension DigimonViewController: UICollectionViewDataSource {
         
         // link delegate to ViewModel and indexPath
         cell.delegate = digimonVM
-        cell.digimonIndex = indexPath.row
+        cell.indexPathRow = indexPath.row
         
         return cell
     }

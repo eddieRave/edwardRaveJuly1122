@@ -8,11 +8,13 @@
 import Foundation
 
 struct Digimon: Decodable {
-    
     let name: String?
     let img: String?
     let level: String?
     
+    // TODO: partial fix to remove from favorites issue?
+    var favoriteId: Int?
+//    var isFavorite: Bool?
 }
 
 /*
