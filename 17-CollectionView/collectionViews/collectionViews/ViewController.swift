@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let colors: [UIColor] = [.blue, .cyan, .systemMint, .systemTeal, .systemPurple, .systemOrange, .systemRed, .green, .magenta, .systemIndigo,.blue, .cyan, .systemMint, .systemTeal, .systemPurple, .systemOrange, .systemRed, .green, .magenta, .systemIndigo,.blue, .cyan, .systemMint, .systemTeal, .systemPurple, .systemOrange, .systemRed, .green, .magenta, .systemIndigo,.blue, .cyan, .systemMint, .systemTeal, .systemPurple, .systemOrange, .systemRed, .green, .magenta, .systemIndigo,.blue, .cyan, .systemMint, .systemTeal, .systemPurple, .systemOrange, .systemRed, .green, .magenta, .systemIndigo,.blue, .cyan, .systemMint, .systemTeal, .systemPurple, .systemOrange, .systemRed, .green, .magenta, .systemIndigo,.blue, .cyan, .systemMint, .systemTeal, .systemPurple, .systemOrange, .systemRed, .green, .magenta, .systemIndigo,.blue, .cyan, .systemMint, .systemTeal, .systemPurple, .systemOrange, .systemRed, .green, .magenta, .systemIndigo]
+   
     
     
     override func viewDidLoad() {
