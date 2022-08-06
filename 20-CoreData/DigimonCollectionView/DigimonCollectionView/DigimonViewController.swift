@@ -20,9 +20,9 @@
 
 import UIKit
 
-#warning("Selected favorite digimon are not showing up on Favorites page")
-
 #warning("Favorites are recycled in the view")
+
+#warning("Favorites tab doesn't update when you go back to collections and add or remove digimon")
 
 #warning("Still need to persist data in CoreData")
 

@@ -29,20 +29,15 @@ class DigimonViewModel: AddFavoriteProtocol {
             update?()
         }
     }
-//    var favoritesArray: [Digimon] = [] {
-//        didSet {
-//            var favArray: [String] = []
-//            for digi in favoritesArray {
-//                favArray.append(digi.name ?? "")
-//            }
-//            print("Favorites: \(favArray)")
-//        }
-//    }
     var favoritesIdArray: [Int] = [] {
         didSet {
             print("Favorites ID: \(favoritesIdArray)")
+            convertArrayOfIntToString()
+            print("String copy = \(stringCopyOfFavoritesIdArray)")
+//            update?()
         }
     }
+    var stringCopyOfFavoritesIdArray = ""
     
     // Update / reloadData()
     var update: ( () -> Void )?
@@ -103,9 +98,36 @@ class DigimonViewModel: AddFavoriteProtocol {
         favoritesIdArray = copyOfArray
     }
     
+    // Convert [Int] to String to save in CoreData
+    func convertArrayOfIntToString() {
+        stringCopyOfFavoritesIdArray = ""
+        for num in favoritesIdArray {
+            stringCopyOfFavoritesIdArray.append(String(num) + ",")
+        }
+        if stringCopyOfFavoritesIdArray.last == "," {
+            stringCopyOfFavoritesIdArray.removeLast()
+        }
+    }
+    func convertStringToArrayOfInt(stringOfInt: String) -> [Int] {
+        let convertedArr = stringOfInt.components(separatedBy: ",")
+        let originalArray = convertedArr.map { Int($0) ?? 0 }
+        return originalArray
+    }
+    
 }
 
 /*
+ PREVIOUS FAVORITE ARRAY:
+     var favoritesArray: [Digimon] = [] {
+         didSet {
+             var favArray: [String] = []
+             for digi in favoritesArray {
+                 favArray.append(digi.name ?? "")
+             }
+             print("Favorites: \(favArray)")
+         }
+     }
+ 
  PREVIOUS ADD FAVORITE:
     func addToFavorites(digimonIndexPath: Int) {
         guard let digimon = digimonArray?[digimonIndexPath] else {

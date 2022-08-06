@@ -102,6 +102,26 @@
 			name = Launch;
 			sourceTree = "<group>";
 		};
+		0B66B444289DD1F300FB9EBB /* CollectionTab */ = {
+			isa = PBXGroup;
+			children = (
+				0BDF6A3528958267007605CB /* DigimonViewController.swift */,
+				0BDF6A6C289583F6007605CB /* DigimonCollectionViewCell.swift */,
+				0BDF6A6D289583F6007605CB /* DigimonCollectionViewCell.xib */,
+			);
+			name = CollectionTab;
+			sourceTree = "<group>";
+		};
+		0B66B445289DD21400FB9EBB /* FavoritesTab */ = {
+			isa = PBXGroup;
+			children = (
+				0B66B43E289C1A2100FB9EBB /* FavoritesViewController.swift */,
+				0B66B440289DA38600FB9EBB /* FavoritesCollectionViewCell.swift */,
+				0B66B441289DA38600FB9EBB /* FavoritesCollectionViewCell.xib */,
+			);
+			name = FavoritesTab;
+			sourceTree = "<group>";
+		};
 		0BDF6A2528958267007605CB = {
 			isa = PBXGroup;
 			children = (
@@ -183,12 +203,8 @@
 			isa = PBXGroup;
 			children = (
 				0BDF6A3728958267007605CB /* Main.storyboard */,
-				0BDF6A3528958267007605CB /* DigimonViewController.swift */,
-				0BDF6A6C289583F6007605CB /* DigimonCollectionViewCell.swift */,
-				0BDF6A6D289583F6007605CB /* DigimonCollectionViewCell.xib */,
-				0B66B43E289C1A2100FB9EBB /* FavoritesViewController.swift */,
-				0B66B440289DA38600FB9EBB /* FavoritesCollectionViewCell.swift */,
-				0B66B441289DA38600FB9EBB /* FavoritesCollectionViewCell.xib */,
+				0B66B444289DD1F300FB9EBB /* CollectionTab */,
+				0B66B445289DD21400FB9EBB /* FavoritesTab */,
 				0B66B439289C188D00FB9EBB /* Launch */,
 			);
 			name = View;

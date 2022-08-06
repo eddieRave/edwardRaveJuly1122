@@ -46,7 +46,16 @@ class FavoritesViewController: UIViewController {
                 print("data reloaded")
             }
         }
-        
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        digimonVM.update = { [unowned self] in
+            DispatchQueue.main.async {
+                self.favoritesCollectionView.reloadData()
+                print("data reloaded")
+            }
+        }
     }
 
 }
