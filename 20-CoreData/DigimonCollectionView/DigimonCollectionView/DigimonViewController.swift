@@ -19,6 +19,7 @@
  */
 
 import UIKit
+import CoreData
 
 #warning("Favorites are recycled in the view")
 
@@ -36,6 +37,9 @@ class DigimonViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Save to CoreData
+        storeData()
         
         // register cell & connect with CollectionView
         let nib = UINib(nibName: "DigimonCollectionViewCell", bundle: nil)
@@ -78,6 +82,36 @@ class DigimonViewController: UIViewController {
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        (segue.destination as? FavoritesViewController).delegate2 = self
 //    }
+    
+    func storeData() {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        guard let context = appDelegate?.persistentContainer.viewContext else {
+            fatalError()
+        }
+        guard let entity = NSEntityDescription.entity(forEntityName: "Favorites", in: context) else {
+            return
+        }
+        let favoritesEntity = NSManagedObject(entity: entity, insertInto: context)
+        favoritesEntity.setValue(digimonVM.stringCopyOfFavoritesIdArray, forKey: "favArrayCD")
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
+    }
+    func fetchCoreData() {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        guard let context = appDelegate?.persistentContainer.viewContext else {
+            fatalError()
+        }
+        let request = NSFetchRequest<Favorites>(entityName: "Favorites")
+        do {
+            let storedFavorites = try context.fetch(request)
+            digimonVM.stringCopyOfFavoritesIdArray = storedFavorites.first?.favArrayCD ?? ""
+        } catch {
+            print(error)
+        }
+    }
 
 }
 
