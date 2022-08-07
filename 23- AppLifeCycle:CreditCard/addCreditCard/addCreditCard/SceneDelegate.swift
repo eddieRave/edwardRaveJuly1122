@@ -11,7 +11,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -43,10 +42,42 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidEnterBackground(_ scene: UIScene) {
         // Called as the scene transitions from the foreground to the background.
-        // Use this method to save data, release shared resources, and store enough scene-specific state information
-        // to restore the scene back to its current state.
+        // Use this method to save data, release shared resources, and store enough scene-specific state information to restore the scene back to its current state.
     }
-
-
+    
 }
-
+    
+    
+//    // Attempt 1
+//////    var window: UIWindow?
+//    private lazy var backgroundWindow: UIWindow = {
+//        let screen = UIScreen.main
+//        let window = UIWindow(frame: screen.bounds)
+//        window.screen = screen
+//        window.rootViewController = HiddenScreenViewController()
+//        window.windowLevel = .alert
+//        return window
+//    }()
+//    func applicationDidEnterBackground(_ application: UIApplication) {
+//        backgroundWindow.isHidden = true
+//    }
+//    func applicationWillEnterForeground(_ application: UIApplication) {
+//        backgroundWindow.isHidden = false
+//    }
+    
+    
+//    // Attempt 2
+//    private var privacyProtectionWindow: UIWindow?
+//    private func showPrivacyProtectionWindow() {
+//        guard let windowScene = self.window?.windowScene else {
+//            return
+//        }
+//        privacyProtectionWindow = UIWindow(windowScene: windowScene)
+//        privacyProtectionWindow?.rootViewController = SensitiveInfoViewController()
+//        privacyProtectionWindow?.windowLevel = .alert + 1
+//        privacyProtectionWindow?.makeKeyAndVisible()
+//    }
+//    private func hidePrivacyProtectionWindow() {
+//        privacyProtectionWindow?.isHidden = true
+//        privacyProtectionWindow = nil
+//    }
