@@ -46,38 +46,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
 }
-    
-    
-//    // Attempt 1
-//////    var window: UIWindow?
-//    private lazy var backgroundWindow: UIWindow = {
-//        let screen = UIScreen.main
-//        let window = UIWindow(frame: screen.bounds)
-//        window.screen = screen
-//        window.rootViewController = HiddenScreenViewController()
-//        window.windowLevel = .alert
-//        return window
-//    }()
-//    func applicationDidEnterBackground(_ application: UIApplication) {
-//        backgroundWindow.isHidden = true
-//    }
-//    func applicationWillEnterForeground(_ application: UIApplication) {
-//        backgroundWindow.isHidden = false
-//    }
-    
-    
-//    // Attempt 2
-//    private var privacyProtectionWindow: UIWindow?
-//    private func showPrivacyProtectionWindow() {
-//        guard let windowScene = self.window?.windowScene else {
-//            return
-//        }
-//        privacyProtectionWindow = UIWindow(windowScene: windowScene)
-//        privacyProtectionWindow?.rootViewController = SensitiveInfoViewController()
-//        privacyProtectionWindow?.windowLevel = .alert + 1
-//        privacyProtectionWindow?.makeKeyAndVisible()
-//    }
-//    private func hidePrivacyProtectionWindow() {
-//        privacyProtectionWindow?.isHidden = true
-//        privacyProtectionWindow = nil
-//    }

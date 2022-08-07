@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B66B44828A017FD00FB9EBB /* HiddenScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B66B44728A017FD00FB9EBB /* HiddenScreenViewController.swift */; };
 		9EE761C627B56C7B0022B935 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE761C527B56C7B0022B935 /* AppDelegate.swift */; };
 		9EE761C827B56C7B0022B935 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE761C727B56C7B0022B935 /* SceneDelegate.swift */; };
 		9EE761CA27B56C7B0022B935 /* SensitiveInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE761C927B56C7B0022B935 /* SensitiveInfoViewController.swift */; };
@@ -20,7 +19,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0B66B44728A017FD00FB9EBB /* HiddenScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenScreenViewController.swift; sourceTree = "<group>"; };
 		9EE761C227B56C7B0022B935 /* addCreditCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = addCreditCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EE761C527B56C7B0022B935 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9EE761C727B56C7B0022B935 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,7 +75,6 @@
 			isa = PBXGroup;
 			children = (
 				9EE761C927B56C7B0022B935 /* SensitiveInfoViewController.swift */,
-				0B66B44728A017FD00FB9EBB /* HiddenScreenViewController.swift */,
 				9EE761CB27B56C7B0022B935 /* Main.storyboard */,
 				0B66B44628A010E800FB9EBB /* Supporting */,
 				9EE761CE27B56C7D0022B935 /* Assets.xcassets */,
@@ -171,7 +168,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B66B44828A017FD00FB9EBB /* HiddenScreenViewController.swift in Sources */,
 				9EE761CA27B56C7B0022B935 /* SensitiveInfoViewController.swift in Sources */,
 				9EE761C627B56C7B0022B935 /* AppDelegate.swift in Sources */,
 				9EE761C827B56C7B0022B935 /* SceneDelegate.swift in Sources */,
