@@ -37,7 +37,7 @@ class ViewController: UIViewController {
 //        request.predicate = pred
         do {
             let storedCars = try context.fetch(request)
-            print(storedCars.first?.color!)
+            print(storedCars)
             
             
         } catch {
