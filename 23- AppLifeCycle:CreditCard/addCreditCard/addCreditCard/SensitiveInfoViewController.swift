@@ -14,6 +14,8 @@ class SensitiveInfoViewController: UIViewController {
     var normalView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     let maskView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
+    var count = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -27,7 +29,8 @@ class SensitiveInfoViewController: UIViewController {
     }
     
     @objc func foreground(){
-        print("App moved to foreground")
+        count += 1
+        print("App is in foreground \(count)")
     }
     @objc func active(){
         print("App is active")
@@ -43,7 +46,8 @@ class SensitiveInfoViewController: UIViewController {
 //        view.mask = maskView
     }
     @objc func background(){
-        print("App moved to background")
+        count += 1
+        print("App is in background \(count)")
     }
     
 }
