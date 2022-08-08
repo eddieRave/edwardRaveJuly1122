@@ -19,7 +19,6 @@ class Pokedex: UIViewController {
         vm = PokedexViewModel()
         title = "Pokedex"
         
-        configurePokedex()
         
         vm?.loadPokemon {
             DispatchQueue.main.async {
@@ -27,6 +26,7 @@ class Pokedex: UIViewController {
                 self.pokedex.reloadData()
             }
         }
+        configurePokedex()
     }
 
     func configurePokedex() {
@@ -48,12 +48,12 @@ class Pokedex: UIViewController {
 
 extension Pokedex: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        vm?.pokemonCount ?? 0
+        return vm?.pokemonCount == vm?.totalPokemon ? vm?.totalPokemon ?? 0 : 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let vm = vm else { return UICollectionViewCell() }
-        guard let cellVM = vm.getEntry(at: indexPath.row + 1) else { return UICollectionViewCell() }
+        guard let cellVM = vm.getEntry(at: indexPath.row + 1) else { print("fail 2"); return UICollectionViewCell() }
         guard let entry = pokedex.dequeueReusableCell(
             withReuseIdentifier: "PokedexEntryCell", for: indexPath
         ) as? PokedexEntryCell else { return PokedexEntryCell() }

@@ -23,7 +23,7 @@
 		D09CBFAA2899678D004E35EA /* PokemonDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D09CBFA92899678D004E35EA /* PokemonDetail.storyboard */; };
 		D09CBFAD289A36FE004E35EA /* SuccessorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09CBFAB289A36FE004E35EA /* SuccessorCell.swift */; };
 		D09CBFAE289A36FE004E35EA /* SuccessorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D09CBFAC289A36FE004E35EA /* SuccessorCell.xib */; };
-		D0B2CEBF2896E723006CBA37 /* PokemonSpecies.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B2CEBE2896E723006CBA37 /* PokemonSpecies.swift */; };
+		D0B2CEBF2896E723006CBA37 /* Species.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B2CEBE2896E723006CBA37 /* Species.swift */; };
 		D0B2CEC128973580006CBA37 /* EvolutionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B2CEC028973580006CBA37 /* EvolutionObject.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +46,7 @@
 		D09CBFA92899678D004E35EA /* PokemonDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PokemonDetail.storyboard; sourceTree = "<group>"; };
 		D09CBFAB289A36FE004E35EA /* SuccessorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessorCell.swift; sourceTree = "<group>"; };
 		D09CBFAC289A36FE004E35EA /* SuccessorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuccessorCell.xib; sourceTree = "<group>"; };
-		D0B2CEBE2896E723006CBA37 /* PokemonSpecies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSpecies.swift; sourceTree = "<group>"; };
+		D0B2CEBE2896E723006CBA37 /* Species.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Species.swift; sourceTree = "<group>"; };
 		D0B2CEC028973580006CBA37 /* EvolutionObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,7 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				D018467D28953A2400456471 /* Pokemon.swift */,
-				D0B2CEBE2896E723006CBA37 /* PokemonSpecies.swift */,
+				D0B2CEBE2896E723006CBA37 /* Species.swift */,
 				D0B2CEC028973580006CBA37 /* EvolutionObject.swift */,
 			);
 			name = Model;
@@ -226,7 +226,7 @@
 				D018467828945BD800456471 /* PokedexViewModel.swift in Sources */,
 				D01846802895435800456471 /* PokemonViewModel.swift in Sources */,
 				D01846642894527B00456471 /* SceneDelegate.swift in Sources */,
-				D0B2CEBF2896E723006CBA37 /* PokemonSpecies.swift in Sources */,
+				D0B2CEBF2896E723006CBA37 /* Species.swift in Sources */,
 				D0B2CEC128973580006CBA37 /* EvolutionObject.swift in Sources */,
 				D01846962895C6EA00456471 /* PokemonDetail.swift in Sources */,
 			);

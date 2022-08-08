@@ -49,11 +49,21 @@ class PokemonViewModel {
         return output
     }
     
-    func getGradientColors() -> [CGColor] {
+    private func getGradientColors() -> [CGColor] {
         var gradientColors: [CGColor] = []
         gradientColors = [type1.typeColor().cgColor]
-        gradientColors += hasTwoTypes ? [type2!.typeColor().cgColor] : [UIColor.clear.cgColor]
+        gradientColors += hasTwoTypes ? [type2!.typeColor().cgColor] : [UIColor.white.cgColor]
         return gradientColors
+    }
+    
+    func getGradient() -> CAGradientLayer {
+        let gradient = CAGradientLayer()
+        gradient.colors = getGradientColors()
+        
+        gradient.startPoint = CGPoint(x: 0.5, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1, y: 1)
+        
+        return gradient
     }
 }
 

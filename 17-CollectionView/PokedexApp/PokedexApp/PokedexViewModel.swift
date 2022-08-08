@@ -14,27 +14,30 @@ class PokedexViewModel {
     var pokemonList: [Int: PokemonViewModel] = [:]
     private var chainList: [Int: EvolutionObject] = [:]
     
-    let totalPokemon = 250
-    let totalChains = 257
+    let totalPokemon = 800
+    let totalChains = 420
     
     var pokemonCount: Int { pokemonList.count }
     
     func loadPokemon(completionHandler: @escaping () -> Void) {
+        self.imageGroup.enter()
         
         for id in 1...totalPokemon {
-            self.imageGroup.enter()
+            self.chainGroup.enter()
+            self.chainGroup.enter()
             self.chainGroup.enter()
             
             NetworkService.shared.fetchPokemonData(for: id) { pokemon in
                 self.pokemonList.updateValue(PokemonViewModel(pokemon), forKey: pokemon.id)
+                self.chainGroup.leave()
                 
                 NetworkService.shared.fetchPokemonSpeciesData(for: id) { species in
                     self.pokemonList[id]?.species = species
+                    self.chainGroup.leave()
                 }
                 
                 NetworkService.shared.fetchPokemonImageData(for: id) { image in
                     self.pokemonList[id]?.image = image
-                    self.imageGroup.leave()
                     self.chainGroup.leave()
                 }
             }
@@ -77,6 +80,7 @@ class PokedexViewModel {
                 pokemon.value.successors = evolvesToAgain.map({ $0.third.name })
             }
         }
+        self.imageGroup.leave()
     }
 }
 

@@ -88,13 +88,7 @@ class PokemonDetail: UIViewController {
     }
 
     func configureGradient() {
-        guard let vm = vm else { return }
-
-        let gradient = CAGradientLayer()
-        gradient.colors = vm.getGradientColors()
-        
-        gradient.startPoint = CGPoint(x: 0.5, y: 0.5)
-        gradient.endPoint = CGPoint(x: 1, y: 1)
+        guard let gradient = vm?.getGradient() else { return }
         
         gradient.frame = bottomBg.bounds
         bottomBg.layer.addSublayer(gradient)
@@ -142,6 +136,7 @@ extension PokemonDetail: UITableViewDelegate {
         guard let detailVM = successorVMs?[indexPath.row] else { return }
         
         detailVC.vm = detailVM
+        detailVC.disableBack = true
         detailVC.evolvableDelegate = evolvableDelegate
         navigationController?.show(detailVC, sender: nil)
     }
