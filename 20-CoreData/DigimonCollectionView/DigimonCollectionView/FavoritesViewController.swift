@@ -38,23 +38,14 @@ class FavoritesViewController: UIViewController {
         
         // fetch Digimon data
         digimonVM.getDigimonData()
-        
-        // reload the CollectionView after fetching data
-        digimonVM.update = { [unowned self] in
-            DispatchQueue.main.async {
-                self.favoritesCollectionView.reloadData()
-                print("data reloaded")
-            }
-        }
 
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        digimonVM.update = { [unowned self] in
-            DispatchQueue.main.async {
-                self.favoritesCollectionView.reloadData()
-                print("data reloaded")
-            }
+        // fetch Digimon data
+        digimonVM.getDigimonData()
+        DispatchQueue.main.async {
+            self.favoritesCollectionView.reloadData()
         }
     }
 
@@ -71,14 +62,13 @@ extension FavoritesViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         print("cell created")
-        if (digimonVM.favoritesIdArray.contains(indexPath.row)) {
-            cell.nameLabel.text = digimonVM.getName(for: indexPath.row)
-            if let url = digimonVM.getImage(for: indexPath.row) {
-                cell.imgLabel.fetchImage(for: url)
-            }
-            cell.levelLabel.text = digimonVM.getLevel(for: indexPath.row)
-            print("name of digimon: \(digimonVM.getName(for: indexPath.row))")
+        cell.nameLabel.text = digimonVM.getName(for: digimonVM.favoritesIdArray[indexPath.row])
+        if let url = digimonVM.getImage(for: digimonVM.favoritesIdArray[indexPath.row]) {
+            cell.imgLabel.fetchImage(for: url)
         }
+        cell.levelLabel.text = digimonVM.getLevel(for: digimonVM.favoritesIdArray[indexPath.row])
+        print("name of digimon: \(digimonVM.getName(for: digimonVM.favoritesIdArray[indexPath.row]) ?? "")")
         return cell
     }
+    
 }

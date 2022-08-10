@@ -38,53 +38,54 @@ class DigimonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Save to CoreData
-        storeData()
-        
-        // register cell & connect with CollectionView
+        // Register cell & connect with CollectionView
         let nib = UINib(nibName: "DigimonCollectionViewCell", bundle: nil)
         digimonCollectionView.register(nib, forCellWithReuseIdentifier: "cell")
         
-        // connect extension functions with CollectionView
+        // Connect extension functions with CollectionView
         digimonCollectionView.dataSource = self
         
-        // horizontal scroll
+        // Horizontal scroll
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
-        // size of cells
+        // The size of the cells
         layout.itemSize = .init(width: 300, height: 300)
         
-        // spacing between cells
+        // Spacing between cells
         layout.minimumLineSpacing = 25     // horizontal?
 //        layout.minimumInteritemSpacing = 0      // vertical?
         
-        // background image for CollectionView
+        // Background image for CollectionView
         let bgView = UIView()
         bgView.backgroundColor = UIColor(patternImage: UIImage(named: "cardBg.png")!)
         digimonCollectionView.backgroundView = bgView
         
-        // connect layout
+        // Connect the layout
         digimonCollectionView.collectionViewLayout = layout
         
-        // fetch Digimon data
+        // Fetch Digimon data
         digimonVM.getDigimonData()
         
-        // reload the CollectionView after fetching data
+        // Reload the CollectionView after fetching data
         digimonVM.update = { [unowned self] in
             DispatchQueue.main.async {
                 self.digimonCollectionView.reloadData()
             }
+            // Save to CoreData
+            storeCoreData()
         }
         
+        // Fetch from CoreData
+        fetchCoreData()
+        
     }
+
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        (segue.destination as? FavoritesViewController).delegate2 = self
-//    }
-    
-    func storeData() {
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+    func storeCoreData() {
+//        DispatchQueue.main.async {
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+//        }
         guard let context = appDelegate?.persistentContainer.viewContext else {
             fatalError()
         }
@@ -95,6 +96,7 @@ class DigimonViewController: UIViewController {
         favoritesEntity.setValue(digimonVM.stringCopyOfFavoritesIdArray, forKey: "favArrayCD")
         do {
             try context.save()
+            print("Saved the following string to CoreData: \(digimonVM.stringCopyOfFavoritesIdArray)")
         } catch {
             print(error)
         }
@@ -107,7 +109,9 @@ class DigimonViewController: UIViewController {
         let request = NSFetchRequest<Favorites>(entityName: "Favorites")
         do {
             let storedFavorites = try context.fetch(request)
+            print("Retrieved the following string from CoreData: \(storedFavorites)")
             digimonVM.stringCopyOfFavoritesIdArray = storedFavorites.first?.favArrayCD ?? ""
+            print("stringCopyOfFavoritesIdArray is now equal to: \(digimonVM.stringCopyOfFavoritesIdArray)")
         } catch {
             print(error)
         }

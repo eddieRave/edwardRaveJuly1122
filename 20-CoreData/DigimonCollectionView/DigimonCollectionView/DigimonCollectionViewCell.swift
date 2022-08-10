@@ -48,35 +48,3 @@ class DigimonCollectionViewCell: UICollectionViewCell {
     }
 
 }
-
-
-/*
- PREVIOUS FAVORITE BUTTON:
- @IBAction func favoriteButton(_ sender: UIButton) {
-     favButtonIsActive.toggle()
-     guard let indexPathRow = indexPathRow else {
-         return
-     }
-     // MARK: updates isFavorited value in Digimon model
-     if delegate?.digimonArray?[digimonIndex].isFavorite == nil {
-         delegate?.digimonArray?[digimonIndex].isFavorite = false
-     }
-     if delegate?.digimonArray?[digimonIndex].isFavorite == false {
-         delegate?.digimonArray?[digimonIndex].isFavorite = true
-         updateFavoriteIcon(icon: "★", sender: sender)
-         print("Digimon - name: \(delegate?.digimonArray?[digimonIndex].name) isFavorite: \(delegate?.digimonArray?[digimonIndex].isFavorite)")
-     } else {
-         delegate?.digimonArray?[digimonIndex].isFavorite = false
-         updateFavoriteIcon(icon: "☆", sender: sender)
-         print("Digimon - name: \(delegate?.digimonArray?[digimonIndex].name) isFavorite: \(delegate?.digimonArray?[digimonIndex].isFavorite)")
-     }
-     // MARK: updates boolean local to this cell, adds to favorites array
-//        if favButtonIsActive == true {
-//            updateFavoriteIcon(icon: "★", sender: sender)
-//            delegate?.addIdToFavorites(indexPathRow: indexPathRow)
-//        } else {
-//            updateFavoriteIcon(icon: "☆", sender: sender)
-//            delegate?.removeFromFavories(indexPathRow: indexPathRow)
-//        }
- }
- */

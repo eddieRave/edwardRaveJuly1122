@@ -59,7 +59,7 @@
         <!--Favorites-->
         <scene sceneID="mgg-P2-sKy">
             <objects>
-                <viewController id="4h0-Vm-POe" customClass="FavoritesViewController" customModule="DigimonCollectionView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="favViewCon" id="4h0-Vm-POe" customClass="FavoritesViewController" customModule="DigimonCollectionView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UYc-r0-Cne">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -117,6 +117,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Kw1-6N-fld" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JjW-C0-sw6">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
