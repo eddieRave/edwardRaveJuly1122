@@ -72,8 +72,11 @@ class DigimonViewController: UIViewController {
             DispatchQueue.main.async {
                 self.digimonCollectionView.reloadData()
             }
-            // Save to CoreData
-            storeCoreData()
+//            if digimonVM.stringCopyOfFavoritesIdArray != "" {
+                // Save to CoreData
+                storeCoreData()
+//            }
+            
         }
         
         // Fetch from CoreData
@@ -83,9 +86,7 @@ class DigimonViewController: UIViewController {
 
     
     func storeCoreData() {
-//        DispatchQueue.main.async {
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-//        }
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
         guard let context = appDelegate?.persistentContainer.viewContext else {
             fatalError()
         }
@@ -109,9 +110,15 @@ class DigimonViewController: UIViewController {
         let request = NSFetchRequest<Favorites>(entityName: "Favorites")
         do {
             let storedFavorites = try context.fetch(request)
-            print("Retrieved the following string from CoreData: \(storedFavorites)")
+            print("FETCH: Retrieved the following string from CoreData: \(storedFavorites)")
+            // TODO: loop through the array of favorites (retrieved from storedFavorites) and add each id to a new array which then gets saved to the favorites array
+            var copyOfFavIds: [String] = []
+            for fav in storedFavorites {
+                copyOfFavIds.append(fav.favArrayCD ?? "NoData")
+            }
+            print("FETCH: copyOfFavIds = \(copyOfFavIds)")
             digimonVM.stringCopyOfFavoritesIdArray = storedFavorites.first?.favArrayCD ?? ""
-            print("stringCopyOfFavoritesIdArray is now equal to: \(digimonVM.stringCopyOfFavoritesIdArray)")
+            print("FETCH: stringCopyOfFavoritesIdArray is now equal to: \(digimonVM.stringCopyOfFavoritesIdArray)")
         } catch {
             print(error)
         }
