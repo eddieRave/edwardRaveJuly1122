@@ -23,8 +23,6 @@ import CoreData
 
 #warning("Favorites are recycled in the view")
 
-#warning("Favorites tab doesn't update when you go back to collections and add or remove digimon")
-
 #warning("Where to call CoreData StoreData function?")
 
 let digimonVM = DigimonViewModel()
