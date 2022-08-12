@@ -25,7 +25,7 @@ import CoreData
 
 #warning("Favorites tab doesn't update when you go back to collections and add or remove digimon")
 
-#warning("Still need to persist data in CoreData")
+#warning("Where to call CoreData StoreData function?")
 
 let digimonVM = DigimonViewModel()
 
@@ -71,16 +71,14 @@ class DigimonViewController: UIViewController {
         digimonVM.update = { [unowned self] in
             DispatchQueue.main.async {
                 self.digimonCollectionView.reloadData()
-            }
-//            if digimonVM.stringCopyOfFavoritesIdArray != "" {
                 // Save to CoreData
-                storeCoreData()
-//            }
-            
+                self.storeCoreData()
+            }
         }
         
         // Fetch from CoreData
         fetchCoreData()
+        digimonVM.favoritesIdArray = digimonVM.convertStringToArrayOfInt(stringOfInt: digimonVM.stringCopyOfFavoritesIdArray)
         
     }
 
@@ -97,7 +95,7 @@ class DigimonViewController: UIViewController {
         favoritesEntity.setValue(digimonVM.stringCopyOfFavoritesIdArray, forKey: "favArrayCD")
         do {
             try context.save()
-            print("Saved the following string to CoreData: \(digimonVM.stringCopyOfFavoritesIdArray)")
+            print("STORE: Saved the following string to CoreData: \(digimonVM.stringCopyOfFavoritesIdArray)")
         } catch {
             print(error)
         }
@@ -117,7 +115,7 @@ class DigimonViewController: UIViewController {
                 copyOfFavIds.append(fav.favArrayCD ?? "NoData")
             }
             print("FETCH: copyOfFavIds = \(copyOfFavIds)")
-            digimonVM.stringCopyOfFavoritesIdArray = storedFavorites.first?.favArrayCD ?? ""
+            digimonVM.stringCopyOfFavoritesIdArray = storedFavorites.last?.favArrayCD ?? ""
             print("FETCH: stringCopyOfFavoritesIdArray is now equal to: \(digimonVM.stringCopyOfFavoritesIdArray)")
         } catch {
             print(error)

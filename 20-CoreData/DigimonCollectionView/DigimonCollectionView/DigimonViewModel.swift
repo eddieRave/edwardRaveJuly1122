@@ -31,9 +31,9 @@ class DigimonViewModel: AddFavoriteProtocol {
     }
     var favoritesIdArray: [Int] = [] {
         didSet {
-            print("Favorites ID: \(favoritesIdArray)")
+            print("VM-favoritesIdArray: Favorites ID: \(favoritesIdArray)")
             convertArrayOfIntToString()
-            print("String copy = \(stringCopyOfFavoritesIdArray)")
+            print("VM-favoritesIdArray: String copy = \(stringCopyOfFavoritesIdArray)")
 //            update?()
         }
     }
@@ -81,7 +81,7 @@ class DigimonViewModel: AddFavoriteProtocol {
         if var digimon = digimonArray?[indexPathRow] {
             digimon.favoriteId = indexPathRow
             favoritesIdArray.append(indexPathRow)
-            print("Added index \(indexPathRow) to Favorites array.")
+            print("VM-addIdToFavorites: Added index \(indexPathRow) to Favorites array.")
         }
     }
     func removeFromFavories(indexPathRow: Int) {
@@ -90,7 +90,7 @@ class DigimonViewModel: AddFavoriteProtocol {
             for i in 0..<favoritesIdArray.count {
                 if favoritesIdArray[i] == indexPathRow {
                     copyOfArray.remove(at: i)
-                    print("Removed index \(indexPathRow) from Favorites array.")
+                    print("VM-REMOVE: Removed index \(indexPathRow) from Favorites array.")
                 }
             }
         }

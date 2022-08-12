@@ -61,13 +61,13 @@ extension FavoritesViewController: UICollectionViewDataSource {
         guard let cell = favoritesCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? FavoritesCollectionViewCell else {
             return UICollectionViewCell()
         }
-        print("cell created")
+        print("FAV-VC-CellAtItem: cell created")
         cell.nameLabel.text = digimonVM.getName(for: digimonVM.favoritesIdArray[indexPath.row])
         if let url = digimonVM.getImage(for: digimonVM.favoritesIdArray[indexPath.row]) {
             cell.imgLabel.fetchImage(for: url)
         }
         cell.levelLabel.text = digimonVM.getLevel(for: digimonVM.favoritesIdArray[indexPath.row])
-        print("name of digimon: \(digimonVM.getName(for: digimonVM.favoritesIdArray[indexPath.row]) ?? "")")
+        print("FAV-VC-CellAtItem: name of digimon: \(digimonVM.getName(for: digimonVM.favoritesIdArray[indexPath.row]) ?? "")")
         return cell
     }
     
