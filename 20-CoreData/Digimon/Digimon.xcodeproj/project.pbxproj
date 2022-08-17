@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C7415D1928AA7DA500500E93 /* DigimonCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C7415D1728AA7DA500500E93 /* DigimonCoreData.xcdatamodeld */; };
+		C7415D1B28AA8C8900500E93 /* FavoriteDigimonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7415D1A28AA8C8900500E93 /* FavoriteDigimonViewController.swift */; };
+		C7415D1D28AA8F9500500E93 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7415D1C28AA8F9500500E93 /* CoreDataManager.swift */; };
 		C7EC88DE28A035F000F18DD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EC88DD28A035F000F18DD7 /* AppDelegate.swift */; };
 		C7EC88E028A035F000F18DD7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EC88DF28A035F000F18DD7 /* SceneDelegate.swift */; };
 		C7EC88E228A035F000F18DD7 /* DigimonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EC88E128A035F000F18DD7 /* DigimonViewController.swift */; };
@@ -21,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C7415D1828AA7DA500500E93 /* DigimonCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DigimonCoreData.xcdatamodel; sourceTree = "<group>"; };
+		C7415D1A28AA8C8900500E93 /* FavoriteDigimonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDigimonViewController.swift; sourceTree = "<group>"; };
+		C7415D1C28AA8F9500500E93 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		C7EC88DA28A035F000F18DD7 /* Digimon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Digimon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7EC88DD28A035F000F18DD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7EC88DF28A035F000F18DD7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +81,7 @@
 				C7EC88DF28A035F000F18DD7 /* SceneDelegate.swift */,
 				C7EC88E828A035F000F18DD7 /* LaunchScreen.storyboard */,
 				C7EC88EB28A035F000F18DD7 /* Info.plist */,
+				C7415D1728AA7DA500500E93 /* DigimonCoreData.xcdatamodeld */,
 			);
 			path = Digimon;
 			sourceTree = "<group>";
@@ -83,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				C7EC88F828A03A6200F18DD7 /* Networking.swift */,
+				C7415D1C28AA8F9500500E93 /* CoreDataManager.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -99,9 +107,10 @@
 			isa = PBXGroup;
 			children = (
 				C7EC88E128A035F000F18DD7 /* DigimonViewController.swift */,
+				C7EC88E328A035F000F18DD7 /* Main.storyboard */,
 				C7EC88FA28A080A700F18DD7 /* DigimonCollectionViewCell.swift */,
 				C7EC88FB28A080A700F18DD7 /* DigimonCollectionViewCell.xib */,
-				C7EC88E328A035F000F18DD7 /* Main.storyboard */,
+				C7415D1A28AA8C8900500E93 /* FavoriteDigimonViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -187,11 +196,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7EC88E228A035F000F18DD7 /* DigimonViewController.swift in Sources */,
+				C7415D1B28AA8C8900500E93 /* FavoriteDigimonViewController.swift in Sources */,
 				C7EC88F528A0364D00F18DD7 /* DigimonModel.swift in Sources */,
 				C7EC88DE28A035F000F18DD7 /* AppDelegate.swift in Sources */,
 				C7EC88F928A03A6200F18DD7 /* Networking.swift in Sources */,
 				C7EC88E028A035F000F18DD7 /* SceneDelegate.swift in Sources */,
 				C7EC88F728A0365900F18DD7 /* DigimonViewModel.swift in Sources */,
+				C7415D1928AA7DA500500E93 /* DigimonCoreData.xcdatamodeld in Sources */,
+				C7415D1D28AA8F9500500E93 /* CoreDataManager.swift in Sources */,
 				C7EC88FC28A080A700F18DD7 /* DigimonCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,6 +420,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C7415D1728AA7DA500500E93 /* DigimonCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C7415D1828AA7DA500500E93 /* DigimonCoreData.xcdatamodel */,
+			);
+			currentVersion = C7415D1828AA7DA500500E93 /* DigimonCoreData.xcdatamodel */;
+			path = DigimonCoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C7EC88D228A035F000F18DD7 /* Project object */;
 }

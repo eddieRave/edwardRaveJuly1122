@@ -6,10 +6,8 @@
 //
 
 import UIKit
+import CoreData
 
-// I'm sad to say that I spent a solid hour dealing with not being able to connect
-// the IBOutlet because it couldn't find information on ViewController before I figured
-// out that I just needed to rename it. Still don't know why that's a thing.
 class DigimonViewController: UIViewController {
     var digimonViewModel = DigimonViewModel()
     @IBOutlet weak var digimonCollectionView: UICollectionView!
@@ -19,7 +17,7 @@ class DigimonViewController: UIViewController {
         super.viewDidLoad()
         
         let nib = UINib(nibName: "DigimonCollectionViewCell", bundle: nil)
-        digimonCollectionView.register(nib, forCellWithReuseIdentifier: "DigimonCell")
+        digimonCollectionView.register(nib, forCellWithReuseIdentifier: "cell")
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical // Vertical scroll makes sense for this app
@@ -28,21 +26,23 @@ class DigimonViewController: UIViewController {
         layout.minimumLineSpacing = 15
         digimonCollectionView.collectionViewLayout = layout
         
-        digimonViewModel.getDigimon {
-            DispatchQueue.main.async { [weak self] in
-                self?.digimonCollectionView.reloadData()
+        digimonViewModel.reloadView = { [unowned self] in
+            DispatchQueue.main.async {
+                self.digimonCollectionView.reloadData()
             }
         }
+        digimonViewModel.getDigimon()
     }
 }
 
 extension DigimonViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        digimonViewModel.numOfDigimon
+        print("rows", digimonViewModel.numOfDigimon)
+        return digimonViewModel.numOfDigimon
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = digimonCollectionView.dequeueReusableCell(withReuseIdentifier: "DigimonCell", for: indexPath) as? DigimonCollectionViewCell else {
+        guard let cell = digimonCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DigimonCollectionViewCell else {
             return UICollectionViewCell()
         }
         cell.digimonNameLabel.text = digimonViewModel.getName(for: indexPath.row)

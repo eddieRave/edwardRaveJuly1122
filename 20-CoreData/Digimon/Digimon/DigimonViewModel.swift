@@ -8,12 +8,16 @@
 import Foundation
 
 class DigimonViewModel {
-    var digimon = [Digimon]()
+    var digimon = [Digimon]() {
+        didSet {
+            reloadView!()
+        }
+    }
     var numOfDigimon: Int {
         digimon.count
     }
     
-    func getDigimon(digimonCompletion: @escaping () -> Void) {
+    func getDigimon() {
         Networking.shared.fetchData(dataCompletion: {digimon in
             self.digimon = digimon
         })
@@ -30,4 +34,6 @@ class DigimonViewModel {
     func getImage(for index: Int) -> String? {
         digimon[index].img
     }
+    
+    var reloadView: (() -> Void)?
 }
