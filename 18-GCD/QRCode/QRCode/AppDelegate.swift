@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  Array
+//  QRCode
 //
-//  Created by Luat on 5/19/21.
+//  Created by Rave Bizz 63 on 8/1/22.
 //
 
 import UIKit

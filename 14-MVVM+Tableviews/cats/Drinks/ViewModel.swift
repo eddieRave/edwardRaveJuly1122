@@ -32,6 +32,7 @@ class ViewModel{
     func getImage(for index: Int) -> String?{
         model?[index].url
     }
+    
     func getcount() -> Int?{
         model?.count
     }
